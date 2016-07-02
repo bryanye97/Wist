@@ -7,21 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B95AC6367D78D094974DEFD /* Pods_Wist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF93978AFFE7C8FB9AA99DD8 /* Pods_Wist.framework */; };
+		A204A3441D26FEE000DB2A68 /* BookCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A204A3431D26FEE000DB2A68 /* BookCardView.xib */; };
+		A20F24831D26DB6D00F2D393 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20F24821D26DB6D00F2D393 /* ParseHelper.swift */; };
+		A20F248B1D26F18400F2D393 /* BookCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20F248A1D26F18400F2D393 /* BookCardView.swift */; };
 		A2416A741D24762A0060249C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2416A731D24762A0060249C /* AppDelegate.swift */; };
-		A2416A761D24762A0060249C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2416A751D24762A0060249C /* ViewController.swift */; };
 		A2416A791D24762A0060249C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2416A771D24762A0060249C /* Main.storyboard */; };
 		A2416A7B1D24762A0060249C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2416A7A1D24762A0060249C /* Assets.xcassets */; };
 		A2416A7E1D24762A0060249C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2416A7C1D24762A0060249C /* LaunchScreen.storyboard */; };
+		A2416A861D2495A30060249C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2416A851D2495A30060249C /* TabBarViewController.swift */; };
+		A27B16B31D26100C006EC051 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B16B21D26100C006EC051 /* ProfileViewController.swift */; };
+		A27B16B51D261048006EC051 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B16B41D261048006EC051 /* MessageViewController.swift */; };
+		A27B16B81D26110A006EC051 /* NewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B16B71D26110A006EC051 /* NewItemViewController.swift */; };
+		A287053C1D25844000C7B500 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287053B1D25844000C7B500 /* BooksViewController.swift */; };
+		A2B6DB0E1D261FDB00924C66 /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B6DB0D1D261FDB00924C66 /* PhotoTakingHelper.swift */; };
+		A2B6DB131D26207D00924C66 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B6DB121D26207D00924C66 /* Post.swift */; };
+		A2C9D6F71D25A2AB0006D4D4 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */; };
+		A2DFF73C1D2622B400DEE946 /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFF73B1D2622B400DEE946 /* ErrorHandling.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A204A3431D26FEE000DB2A68 /* BookCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BookCardView.xib; path = ../BookCardView.xib; sourceTree = "<group>"; };
+		A20F24821D26DB6D00F2D393 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
+		A20F248A1D26F18400F2D393 /* BookCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCardView.swift; sourceTree = "<group>"; };
 		A2416A701D24762A0060249C /* Wist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2416A731D24762A0060249C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A2416A751D24762A0060249C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A2416A781D24762A0060249C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A2416A7A1D24762A0060249C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2416A7D1D24762A0060249C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2416A7F1D24762A0060249C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2416A851D2495A30060249C /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		A27B16B21D26100C006EC051 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A27B16B41D261048006EC051 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		A27B16B71D26110A006EC051 /* NewItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemViewController.swift; sourceTree = "<group>"; };
+		A287053B1D25844000C7B500 /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
+		A2B6DB0D1D261FDB00924C66 /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
+		A2B6DB121D26207D00924C66 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OverlayView.xib; path = ../OverlayView.xib; sourceTree = "<group>"; };
+		A2DFF73B1D2622B400DEE946 /* ErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
+		C731566A4DD571D384D461FB /* Pods-Wist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wist/Pods-Wist.release.xcconfig"; sourceTree = "<group>"; };
+		F8FA70C195CE66A770B80CA8 /* Pods-Wist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wist/Pods-Wist.debug.xcconfig"; sourceTree = "<group>"; };
+		FF93978AFFE7C8FB9AA99DD8 /* Pods_Wist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +55,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B95AC6367D78D094974DEFD /* Pods_Wist.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46706E86246119DFF4B630C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF93978AFFE7C8FB9AA99DD8 /* Pods_Wist.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A204A3451D27040B00DB2A68 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A20F248A1D26F18400F2D393 /* BookCardView.swift */,
+				A204A3431D26FEE000DB2A68 /* BookCardView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		A2416A671D24762A0060249C = {
 			isa = PBXGroup;
 			children = (
 				A2416A721D24762A0060249C /* Wist */,
 				A2416A711D24762A0060249C /* Products */,
+				D2761578C6B25832A8DF46E5 /* Pods */,
+				46706E86246119DFF4B630C2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +101,56 @@
 			isa = PBXGroup;
 			children = (
 				A2416A731D24762A0060249C /* AppDelegate.swift */,
-				A2416A751D24762A0060249C /* ViewController.swift */,
 				A2416A771D24762A0060249C /* Main.storyboard */,
+				A27B16B61D2610D8006EC051 /* ViewControllers */,
+				A204A3451D27040B00DB2A68 /* Views */,
+				A2B6DB0F1D261FE200924C66 /* Helpers */,
+				A2B6DB141D26208100924C66 /* Models */,
+				A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */,
 				A2416A7A1D24762A0060249C /* Assets.xcassets */,
 				A2416A7C1D24762A0060249C /* LaunchScreen.storyboard */,
 				A2416A7F1D24762A0060249C /* Info.plist */,
 			);
 			path = Wist;
+			sourceTree = "<group>";
+		};
+		A27B16B61D2610D8006EC051 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A2416A851D2495A30060249C /* TabBarViewController.swift */,
+				A27B16B21D26100C006EC051 /* ProfileViewController.swift */,
+				A27B16B71D26110A006EC051 /* NewItemViewController.swift */,
+				A27B16B41D261048006EC051 /* MessageViewController.swift */,
+				A287053B1D25844000C7B500 /* BooksViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A2B6DB0F1D261FE200924C66 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A2DFF73B1D2622B400DEE946 /* ErrorHandling.swift */,
+				A2B6DB0D1D261FDB00924C66 /* PhotoTakingHelper.swift */,
+				A20F24821D26DB6D00F2D393 /* ParseHelper.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		A2B6DB141D26208100924C66 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A2B6DB121D26207D00924C66 /* Post.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		D2761578C6B25832A8DF46E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F8FA70C195CE66A770B80CA8 /* Pods-Wist.debug.xcconfig */,
+				C731566A4DD571D384D461FB /* Pods-Wist.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +160,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A2416A821D24762A0060249C /* Build configuration list for PBXNativeTarget "Wist" */;
 			buildPhases = (
+				6B9148FF4A189E5DBAB2261C /* [CP] Check Pods Manifest.lock */,
 				A2416A6C1D24762A0060249C /* Sources */,
 				A2416A6D1D24762A0060249C /* Frameworks */,
 				A2416A6E1D24762A0060249C /* Resources */,
+				135A02B065086F75F7F0BD34 /* [CP] Embed Pods Frameworks */,
+				0F2537A1A26C7F7976AF337F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,6 +216,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2416A7E1D24762A0060249C /* LaunchScreen.storyboard in Resources */,
+				A204A3441D26FEE000DB2A68 /* BookCardView.xib in Resources */,
+				A2C9D6F71D25A2AB0006D4D4 /* OverlayView.xib in Resources */,
 				A2416A7B1D24762A0060249C /* Assets.xcassets in Resources */,
 				A2416A791D24762A0060249C /* Main.storyboard in Resources */,
 			);
@@ -131,13 +225,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F2537A1A26C7F7976AF337F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wist/Pods-Wist-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		135A02B065086F75F7F0BD34 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wist/Pods-Wist-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B9148FF4A189E5DBAB2261C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A2416A6C1D24762A0060249C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2416A761D24762A0060249C /* ViewController.swift in Sources */,
+				A2DFF73C1D2622B400DEE946 /* ErrorHandling.swift in Sources */,
+				A20F248B1D26F18400F2D393 /* BookCardView.swift in Sources */,
+				A287053C1D25844000C7B500 /* BooksViewController.swift in Sources */,
+				A27B16B31D26100C006EC051 /* ProfileViewController.swift in Sources */,
+				A27B16B81D26110A006EC051 /* NewItemViewController.swift in Sources */,
+				A2B6DB131D26207D00924C66 /* Post.swift in Sources */,
+				A2416A861D2495A30060249C /* TabBarViewController.swift in Sources */,
+				A2B6DB0E1D261FDB00924C66 /* PhotoTakingHelper.swift in Sources */,
+				A27B16B51D261048006EC051 /* MessageViewController.swift in Sources */,
 				A2416A741D24762A0060249C /* AppDelegate.swift in Sources */,
+				A20F24831D26DB6D00F2D393 /* ParseHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +399,7 @@
 		};
 		A2416A831D24762A0060249C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8FA70C195CE66A770B80CA8 /* Pods-Wist.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Wist/Info.plist;
@@ -259,6 +411,7 @@
 		};
 		A2416A841D24762A0060249C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C731566A4DD571D384D461FB /* Pods-Wist.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Wist/Info.plist;
@@ -287,6 +440,7 @@
 				A2416A841D24762A0060249C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

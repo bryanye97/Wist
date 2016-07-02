@@ -1,25 +1,223 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IX8-OE-CQM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Message View Controller-->
+        <scene sceneID="Kvx-PR-f2d">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JBL-ZO-bfa" customClass="MessageViewController" customModule="Wist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="5q0-sY-zRq"/>
+                        <viewControllerLayoutGuide type="bottom" id="nLM-En-SD8"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="SDE-oj-yhx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="ic_message" id="Uoo-3B-rQq">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8oE-zT-tw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-230" y="-793"/>
+        </scene>
+        <!--Books View Controller-->
+        <scene sceneID="D8I-bK-Wfk">
+            <objects>
+                <viewController id="Am4-sK-BAC" customClass="BooksViewController" customModule="Wist" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eNn-cc-Hh3"/>
+                        <viewControllerLayoutGuide type="bottom" id="jms-4P-poT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JdM-GA-fe1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVr-Xc-L9a" customClass="KolodaView" customModule="Koloda">
+                                <rect key="frame" x="160" y="105" width="280" height="390"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="3D1-mb-z5y"/>
+                                    <constraint firstAttribute="height" constant="390" id="s1j-gX-1BL"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="gbb-Aq-HFv">
+                                <rect key="frame" x="218" y="494" width="164" height="32"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAd-nh-Mm7">
+                                        <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                        <state key="normal" image="btn_skip_normal"/>
+                                        <connections>
+                                            <action selector="dislikeButtonTapped:" destination="Am4-sK-BAC" eventType="touchUpInside" id="6Uc-WH-f8Q"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mu3-dI-xg2">
+                                        <rect key="frame" x="132" y="0.0" width="32" height="32"/>
+                                        <state key="normal" image="btn_like_normal"/>
+                                        <connections>
+                                            <action selector="likeButtonTapped:" destination="Am4-sK-BAC" eventType="touchUpInside" id="aVK-bI-pZE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jms-4P-poT" firstAttribute="top" secondItem="gbb-Aq-HFv" secondAttribute="bottom" constant="25" id="7PW-r8-oin"/>
+                            <constraint firstItem="IVr-Xc-L9a" firstAttribute="centerX" secondItem="JdM-GA-fe1" secondAttribute="centerX" id="Osg-wh-RSj"/>
+                            <constraint firstItem="IVr-Xc-L9a" firstAttribute="top" secondItem="eNn-cc-Hh3" secondAttribute="bottom" constant="97" id="XBB-s6-2dP"/>
+                            <constraint firstItem="IVr-Xc-L9a" firstAttribute="centerY" secondItem="JdM-GA-fe1" secondAttribute="centerY" id="bbQ-V9-QJd"/>
+                            <constraint firstItem="gbb-Aq-HFv" firstAttribute="centerX" secondItem="JdM-GA-fe1" secondAttribute="centerX" id="deX-rz-Fp5"/>
+                            <constraint firstItem="IVr-Xc-L9a" firstAttribute="centerX" secondItem="JdM-GA-fe1" secondAttribute="centerX" id="xb3-2f-Bw5"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XBB-s6-2dP"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="ic_book" id="4ks-3t-SXT">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="kolodaView" destination="IVr-Xc-L9a" id="M1N-AJ-JNu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QFc-iz-Che" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-230" y="-78"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="BsP-Hc-4zf">
+            <objects>
+                <viewController id="gPp-Ey-Wyr" customClass="ProfileViewController" customModule="Wist" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nvf-GY-3n0"/>
+                        <viewControllerLayoutGuide type="bottom" id="lIO-ja-IJX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pMw-fw-XQo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ymf-73-YAV">
+                                <rect key="frame" x="255" y="285" width="91" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dUG-H4-QQh"/>
+                                </constraints>
+                                <state key="normal" title="List new item"/>
+                                <connections>
+                                    <action selector="listNewBookButton:" destination="gPp-Ey-Wyr" eventType="touchUpInside" id="oqp-Ds-cng"/>
+                                    <segue destination="cBa-a3-bZf" kind="show" id="ehD-WG-759"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ymf-73-YAV" firstAttribute="centerX" secondItem="pMw-fw-XQo" secondAttribute="centerX" id="4Wt-oa-RPa"/>
+                            <constraint firstItem="Ymf-73-YAV" firstAttribute="centerY" secondItem="pMw-fw-XQo" secondAttribute="centerY" id="t7S-HW-Fkd"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="ic_face" id="PU4-ZZ-zKw">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ff9-na-3V7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-230" y="-1454"/>
+        </scene>
+        <!--New Item View Controller-->
+        <scene sceneID="rHn-qK-E4o">
+            <objects>
+                <viewController id="cBa-a3-bZf" customClass="NewItemViewController" customModule="Wist" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NFJ-lC-6W1"/>
+                        <viewControllerLayoutGuide type="bottom" id="VB4-2a-GAs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d95-1K-YlA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JpP-mF-mGc">
+                                <rect key="frame" x="234" y="216" width="133" height="30"/>
+                                <state key="normal" title="Upload book image"/>
+                                <connections>
+                                    <action selector="uploadBookImageButton:" destination="cBa-a3-bZf" eventType="touchUpInside" id="e10-OG-Z4t"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JH2-64-HZu">
+                                <rect key="frame" x="31" y="23" width="24" height="24"/>
+                                <state key="normal" image="ic_change_history"/>
+                                <connections>
+                                    <segue destination="q28-kh-6fV" kind="unwind" unwindAction="unwindToProfile:" id="v3P-iZ-Wlj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BpD-3v-lDV">
+                                <rect key="frame" x="273" y="340" width="55" height="30"/>
+                                <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="confirmBook:" destination="cBa-a3-bZf" eventType="touchUpInside" id="fd1-gT-iCE"/>
+                                    <segue destination="q28-kh-6fV" kind="unwind" unwindAction="unwindToProfile:" id="KbJ-Jf-l8T"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Book name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jOx-dn-Fid">
+                                <rect key="frame" x="156" y="285" width="288.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="288.5" id="8u4-Ti-F6L"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JpP-mF-mGc" firstAttribute="centerX" secondItem="d95-1K-YlA" secondAttribute="centerX" id="6iB-Qj-ja9"/>
+                            <constraint firstItem="BpD-3v-lDV" firstAttribute="top" secondItem="jOx-dn-Fid" secondAttribute="bottom" constant="25" id="WyA-eq-r6r"/>
+                            <constraint firstItem="BpD-3v-lDV" firstAttribute="centerX" secondItem="d95-1K-YlA" secondAttribute="centerX" id="YfX-to-aYh"/>
+                            <constraint firstItem="JpP-mF-mGc" firstAttribute="top" secondItem="NFJ-lC-6W1" secondAttribute="bottom" constant="196" id="ZEX-Cr-6ZE"/>
+                            <constraint firstItem="jOx-dn-Fid" firstAttribute="centerX" secondItem="d95-1K-YlA" secondAttribute="centerX" id="f0b-6l-FBw"/>
+                            <constraint firstItem="jOx-dn-Fid" firstAttribute="top" secondItem="JpP-mF-mGc" secondAttribute="bottom" constant="39" id="pWc-UE-WQb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bookNameTextField" destination="jOx-dn-Fid" id="WVZ-ei-oTM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J9B-S2-Xp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="q28-kh-6fV" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="499" y="-1454"/>
+        </scene>
+        <!--Tab Bar View Controller-->
+        <scene sceneID="FKW-yu-fcv">
+            <objects>
+                <tabBarController id="IX8-OE-CQM" customClass="TabBarViewController" customModule="Wist" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="rWg-nd-xdZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="gPp-Ey-Wyr" kind="relationship" relationship="viewControllers" id="Owx-iW-q4s"/>
+                        <segue destination="JBL-ZO-bfa" kind="relationship" relationship="viewControllers" id="fPl-AV-OVn"/>
+                        <segue destination="Am4-sK-BAC" kind="relationship" relationship="viewControllers" id="SHL-7w-kXG"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oa2-Nj-Vwl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1050" y="-1123"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="btn_like_normal" width="32" height="32"/>
+        <image name="btn_skip_normal" width="32" height="32"/>
+        <image name="ic_book" width="24" height="24"/>
+        <image name="ic_change_history" width="24" height="24"/>
+        <image name="ic_face" width="24" height="24"/>
+        <image name="ic_message" width="24" height="24"/>
+    </resources>
 </document>

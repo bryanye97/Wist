@@ -1,0 +1,6 @@
+framework module Pods_Wist {
+  umbrella header "Pods-Wist-umbrella.h"
+
+  export *
+  module * { export * }
+}
