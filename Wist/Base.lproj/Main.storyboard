@@ -85,7 +85,7 @@
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="kolodaView" destination="IVr-Xc-L9a" id="M1N-AJ-JNu"/>
+                        <outlet property="kolodaView" destination="IVr-Xc-L9a" id="9S2-ZE-Lku"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QFc-iz-Che" userLabel="First Responder" sceneMemberID="firstResponder"/>

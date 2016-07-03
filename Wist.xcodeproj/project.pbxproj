@@ -11,6 +11,7 @@
 		A204A3441D26FEE000DB2A68 /* BookCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A204A3431D26FEE000DB2A68 /* BookCardView.xib */; };
 		A20F24831D26DB6D00F2D393 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20F24821D26DB6D00F2D393 /* ParseHelper.swift */; };
 		A20F248B1D26F18400F2D393 /* BookCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20F248A1D26F18400F2D393 /* BookCardView.swift */; };
+		A21341901D29CE2F002378CC /* CustomOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A213418F1D29CE2F002378CC /* CustomOverlayView.swift */; };
 		A2416A741D24762A0060249C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2416A731D24762A0060249C /* AppDelegate.swift */; };
 		A2416A791D24762A0060249C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2416A771D24762A0060249C /* Main.storyboard */; };
 		A2416A7B1D24762A0060249C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2416A7A1D24762A0060249C /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		A204A3431D26FEE000DB2A68 /* BookCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BookCardView.xib; path = ../BookCardView.xib; sourceTree = "<group>"; };
 		A20F24821D26DB6D00F2D393 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		A20F248A1D26F18400F2D393 /* BookCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCardView.swift; sourceTree = "<group>"; };
+		A213418F1D29CE2F002378CC /* CustomOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayView.swift; sourceTree = "<group>"; };
 		A2416A701D24762A0060249C /* Wist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2416A731D24762A0060249C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2416A781D24762A0060249C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -75,6 +77,8 @@
 			children = (
 				A20F248A1D26F18400F2D393 /* BookCardView.swift */,
 				A204A3431D26FEE000DB2A68 /* BookCardView.xib */,
+				A213418F1D29CE2F002378CC /* CustomOverlayView.swift */,
+				A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -106,7 +110,6 @@
 				A204A3451D27040B00DB2A68 /* Views */,
 				A2B6DB0F1D261FE200924C66 /* Helpers */,
 				A2B6DB141D26208100924C66 /* Models */,
-				A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */,
 				A2416A7A1D24762A0060249C /* Assets.xcassets */,
 				A2416A7C1D24762A0060249C /* LaunchScreen.storyboard */,
 				A2416A7F1D24762A0060249C /* Info.plist */,
@@ -280,6 +283,7 @@
 			files = (
 				A2DFF73C1D2622B400DEE946 /* ErrorHandling.swift in Sources */,
 				A20F248B1D26F18400F2D393 /* BookCardView.swift in Sources */,
+				A21341901D29CE2F002378CC /* CustomOverlayView.swift in Sources */,
 				A287053C1D25844000C7B500 /* BooksViewController.swift in Sources */,
 				A27B16B31D26100C006EC051 /* ProfileViewController.swift in Sources */,
 				A27B16B81D26110A006EC051 /* NewItemViewController.swift in Sources */,

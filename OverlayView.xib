@@ -7,10 +7,24 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KolodaView" customModule="Koloda">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomOverlayView" customModule="Wist" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x8T-kz-5Fo">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="x8T-kz-5Fo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8tf-XP-15b"/>
+                <constraint firstItem="x8T-kz-5Fo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QrN-GM-MP3"/>
+                <constraint firstAttribute="trailing" secondItem="x8T-kz-5Fo" secondAttribute="trailing" id="RsA-l0-pKR"/>
+                <constraint firstAttribute="bottom" secondItem="x8T-kz-5Fo" secondAttribute="bottom" id="vfa-Wz-nZD"/>
+            </constraints>
+            <connections>
+                <outlet property="overlayImageView" destination="x8T-kz-5Fo" id="fcf-lK-X0j"/>
+            </connections>
         </view>
     </objects>
 </document>
