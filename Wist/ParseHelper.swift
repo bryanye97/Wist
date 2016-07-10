@@ -15,9 +15,13 @@ class ParseHelper {
     static let ParseLikeToPost = "toPost"
     static let ParseLikeFromUser = "fromUser"
     
+    static let ParsePostClass = "Post"
+    static let ParsePostUser = "user"
+    
     static func kolodaRequestForCurrentUser(completionBlock: PFQueryArrayResultBlock) {
-        let query = PFQuery(className: "Post")
-        query.includeKey("user")
+        let query = PFQuery(className: ParsePostClass)
+        query.includeKey(ParsePostUser)
+        
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
@@ -43,5 +47,15 @@ class ParseHelper {
                 }
             }
         }
+    }
+    
+    static func likesRequestForCurrentUser(completionBlock: PFQueryArrayResultBlock) {
+        let likesQuery = PFQuery(className: ParseLikeClass)
+        likesQuery.whereKey(ParseLikeFromUser, equalTo: PFUser.currentUser()!)
+        
+        let query = Post.query()
+        query!.whereKey(ParsePostUser, matchesKey: ParseLikeFromUser, inQuery: likesQuery)
+        
+        query!.findObjectsInBackgroundWithBlock(completionBlock)
     }
 }

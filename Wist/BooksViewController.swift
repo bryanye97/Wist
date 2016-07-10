@@ -9,6 +9,7 @@
 import UIKit
 import Koloda
 import Parse
+import ConvenienceKit
 
 class BooksViewController: UIViewController {
     
@@ -26,7 +27,7 @@ class BooksViewController: UIViewController {
             for post in self.dataSource {
                 do {
                     let imageData = try post.imageFile?.getData()
-                    post.image = UIImage(data: imageData!, scale:1.0)
+                    post.image.value = UIImage(data: imageData!, scale:1.0)
                 } catch {
                     print("could not get image")
                 }
@@ -93,7 +94,8 @@ extension BooksViewController: KolodaViewDataSource {
         let post = dataSource[Int(index)]
         
         let cardView = NSBundle.mainBundle().loadNibNamed("BookCardView", owner: self, options: nil)[0] as! BookCardView
-        cardView.bookImageView.image = post.image
+        cardView.bookImageView.image = post.image.value
+        
         cardView.usernameLabel.text = post.bookName
         cardView.bookNameLabel.text = post.user?.username
         

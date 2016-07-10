@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6B95AC6367D78D094974DEFD /* Pods_Wist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF93978AFFE7C8FB9AA99DD8 /* Pods_Wist.framework */; };
 		A204A3441D26FEE000DB2A68 /* BookCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A204A3431D26FEE000DB2A68 /* BookCardView.xib */; };
+		A20EE5571D32B96600BD536C /* LikesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20EE5561D32B96600BD536C /* LikesCollectionViewCell.swift */; };
 		A20F24831D26DB6D00F2D393 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20F24821D26DB6D00F2D393 /* ParseHelper.swift */; };
 		A20F248B1D26F18400F2D393 /* BookCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20F248A1D26F18400F2D393 /* BookCardView.swift */; };
 		A21341901D29CE2F002378CC /* CustomOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A213418F1D29CE2F002378CC /* CustomOverlayView.swift */; };
@@ -21,6 +22,7 @@
 		A27B16B51D261048006EC051 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B16B41D261048006EC051 /* MessageViewController.swift */; };
 		A27B16B81D26110A006EC051 /* NewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B16B71D26110A006EC051 /* NewItemViewController.swift */; };
 		A287053C1D25844000C7B500 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287053B1D25844000C7B500 /* BooksViewController.swift */; };
+		A290EE8D1D32B51B00DE10EC /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A290EE8C1D32B51B00DE10EC /* LikesViewController.swift */; };
 		A2B6DB0E1D261FDB00924C66 /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B6DB0D1D261FDB00924C66 /* PhotoTakingHelper.swift */; };
 		A2B6DB131D26207D00924C66 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B6DB121D26207D00924C66 /* Post.swift */; };
 		A2C9D6F71D25A2AB0006D4D4 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */; };
@@ -29,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		A204A3431D26FEE000DB2A68 /* BookCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BookCardView.xib; path = ../BookCardView.xib; sourceTree = "<group>"; };
+		A20EE5561D32B96600BD536C /* LikesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesCollectionViewCell.swift; sourceTree = "<group>"; };
 		A20F24821D26DB6D00F2D393 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		A20F248A1D26F18400F2D393 /* BookCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCardView.swift; sourceTree = "<group>"; };
 		A213418F1D29CE2F002378CC /* CustomOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayView.swift; sourceTree = "<group>"; };
@@ -43,6 +46,7 @@
 		A27B16B41D261048006EC051 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		A27B16B71D26110A006EC051 /* NewItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemViewController.swift; sourceTree = "<group>"; };
 		A287053B1D25844000C7B500 /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
+		A290EE8C1D32B51B00DE10EC /* LikesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
 		A2B6DB0D1D261FDB00924C66 /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
 		A2B6DB121D26207D00924C66 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OverlayView.xib; path = ../OverlayView.xib; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 			children = (
 				A20F248A1D26F18400F2D393 /* BookCardView.swift */,
 				A204A3431D26FEE000DB2A68 /* BookCardView.xib */,
+				A20EE5561D32B96600BD536C /* LikesCollectionViewCell.swift */,
 				A213418F1D29CE2F002378CC /* CustomOverlayView.swift */,
 				A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */,
 			);
@@ -123,6 +128,7 @@
 				A2416A851D2495A30060249C /* TabBarViewController.swift */,
 				A27B16B21D26100C006EC051 /* ProfileViewController.swift */,
 				A27B16B71D26110A006EC051 /* NewItemViewController.swift */,
+				A290EE8C1D32B51B00DE10EC /* LikesViewController.swift */,
 				A27B16B41D261048006EC051 /* MessageViewController.swift */,
 				A287053B1D25844000C7B500 /* BooksViewController.swift */,
 			);
@@ -285,6 +291,8 @@
 				A20F248B1D26F18400F2D393 /* BookCardView.swift in Sources */,
 				A21341901D29CE2F002378CC /* CustomOverlayView.swift in Sources */,
 				A287053C1D25844000C7B500 /* BooksViewController.swift in Sources */,
+				A290EE8D1D32B51B00DE10EC /* LikesViewController.swift in Sources */,
+				A20EE5571D32B96600BD536C /* LikesCollectionViewCell.swift in Sources */,
 				A27B16B31D26100C006EC051 /* ProfileViewController.swift in Sources */,
 				A27B16B81D26110A006EC051 /* NewItemViewController.swift in Sources */,
 				A2B6DB131D26207D00924C66 /* Post.swift in Sources */,

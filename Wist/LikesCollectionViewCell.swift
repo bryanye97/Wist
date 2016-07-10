@@ -1,23 +1,18 @@
 //
-//  BookCardView.swift
-//  
+//  LikesCollectionViewCell.swift
+//  Wist
 //
-//  Created by Bryan Ye on 1/07/2016.
-//
+//  Created by Bryan Ye on 10/07/2016.
+//  Copyright © 2016 Bryan Ye. All rights reserved.
 //
 
 import UIKit
 import Parse
 import Bond
 
-class BookCardView: UIView {
+class LikesCollectionViewCell: UICollectionViewCell {
     
-    
-    @IBOutlet weak var bookImageView: UIImageView!
-
-    @IBOutlet weak var usernameLabel: UILabel!
-
-    @IBOutlet weak var bookNameLabel: UILabel!
+    @IBOutlet weak var likesImageView: UIImageView!
     
     var postDisposable: DisposableType?
     var likeDisposable: DisposableType?
@@ -34,7 +29,7 @@ class BookCardView: UIView {
             
             if let post = post {
                 
-                postDisposable = post.image.bindTo(bookImageView.bnd_image)
+                postDisposable = post.image.bindTo(likesImageView.bnd_image)
                 likeDisposable = post.likes.observe { (value: [PFUser]?) -> () in
                     
 //                    if let value = value {
@@ -54,14 +49,5 @@ class BookCardView: UIView {
             }
         }
     }
-
-    
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
 
 }

@@ -31,7 +31,7 @@ class NewItemViewController: UIViewController {
     @IBAction func uploadBookImageButton(sender: AnyObject) {
 
         photoTakingHelper = PhotoTakingHelper(viewController: self, callback: { (image: UIImage?) in
-            self.post.image = image
+            self.post.image.value = image
         })
     }
     
@@ -52,3 +52,4 @@ class NewItemViewController: UIViewController {
     */
 
 }
+

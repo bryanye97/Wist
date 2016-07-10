@@ -18,8 +18,9 @@ class Post: PFObject, PFSubclassing {
     
     var photoUploadTask: UIBackgroundTaskIdentifier?
     
-//  var image: Observable<UIImage?> = Observable(nil)
-    var image: UIImage?
+    var image: Observable<UIImage?> = Observable(nil)
+    
+    var likes: Observable<[PFUser]?> = Observable(nil)
     
     @NSManaged var imageFile: PFFile?
     @NSManaged var bookName: String?
@@ -65,18 +66,18 @@ class Post: PFObject, PFSubclassing {
         }
     }
     
-//    func downloadImage() {
-//        image.value = Post.imageCache[self.imageFile!.name]
-//        
-//        if image.value == nil {
-//            imageFile?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
-//                if let data = data {
-//                    let image = UIImage(data: data, scale:1.0)!
-//                    self.image.value = image
-//                    
-//                    Post.imageCache[self.imageFile!.name] = image
-//                }
-//            }
-//        }
-//    }
+    func downloadImage() {
+        image.value = Post.imageCache[self.imageFile!.name]
+        
+        if image.value == nil {
+            imageFile?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
+                if let data = data {
+                    let image = UIImage(data: data, scale:1.0)!
+                    self.image.value = image
+                    
+                    Post.imageCache[self.imageFile!.name] = image
+                }
+            }
+        }
+    }
 }
