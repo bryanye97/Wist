@@ -44,9 +44,9 @@ class BooksViewController: UIViewController {
     }
 
     func koloda(koloda: KolodaView, didSwipeCardAtIndex index: UInt, inDirection direction: SwipeResultDirection) {
+        let post = dataSource[Int(index)]
         if direction == SwipeResultDirection.Right {
-            let post = dataSource[Int(index)]
-            ParseHelper.likePost(post.user!, post: post)
+            ParseHelper.likePost(PFUser.currentUser()!, post: post)
         }
     }
     
@@ -74,8 +74,6 @@ class BooksViewController: UIViewController {
 
 extension BooksViewController: KolodaViewDelegate {
     func kolodaDidRunOutOfCards(koloda: KolodaView) {
-//        dataSource.reset()
-        
         print("out of books")
     }
     
@@ -93,14 +91,11 @@ extension BooksViewController: KolodaViewDataSource {
     
     func koloda(koloda: KolodaView, viewForCardAtIndex index: UInt) -> UIView {
         let post = dataSource[Int(index)]
-        let image = post.image
-        let bookName = post.bookName
-        let username = post.user?.username
         
         let cardView = NSBundle.mainBundle().loadNibNamed("BookCardView", owner: self, options: nil)[0] as! BookCardView
-        cardView.bookImageView.image = image
-        cardView.usernameLabel.text = username
-        cardView.bookNameLabel.text = bookName
+        cardView.bookImageView.image = post.image
+        cardView.usernameLabel.text = post.bookName
+        cardView.bookNameLabel.text = post.user?.username
         
         return cardView
     }

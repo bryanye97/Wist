@@ -149,13 +149,6 @@
                                     <action selector="uploadBookImageButton:" destination="cBa-a3-bZf" eventType="touchUpInside" id="e10-OG-Z4t"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JH2-64-HZu">
-                                <rect key="frame" x="31" y="23" width="24" height="24"/>
-                                <state key="normal" image="ic_change_history"/>
-                                <connections>
-                                    <segue destination="q28-kh-6fV" kind="unwind" unwindAction="unwindToProfile:" id="v3P-iZ-Wlj"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BpD-3v-lDV">
                                 <rect key="frame" x="273" y="340" width="55" height="30"/>
                                 <state key="normal" title="Confirm"/>
@@ -172,6 +165,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JH2-64-HZu">
+                                <rect key="frame" x="31" y="20" width="24" height="24"/>
+                                <state key="normal" image="ic_change_history"/>
+                                <connections>
+                                    <segue destination="q28-kh-6fV" kind="unwind" unwindAction="unwindToProfile:" id="v3P-iZ-Wlj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
