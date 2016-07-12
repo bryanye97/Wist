@@ -8,16 +8,39 @@
 
 import UIKit
 import Parse
+import FBSDKCoreKit
+import ParseUI
+import ParseFacebookUtilsV4
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    var parseLoginHelper: ParseLoginHelper!
     
     var window: UIWindow?
+    
+    override init() {
+        super.init()
+        
+        parseLoginHelper = ParseLoginHelper {[unowned self] user, error in
+            
+            if let error = error {
+                
+                ErrorHandling.defaultErrorHandler(error)
+            } else  if let _ = user {
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let tabBarController = storyboard.instantiateViewControllerWithIdentifier("TabBarController")
+                
+                self.window?.rootViewController!.presentViewController(tabBarController, animated:true, completion:nil)
+            }
+        }
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
         UITabBar.appearance().barTintColor = UIColor.whiteColor()
+        
         
         let configuration = ParseClientConfiguration {
             $0.applicationId = "Wist"
@@ -25,23 +48,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.initializeWithConfiguration(configuration)
         
-        do {
-            try PFUser.logInWithUsername("test", password: "test")
-        } catch {
-            print("Unable to log in")
+
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        
+        
+        let user = PFUser.currentUser()
+        
+        let startViewController: UIViewController
+        
+        if (user != nil) {
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            startViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
+        } else {
+            
+            let loginViewController = PFLogInViewController()
+            loginViewController.fields = [.UsernameAndPassword, .LogInButton, .SignUpButton, .PasswordForgotten, .Facebook]
+            loginViewController.delegate = parseLoginHelper
+            loginViewController.signUpController?.delegate = parseLoginHelper
+            
+            startViewController = loginViewController
         }
         
-        if let currentUser = PFUser.currentUser() {
-            print("\(currentUser.username!) logged in successfully")
-        } else {
-            print("No logged in user :(")
-        }
+        // 5
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.rootViewController = startViewController;
+        self.window?.makeKeyAndVisible()
         
         let acl = PFACL()
         acl.publicReadAccess = true
         PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
         
-        return true
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -59,13 +97,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        FBSDKAppEvents.activateApp()
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 

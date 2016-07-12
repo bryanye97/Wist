@@ -19,10 +19,11 @@
 		A2416A7E1D24762A0060249C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2416A7C1D24762A0060249C /* LaunchScreen.storyboard */; };
 		A2416A861D2495A30060249C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2416A851D2495A30060249C /* TabBarViewController.swift */; };
 		A27B16B31D26100C006EC051 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B16B21D26100C006EC051 /* ProfileViewController.swift */; };
-		A27B16B51D261048006EC051 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B16B41D261048006EC051 /* MessageViewController.swift */; };
 		A27B16B81D26110A006EC051 /* NewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B16B71D26110A006EC051 /* NewItemViewController.swift */; };
 		A287053C1D25844000C7B500 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287053B1D25844000C7B500 /* BooksViewController.swift */; };
+		A2900CFB1D343D6400772EC6 /* ParseLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2900CFA1D343D6400772EC6 /* ParseLoginHelper.swift */; };
 		A290EE8D1D32B51B00DE10EC /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A290EE8C1D32B51B00DE10EC /* LikesViewController.swift */; };
+		A2AE2DD91D346C0A0004CE2E /* OtherProfilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AE2DD81D346C0A0004CE2E /* OtherProfilesViewController.swift */; };
 		A2B6DB0E1D261FDB00924C66 /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B6DB0D1D261FDB00924C66 /* PhotoTakingHelper.swift */; };
 		A2B6DB131D26207D00924C66 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B6DB121D26207D00924C66 /* Post.swift */; };
 		A2C9D6F71D25A2AB0006D4D4 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */; };
@@ -43,10 +44,11 @@
 		A2416A7F1D24762A0060249C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2416A851D2495A30060249C /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		A27B16B21D26100C006EC051 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		A27B16B41D261048006EC051 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		A27B16B71D26110A006EC051 /* NewItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemViewController.swift; sourceTree = "<group>"; };
 		A287053B1D25844000C7B500 /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
+		A2900CFA1D343D6400772EC6 /* ParseLoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseLoginHelper.swift; sourceTree = "<group>"; };
 		A290EE8C1D32B51B00DE10EC /* LikesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
+		A2AE2DD81D346C0A0004CE2E /* OtherProfilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherProfilesViewController.swift; sourceTree = "<group>"; };
 		A2B6DB0D1D261FDB00924C66 /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
 		A2B6DB121D26207D00924C66 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OverlayView.xib; path = ../OverlayView.xib; sourceTree = "<group>"; };
@@ -129,8 +131,8 @@
 				A27B16B21D26100C006EC051 /* ProfileViewController.swift */,
 				A27B16B71D26110A006EC051 /* NewItemViewController.swift */,
 				A290EE8C1D32B51B00DE10EC /* LikesViewController.swift */,
-				A27B16B41D261048006EC051 /* MessageViewController.swift */,
 				A287053B1D25844000C7B500 /* BooksViewController.swift */,
+				A2AE2DD81D346C0A0004CE2E /* OtherProfilesViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -141,6 +143,7 @@
 				A2DFF73B1D2622B400DEE946 /* ErrorHandling.swift */,
 				A2B6DB0D1D261FDB00924C66 /* PhotoTakingHelper.swift */,
 				A20F24821D26DB6D00F2D393 /* ParseHelper.swift */,
+				A2900CFA1D343D6400772EC6 /* ParseLoginHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -296,9 +299,10 @@
 				A27B16B31D26100C006EC051 /* ProfileViewController.swift in Sources */,
 				A27B16B81D26110A006EC051 /* NewItemViewController.swift in Sources */,
 				A2B6DB131D26207D00924C66 /* Post.swift in Sources */,
+				A2900CFB1D343D6400772EC6 /* ParseLoginHelper.swift in Sources */,
 				A2416A861D2495A30060249C /* TabBarViewController.swift in Sources */,
 				A2B6DB0E1D261FDB00924C66 /* PhotoTakingHelper.swift in Sources */,
-				A27B16B51D261048006EC051 /* MessageViewController.swift in Sources */,
+				A2AE2DD91D346C0A0004CE2E /* OtherProfilesViewController.swift in Sources */,
 				A2416A741D24762A0060249C /* AppDelegate.swift in Sources */,
 				A20F24831D26DB6D00F2D393 /* ParseHelper.swift in Sources */,
 			);

@@ -59,8 +59,6 @@ class BooksViewController: UIViewController {
         kolodaView?.swipe(SwipeResultDirection.Left)
     }
     
-    
-    
     /*
     // MARK: - Navigation
 
@@ -79,8 +77,24 @@ extension BooksViewController: KolodaViewDelegate {
     }
     
     func koloda(koloda: KolodaView, didSelectCardAtIndex index: UInt) {
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://google.com/")!)
-        print("Card selected!")
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let saveAction = UIAlertAction(title: "Save item", style: .Default) { (action) in
+            let post = self.dataSource[Int(index)]
+            ParseHelper.likePost(PFUser.currentUser()!, post: post)
+        }
+        alertController.addAction(saveAction)
+        
+        let messageAction = UIAlertAction(title: "Message seller", style: .Default) { (action) in
+            self.performSegueWithIdentifier("testSegue", sender: self)
+        }
+        alertController.addAction(messageAction)
+        
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }
 
@@ -94,10 +108,10 @@ extension BooksViewController: KolodaViewDataSource {
         let post = dataSource[Int(index)]
         
         let cardView = NSBundle.mainBundle().loadNibNamed("BookCardView", owner: self, options: nil)[0] as! BookCardView
-        cardView.bookImageView.image = post.image.value
-        
         cardView.usernameLabel.text = post.bookName
         cardView.bookNameLabel.text = post.user?.username
+        post.downloadImage()
+        cardView.post = post
         
         return cardView
     }

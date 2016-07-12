@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import Parse
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var usernameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        usernameLabel.text = PFUser.currentUser()?.username
     }
 
     override func didReceiveMemoryWarning() {

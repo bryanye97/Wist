@@ -1,14 +1,14 @@
 //
-//  MessageViewController.swift
+//  OtherProfilesViewController.swift
 //  Wist
 //
-//  Created by Bryan Ye on 30/06/2016.
+//  Created by Bryan Ye on 11/07/2016.
 //  Copyright © 2016 Bryan Ye. All rights reserved.
 //
 
 import UIKit
 
-class MessageViewController: UIViewController {
+class OtherProfilesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -36,7 +36,7 @@ class BookCardView: UIView {
                 
                 postDisposable = post.image.bindTo(bookImageView.bnd_image)
                 likeDisposable = post.likes.observe { (value: [PFUser]?) -> () in
-                    
+//                    
 //                    if let value = value {
 //                        
 //                        self.likesLabel.text = self.stringFromUserList(value)
