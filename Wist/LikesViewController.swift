@@ -13,15 +13,25 @@ class LikesViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var postToBeViewed: Post?
+    
     private var likesSource = [Post]()
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        ParseHelper.likesRequestForCurrentUser {(result: [PFObject]?, error: NSError?) -> Void in
+        
+        ParseHelper.likesRequestForCurrentUser(PFUser.currentUser()!) {(result: [PFObject]?, error: NSError?) -> Void in
+            guard let result = result else {
+                return
+            }
             
-            self.likesSource = result as? [Post] ?? []
+            let postArray = result.map({
+                $0["toPost"]
+            })
             
+            self.likesSource = postArray as? [Post] ?? []
+
             for post in self.likesSource {
                 do {
                     let imageData = try post.imageFile?.getData()
@@ -47,7 +57,10 @@ class LikesViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        if segue.identifier == "viewProfile" {
+            let destinationViewController = segue.destinationViewController as! OtherProfilesViewController
+            destinationViewController.post = postToBeViewed
+        }
     }
  
 }
@@ -55,7 +68,8 @@ class LikesViewController: UIViewController {
 extension LikesViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print("yay")
-        
+        self.postToBeViewed = self.likesSource[indexPath.row]
+        self.performSegueWithIdentifier("viewProfile", sender: self)
     }
     
 }

@@ -9,6 +9,8 @@
 import UIKit
 
 class OtherProfilesViewController: UIViewController {
+    
+    var post: Post?
 
     override func viewDidLoad() {
         super.viewDidLoad()

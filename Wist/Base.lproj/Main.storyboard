@@ -129,7 +129,7 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QaE-NS-bDr">
                                 <rect key="frame" x="0.0" y="64" width="600" height="496"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="whW-XR-zZJ">
                                     <size key="itemSize" width="150" height="150"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -170,7 +170,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="QaE-NS-bDr" id="5YL-8Q-fG4"/>
-                        <segue destination="TNj-Kq-7wR" kind="show" id="FEg-wO-1mq"/>
+                        <segue destination="TNj-Kq-7wR" kind="show" identifier="viewProfile" id="FEg-wO-1mq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zh-92-NLk" userLabel="First Responder" sceneMemberID="firstResponder"/>
