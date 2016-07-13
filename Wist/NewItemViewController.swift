@@ -52,3 +52,7 @@ class NewItemViewController: UIViewController {
 
 }
 
+extension NewItemViewController: UITextFieldDelegate {
+    
+}
+

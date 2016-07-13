@@ -58,4 +58,13 @@ class ParseHelper {
         likesQuery.findObjectsInBackgroundWithBlock(completionBlock)
         
     }
+    
+    static func userWithPostsObjectId(objectIds: [String], completionBlock: PFQueryArrayResultBlock) {
+        let query = PFQuery(className: ParsePostClass)
+        
+        query.whereKey("objectId", containedIn: objectIds)
+        query.includeKey("user")
+        
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
 }

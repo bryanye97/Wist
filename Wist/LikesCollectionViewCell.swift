@@ -17,8 +17,14 @@ class LikesCollectionViewCell: UICollectionViewCell {
     var postDisposable: DisposableType?
     var likeDisposable: DisposableType?
     
+    @IBOutlet weak var bookNameLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
+    
     var post: Post? {
         didSet {
+
             
             postDisposable?.dispose()
             likeDisposable?.dispose()
@@ -29,25 +35,19 @@ class LikesCollectionViewCell: UICollectionViewCell {
             
             if let post = post {
                 
+                self.bookNameLabel.text = post.bookName
+                
+                self.usernameLabel.text = post.user?.username
+                
+                self.emailLabel.text = post.user?.email ?? "No email available"
+                
                 postDisposable = post.image.bindTo(likesImageView.bnd_image)
+                
                 likeDisposable = post.likes.observe { (value: [PFUser]?) -> () in
                     
-//                    if let value = value {
-//                        
-//                        self.likesLabel.text = self.stringFromUserList(value)
-//                        
-//                        self.likeButton.selected = value.contains(PFUser.currentUser()!)
-//                        
-//                        self.likesIconImageView.hidden = (value.count == 0)
-//                    } else {
-//                        
-//                        self.likesLabel.text = ""
-//                        self.likeButton.selected = false
-//                        self.likesIconImageView.hidden = true
-//                    }
                 }
             }
         }
     }
-
+    
 }

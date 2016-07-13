@@ -131,27 +131,48 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="496"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="whW-XR-zZJ">
-                                    <size key="itemSize" width="150" height="150"/>
+                                    <size key="itemSize" width="150" height="221"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="55K-ei-noj" customClass="LikesCollectionViewCell" customModule="Wist" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="221"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="221"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fdp-Yp-Jfy">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="emailLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0d-bK-HCP">
+                                                    <rect key="frame" x="34" y="192" width="82" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="bookNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06j-j6-QpR">
+                                                    <rect key="frame" x="13" y="156" width="125" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="usernameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qua-Cq-62p">
+                                                    <rect key="frame" x="16" y="172" width="118" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
+                                            <outlet property="bookNameLabel" destination="06j-j6-QpR" id="ahp-EB-vnc"/>
+                                            <outlet property="emailLabel" destination="m0d-bK-HCP" id="6cR-E5-T7c"/>
                                             <outlet property="likesImageView" destination="fdp-Yp-Jfy" id="DOv-Id-IDZ"/>
+                                            <outlet property="usernameLabel" destination="qua-Cq-62p" id="GaP-go-IMm"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -170,7 +191,6 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="QaE-NS-bDr" id="5YL-8Q-fG4"/>
-                        <segue destination="TNj-Kq-7wR" kind="show" identifier="viewProfile" id="FEg-wO-1mq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zh-92-NLk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -231,24 +251,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ff9-na-3V7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-230" y="-1454"/>
-        </scene>
-        <!--Other Profiles View Controller-->
-        <scene sceneID="4Mh-RO-R4h">
-            <objects>
-                <viewController id="TNj-Kq-7wR" customClass="OtherProfilesViewController" customModule="Wist" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sW0-Xq-TAg"/>
-                        <viewControllerLayoutGuide type="bottom" id="CP8-8V-XOY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qB6-fU-x67">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gPu-xJ-Eb6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="499" y="-2142"/>
         </scene>
         <!--New Item View Controller-->
         <scene sceneID="rHn-qK-E4o">
