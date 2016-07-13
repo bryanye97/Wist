@@ -26,6 +26,9 @@
 		A2B6DB0E1D261FDB00924C66 /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B6DB0D1D261FDB00924C66 /* PhotoTakingHelper.swift */; };
 		A2B6DB131D26207D00924C66 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B6DB121D26207D00924C66 /* Post.swift */; };
 		A2C9D6F71D25A2AB0006D4D4 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */; };
+		A2DA682F1D36D7DB00CA6A6E /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA682E1D36D7DB00CA6A6E /* TestViewController.swift */; };
+		A2DA68311D36E18900CA6A6E /* NewItemImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA68301D36E18900CA6A6E /* NewItemImageTableViewCell.swift */; };
+		A2DA68331D36E19600CA6A6E /* NewItemTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA68321D36E19600CA6A6E /* NewItemTextFieldTableViewCell.swift */; };
 		A2DFF73C1D2622B400DEE946 /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DFF73B1D2622B400DEE946 /* ErrorHandling.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +53,9 @@
 		A2B6DB0D1D261FDB00924C66 /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
 		A2B6DB121D26207D00924C66 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OverlayView.xib; path = ../OverlayView.xib; sourceTree = "<group>"; };
+		A2DA682E1D36D7DB00CA6A6E /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		A2DA68301D36E18900CA6A6E /* NewItemImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemImageTableViewCell.swift; sourceTree = "<group>"; };
+		A2DA68321D36E19600CA6A6E /* NewItemTextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		A2DFF73B1D2622B400DEE946 /* ErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 		C731566A4DD571D384D461FB /* Pods-Wist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wist/Pods-Wist.release.xcconfig"; sourceTree = "<group>"; };
 		F8FA70C195CE66A770B80CA8 /* Pods-Wist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wist/Pods-Wist.debug.xcconfig"; sourceTree = "<group>"; };
@@ -81,9 +87,11 @@
 			children = (
 				A20F248A1D26F18400F2D393 /* BookCardView.swift */,
 				A204A3431D26FEE000DB2A68 /* BookCardView.xib */,
-				A20EE5561D32B96600BD536C /* LikesCollectionViewCell.swift */,
 				A213418F1D29CE2F002378CC /* CustomOverlayView.swift */,
 				A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */,
+				A20EE5561D32B96600BD536C /* LikesCollectionViewCell.swift */,
+				A2DA68301D36E18900CA6A6E /* NewItemImageTableViewCell.swift */,
+				A2DA68321D36E19600CA6A6E /* NewItemTextFieldTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -130,6 +138,7 @@
 				A27B16B71D26110A006EC051 /* NewItemViewController.swift */,
 				A290EE8C1D32B51B00DE10EC /* LikesViewController.swift */,
 				A287053B1D25844000C7B500 /* BooksViewController.swift */,
+				A2DA682E1D36D7DB00CA6A6E /* TestViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -293,10 +302,13 @@
 				A287053C1D25844000C7B500 /* BooksViewController.swift in Sources */,
 				A290EE8D1D32B51B00DE10EC /* LikesViewController.swift in Sources */,
 				A20EE5571D32B96600BD536C /* LikesCollectionViewCell.swift in Sources */,
+				A2DA68331D36E19600CA6A6E /* NewItemTextFieldTableViewCell.swift in Sources */,
 				A27B16B31D26100C006EC051 /* ProfileViewController.swift in Sources */,
 				A27B16B81D26110A006EC051 /* NewItemViewController.swift in Sources */,
 				A2B6DB131D26207D00924C66 /* Post.swift in Sources */,
+				A2DA68311D36E18900CA6A6E /* NewItemImageTableViewCell.swift in Sources */,
 				A2900CFB1D343D6400772EC6 /* ParseLoginHelper.swift in Sources */,
+				A2DA682F1D36D7DB00CA6A6E /* TestViewController.swift in Sources */,
 				A2416A861D2495A30060249C /* TabBarViewController.swift in Sources */,
 				A2B6DB0E1D261FDB00924C66 /* PhotoTakingHelper.swift in Sources */,
 				A2416A741D24762A0060249C /* AppDelegate.swift in Sources */,

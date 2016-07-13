@@ -33,28 +33,23 @@ class BookCardView: UIView {
             }
             
             if let post = post {
-                
+                usernameLabel.text = post.user?.username
+                bookNameLabel.text = post.bookName
                 postDisposable = post.image.bindTo(bookImageView.bnd_image)
                 likeDisposable = post.likes.observe { (value: [PFUser]?) -> () in
-//                    
-//                    if let value = value {
-//                        
-//                        self.likesLabel.text = self.stringFromUserList(value)
-//                        
-//                        self.likeButton.selected = value.contains(PFUser.currentUser()!)
-//                        
-//                        self.likesIconImageView.hidden = (value.count == 0)
-//                    } else {
-//                        
-//                        self.likesLabel.text = ""
-//                        self.likeButton.selected = false
-//                        self.likesIconImageView.hidden = true
-//                    }
                 }
             }
         }
     }
-
+    
+    override func awakeFromNib() {
+        bookImageView.layer.borderWidth = 1
+        bookImageView.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 0.5).CGColor
+        bookImageView.layer.cornerRadius = 10
+        bookImageView.layer.masksToBounds = true
+    }
+    
+    
     
     /*
     // Only override drawRect: if you perform custom drawing.

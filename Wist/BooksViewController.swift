@@ -15,7 +15,7 @@ class BooksViewController: UIViewController {
     
     @IBOutlet weak var kolodaView: KolodaView!
     
-    private var dataSource = [Post]()
+    private lazy var dataSource = [Post]()
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -39,7 +39,6 @@ class BooksViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         kolodaView.dataSource = self
         kolodaView.delegate = self
     }
@@ -108,8 +107,6 @@ extension BooksViewController: KolodaViewDataSource {
         let post = dataSource[Int(index)]
         
         let cardView = NSBundle.mainBundle().loadNibNamed("BookCardView", owner: self, options: nil)[0] as! BookCardView
-        cardView.usernameLabel.text = post.bookName
-        cardView.bookNameLabel.text = post.user?.username
         post.downloadImage()
         cardView.post = post
         
