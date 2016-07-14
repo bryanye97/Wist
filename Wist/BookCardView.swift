@@ -19,6 +19,8 @@ class BookCardView: UIView {
 
     @IBOutlet weak var bookNameLabel: UILabel!
     
+    @IBOutlet weak var priceLabel: UILabel!
+    
     var postDisposable: DisposableType?
     var likeDisposable: DisposableType?
     
@@ -35,6 +37,8 @@ class BookCardView: UIView {
             if let post = post {
                 usernameLabel.text = post.user?.username
                 bookNameLabel.text = post.bookName
+                priceLabel.text = post.bookPrice
+                
                 postDisposable = post.image.bindTo(bookImageView.bnd_image)
                 likeDisposable = post.likes.observe { (value: [PFUser]?) -> () in
                 }
@@ -48,15 +52,4 @@ class BookCardView: UIView {
         self.layer.cornerRadius = 10
         self.layer.masksToBounds = true
     }
-    
-    
-    
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

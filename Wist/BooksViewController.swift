@@ -39,6 +39,7 @@ class BooksViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         kolodaView.dataSource = self
         kolodaView.delegate = self
     }
@@ -46,7 +47,8 @@ class BooksViewController: UIViewController {
     func koloda(koloda: KolodaView, didSwipeCardAtIndex index: UInt, inDirection direction: SwipeResultDirection) {
         let post = dataSource[Int(index)]
         if direction == SwipeResultDirection.Right {
-            ParseHelper.likePost(PFUser.currentUser()!, post: post)
+            // Delete this line when you take items that people have swiped on off the Koloda stack
+                ParseHelper.likePost(PFUser.currentUser()!, post: post)
         }
     }
     
@@ -57,17 +59,6 @@ class BooksViewController: UIViewController {
     @IBAction func dislikeButtonTapped(sender: UIButton) {
         kolodaView?.swipe(SwipeResultDirection.Left)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension BooksViewController: KolodaViewDelegate {
@@ -82,8 +73,6 @@ extension BooksViewController: KolodaViewDelegate {
         alertController.addAction(cancelAction)
         
         let saveAction = UIAlertAction(title: "Save item", style: .Default) { (action) in
-            let post = self.dataSource[Int(index)]
-            ParseHelper.likePost(PFUser.currentUser()!, post: post)
         }
         alertController.addAction(saveAction)
         
@@ -109,7 +98,6 @@ extension BooksViewController: KolodaViewDataSource {
         let cardView = NSBundle.mainBundle().loadNibNamed("BookCardView", owner: self, options: nil)[0] as! BookCardView
         post.downloadImage()
         cardView.post = post
-        
         return cardView
     }
     

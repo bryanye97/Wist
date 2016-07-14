@@ -9,6 +9,7 @@ target 'Wist' do
   pod 'Parse'
   pod 'ParseFacebookUtilsV4'
   pod 'ParseUI'
+  pod 'DZNEmptyDataSet'
 end
 
 post_install do |installer|
