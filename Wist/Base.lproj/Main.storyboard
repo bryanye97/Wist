@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Books View Controller-->
@@ -67,7 +68,6 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="kolodaView" destination="IVr-Xc-L9a" id="9S2-ZE-Lku"/>
-                        <segue destination="xBc-wt-yD3" kind="show" identifier="testSegue" id="LhI-OP-faP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QFc-iz-Che" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -86,45 +86,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H2C-Ir-cSW">
-                                <rect key="frame" x="63" y="60" width="496" height="403"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H2C-Ir-cSW">
+                                <rect key="frame" x="0.0" y="65" width="600" height="535"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="w6X-5i-m5L">
-                                    <rect key="frame" x="0.0" y="116" width="496" height="44"/>
+                                    <rect key="frame" x="0.0" y="322" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
+                                    <state key="normal" title="Submit book"/>
+                                    <connections>
+                                        <action selector="submitBook:" destination="xBc-wt-yD3" eventType="touchUpInside" id="p1b-c0-KS2"/>
+                                        <segue destination="OT0-xA-miY" kind="unwind" unwindAction="unwindToProfile:" id="wiw-bH-nE4"/>
+                                    </connections>
                                 </button>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newItemImage" id="wTO-m8-QmA" customClass="NewItemImageTableViewCell" customModule="Wist" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="496" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="newItemImageCell" rowHeight="250" id="2Vy-Mg-blQ" customClass="NewItemImageTableViewCell" customModule="Wist" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wTO-m8-QmA" id="Dbx-0M-KLX">
-                                            <rect key="frame" x="0.0" y="0.0" width="496" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Vy-Mg-blQ" id="PFj-qK-aYF">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="249.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wJQ-2P-uws">
-                                                    <rect key="frame" x="8" y="-35" width="240" height="128"/>
-                                                    <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pGN-Yj-xpX">
+                                                    <rect key="frame" x="94" y="55" width="240" height="128"/>
+                                                    <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="newItemBookImage" destination="wJQ-2P-uws" id="Jhf-NH-iFJ"/>
+                                            <outlet property="newItemBookImage" destination="pGN-Yj-xpX" id="reV-ib-mll"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newItemText" id="bKb-TN-UO9" customClass="NewItemTextFieldTableViewCell" customModule="Wist" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="496" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="newItemTextCell" id="bKb-TN-UO9" customClass="NewItemTextFieldTableViewCell" customModule="Wist" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="278" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bKb-TN-UO9" id="GVU-VM-4ub">
-                                            <rect key="frame" x="0.0" y="0.0" width="496" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GgM-2R-JBm">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GgM-2R-JBm">
                                                     <rect key="frame" x="49" y="7" width="97" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="97" id="azb-ua-3dm"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="GgM-2R-JBm" firstAttribute="centerY" secondItem="GVU-VM-4ub" secondAttribute="centerY" id="1PD-K8-7wR"/>
+                                                <constraint firstItem="GgM-2R-JBm" firstAttribute="leading" secondItem="GVU-VM-4ub" secondAttribute="leadingMargin" constant="41" id="29i-SY-PSm"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="textField" destination="GgM-2R-JBm" id="MTx-m2-Usc"/>
@@ -132,16 +143,30 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ew4-7e-Qyy">
+                                <rect key="frame" x="12" y="23" width="78" height="24"/>
+                                <state key="normal" image="ic_change_history"/>
+                                <connections>
+                                    <segue destination="OT0-xA-miY" kind="unwind" unwindAction="unwindToProfile:" id="BwN-wo-pgp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="H2C-Ir-cSW" secondAttribute="bottom" id="7oj-Jr-1OZ"/>
+                            <constraint firstItem="H2C-Ir-cSW" firstAttribute="top" secondItem="2M3-0b-NOr" secondAttribute="bottom" constant="45" id="HSH-W3-dOJ"/>
+                            <constraint firstAttribute="trailing" secondItem="H2C-Ir-cSW" secondAttribute="trailing" id="KrD-2C-RT3"/>
+                            <constraint firstItem="H2C-Ir-cSW" firstAttribute="leading" secondItem="LDM-ep-N0N" secondAttribute="leading" id="cDz-M1-x5I"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="H2C-Ir-cSW" id="mEm-tA-yLV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cg6-K1-4pU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="OT0-xA-miY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="499" y="-791"/>
+            <point key="canvasLocation" x="508" y="-1366"/>
         </scene>
         <!--Likes View Controller-->
         <scene sceneID="5O6-ap-H3h">
@@ -268,7 +293,7 @@
                                 <state key="normal" title="List new book"/>
                                 <connections>
                                     <action selector="listNewBookButton:" destination="gPp-Ey-Wyr" eventType="touchUpInside" id="oqp-Ds-cng"/>
-                                    <segue destination="cBa-a3-bZf" kind="show" id="ehD-WG-759"/>
+                                    <segue destination="xBc-wt-yD3" kind="show" id="ZcS-r6-0br"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7U-qa-F7r">
@@ -377,7 +402,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9B-S2-Xp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="q28-kh-6fV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="499" y="-1454"/>
+            <point key="canvasLocation" x="462" y="-2060"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="FKW-yu-fcv">

@@ -43,10 +43,10 @@ class BookCardView: UIView {
     }
     
     override func awakeFromNib() {
-        bookImageView.layer.borderWidth = 1
-        bookImageView.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 0.5).CGColor
-        bookImageView.layer.cornerRadius = 10
-        bookImageView.layer.masksToBounds = true
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 0.5).CGColor
+        self.layer.cornerRadius = 10
+        self.layer.masksToBounds = true
     }
     
     

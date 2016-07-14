@@ -24,6 +24,10 @@ class Post: PFObject, PFSubclassing {
     
     @NSManaged var imageFile: PFFile?
     @NSManaged var bookName: String?
+    @NSManaged var bookCondition: String?
+    @NSManaged var bookGenre: String?
+
+
     @NSManaged var user: PFUser?
     
     static func parseClassName() -> String {

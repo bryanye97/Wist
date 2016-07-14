@@ -8,21 +8,26 @@
 
 import UIKit
 
+protocol NewItemImageTableViewCellDelegate {
+    func takePicture()
+}
+
 class NewItemImageTableViewCell: UITableViewCell {
+    
+    var delegate: NewItemImageTableViewCellDelegate?
     
     @IBOutlet weak var newItemBookImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action: #selector(self.imageTapped(_:)))
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action: #selector(self.imageTapped))
         newItemBookImage.userInteractionEnabled = true
         newItemBookImage.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    func imageTapped(img: AnyObject)
-    {
-        print("image got tapped")
+    func imageTapped() {
+        delegate?.takePicture()
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -30,5 +35,4 @@ class NewItemImageTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    
 }
