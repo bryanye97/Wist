@@ -22,6 +22,10 @@ class BooksViewController: UIViewController {
         
         ParseHelper.kolodaRequestForCurrentUser {(result: [PFObject]?, error: NSError?) -> Void in
             
+            guard let result = result else {
+                return
+            }
+            
             self.dataSource = result as? [Post] ?? []
             
             for post in self.dataSource {
@@ -36,19 +40,19 @@ class BooksViewController: UIViewController {
             self.kolodaView.reloadData()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         kolodaView.dataSource = self
         kolodaView.delegate = self
     }
-
+    
     func koloda(koloda: KolodaView, didSwipeCardAtIndex index: UInt, inDirection direction: SwipeResultDirection) {
         let post = dataSource[Int(index)]
         if direction == SwipeResultDirection.Right {
-            // Delete this line when you take items that people have swiped on off the Koloda stack
-                ParseHelper.likePost(PFUser.currentUser()!, post: post)
+            ParseHelper.likePost(PFUser.currentUser()!, post: post)
+        } else if direction == SwipeResultDirection.Left {
+            ParseHelper.dislikePost(PFUser.currentUser()!, post: post)
         }
     }
     

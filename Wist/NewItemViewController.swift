@@ -23,13 +23,22 @@ class NewItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.separatorStyle = .None
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     @IBAction func submitBook(sender: UIButton) {
@@ -76,7 +85,13 @@ extension NewItemViewController: UITableViewDataSource {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("newItemImageCell") as! NewItemImageTableViewCell
             cell.delegate = self
-            cell.newItemBookImage.image = post.image.value
+            if post.image.value != nil {
+                cell.newItemBookImage.image = post.image.value
+            } else {
+                cell.newItemBookImage.image = UIImage(named: "click_to_add_an_image")
+            }
+            
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("newItemTextCell") as! NewItemTextFieldTableViewCell
@@ -116,6 +131,5 @@ extension NewItemViewController: NewItemImageTableViewCellDelegate {
             self.post.image.value = image
             self.tableView.reloadData()
         })
-        
     }
 }

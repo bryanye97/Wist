@@ -27,8 +27,7 @@ class Post: PFObject, PFSubclassing {
     @NSManaged var bookCondition: String?
     @NSManaged var bookGenre: String?
     @NSManaged var bookPrice: String?
-
-
+    @NSManaged var location: PFGeoPoint?
     @NSManaged var user: PFUser?
     
     static func parseClassName() -> String {
@@ -37,6 +36,7 @@ class Post: PFObject, PFSubclassing {
     
     override init() {
         super.init()
+        setLocationToCurrentLocation()
     }
     
     override class func initialize() {
@@ -52,6 +52,7 @@ class Post: PFObject, PFSubclassing {
             
             guard let imageData = UIImageJPEGRepresentation(image, 1.0) else {return}
             guard let imageFile = PFFile(name: "image.jpg", data: imageData) else {return}
+            
             user = PFUser.currentUser()
             self.imageFile = imageFile
             
@@ -118,6 +119,16 @@ class Post: PFObject, PFSubclassing {
             
             likes.value?.append(user)
             ParseHelper.likePost(user, post: self)
+        }
+    }
+    
+    func setLocationToCurrentLocation() {
+        PFGeoPoint.geoPointForCurrentLocationInBackground {
+            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+            if error == nil {
+                
+                self.location = geoPoint!
+            }
         }
     }
 }

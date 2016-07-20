@@ -40,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     
         UITabBar.appearance().barTintColor = UIColor.whiteColor()
+        UITabBar.appearance().tintColor = UIColor(red: 101/255, green: 52/255, blue: 255/255, alpha: 1)
         
         
         let configuration = ParseClientConfiguration {

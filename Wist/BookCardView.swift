@@ -1,6 +1,6 @@
 //
 //  BookCardView.swift
-//  
+//
 //
 //  Created by Bryan Ye on 1/07/2016.
 //
@@ -12,11 +12,13 @@ import Bond
 
 class BookCardView: UIView {
     
+    var shadowLayer: CAShapeLayer!
+    
     
     @IBOutlet weak var bookImageView: UIImageView!
-
-    @IBOutlet weak var usernameLabel: UILabel!
-
+    
+    @IBOutlet weak var bookConditionLabel: UILabel!
+    
     @IBOutlet weak var bookNameLabel: UILabel!
     
     @IBOutlet weak var priceLabel: UILabel!
@@ -35,7 +37,7 @@ class BookCardView: UIView {
             }
             
             if let post = post {
-                usernameLabel.text = post.user?.username
+                bookConditionLabel.text = post.bookCondition
                 bookNameLabel.text = post.bookName
                 priceLabel.text = post.bookPrice
                 
@@ -47,9 +49,10 @@ class BookCardView: UIView {
     }
     
     override func awakeFromNib() {
+        
+        self.layer.cornerRadius = 10
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 0.5).CGColor
-        self.layer.cornerRadius = 10
         self.layer.masksToBounds = true
     }
 }

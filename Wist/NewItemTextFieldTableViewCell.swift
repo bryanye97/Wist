@@ -14,7 +14,7 @@ class NewItemTextFieldTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        textField.delegate = self
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -23,4 +23,11 @@ class NewItemTextFieldTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+
+extension NewItemTextFieldTableViewCell: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
 }

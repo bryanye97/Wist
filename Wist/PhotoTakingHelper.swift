@@ -53,6 +53,7 @@ class PhotoTakingHelper: NSObject {
     func showImagePickerController(sourceType: UIImagePickerControllerSourceType) {
         imagePickerController = UIImagePickerController()
         imagePickerController!.sourceType = sourceType
+        imagePickerController!.allowsEditing = true
         imagePickerController!.delegate = self
         
         self.viewController.presentViewController(imagePickerController!, animated: true, completion: nil)
@@ -64,7 +65,8 @@ extension PhotoTakingHelper: UIImagePickerControllerDelegate, UINavigationContro
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         viewController.dismissViewControllerAnimated(false, completion: nil)
         
-        callback(image)
+        
+        callback(squareImage(image))
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

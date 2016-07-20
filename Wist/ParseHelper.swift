@@ -15,15 +15,34 @@ class ParseHelper {
     static let ParseLikeToPost = "toPost"
     static let ParseLikeFromUser = "fromUser"
     
+    static let ParseDislikeClass = "Dislike"
+    static let ParseDislikeToPost = "toPost"
+    static let ParseDislikeFromUser = "fromUser"
+    
     static let ParsePostClass = "Post"
     static let ParsePostUser = "user"
     
     static func kolodaRequestForCurrentUser(completionBlock: PFQueryArrayResultBlock) {
+
+        
         let query = Post.query()!
         query.includeKey(ParsePostUser)
+
         
+        var userGeoPoint: PFGeoPoint?
         
-        query.findObjectsInBackgroundWithBlock(completionBlock)
+        PFGeoPoint.geoPointForCurrentLocationInBackground {
+            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+            if error == nil {
+                if let geoPoint = geoPoint {
+                    userGeoPoint = geoPoint
+                    query.whereKey("location", nearGeoPoint: userGeoPoint!, withinMiles: 30)
+                    query.findObjectsInBackgroundWithBlock(completionBlock)
+                } else {
+                    print("error")
+                }
+            }
+        }
     }
     
     static func likePost(user: PFUser, post: Post) {
@@ -49,6 +68,15 @@ class ParseHelper {
             }
         }
     }
+    
+    static func dislikePost(user: PFUser, post: Post) {
+        let dislikedObject = PFObject(className: ParseDislikeClass)
+        dislikedObject[ParseDislikeFromUser] = user
+        dislikedObject[ParseDislikeToPost] = post
+        
+        dislikedObject.saveInBackgroundWithBlock(nil)
+    }
+    
     
     static func likesRequestForCurrentUser(user: PFUser, completionBlock: PFQueryArrayResultBlock) {
         let likesQuery = PFQuery(className: ParseLikeClass)
