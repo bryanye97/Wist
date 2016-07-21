@@ -13,7 +13,7 @@ class LikesViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var likesSource = [Post]()
+    private var likedPosts = [Post]()
     
     var bookToDisplay: Post?
     
@@ -35,9 +35,9 @@ class LikesViewController: UIViewController {
             })
             
             ParseHelper.userWithPostsObjectId(objectIdArray, completionBlock: { (result:[PFObject]?, error: NSError?) in
-                self.likesSource = result as? [Post] ?? []
+                self.likedPosts = result as? [Post] ?? []
                 
-                for post in self.likesSource {
+                for post in self.likedPosts {
                     do {
                         let imageData = try post.imageFile?.getData()
                         post.image.value = UIImage(data: imageData!, scale:1.0)
@@ -75,7 +75,7 @@ class LikesViewController: UIViewController {
 
 extension LikesViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        self.bookToDisplay = self.likesSource[indexPath.row]
+        self.bookToDisplay = self.likedPosts[indexPath.row]
         self.performSegueWithIdentifier("showBookInformationSegue", sender: self)
     }
 }
@@ -83,11 +83,11 @@ extension LikesViewController: UICollectionViewDelegate {
 
 extension LikesViewController: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return likesSource.count
+        return likedPosts.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let post = likesSource[indexPath.row]
+        let post = likedPosts[indexPath.row]
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! LikesCollectionViewCell
         
         

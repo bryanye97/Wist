@@ -15,11 +15,11 @@ class BooksViewController: UIViewController {
     
     @IBOutlet weak var kolodaView: KolodaView!
     
-    private var dataSource = [Post]()
+    private var allPosts = [Post]()
     
-    private var likesSource = [Post]()
+    private var likedPosts = [Post]()
     
-    private var dislikesSource = [Post]()
+    private var dislikedPosts = [Post]()
     
     private var unseenPosts = [Post]()
     
@@ -32,7 +32,7 @@ class BooksViewController: UIViewController {
                 return
             }
             
-            self.dataSource = result as? [Post] ?? []
+            self.allPosts = result as? [Post] ?? []
 
             ParseHelper.likesRequestForCurrentUser(PFUser.currentUser()!) {(result: [PFObject]?, error: NSError?) in
                 guard let result = result else {
@@ -48,7 +48,7 @@ class BooksViewController: UIViewController {
                 })
                 
                 ParseHelper.userWithPostsObjectId(objectIdArray, completionBlock: { (result:[PFObject]?, error: NSError?) in
-                    self.likesSource = result as? [Post] ?? []
+                    self.likedPosts = result as? [Post] ?? []
                 })
                 ParseHelper.dislikesRequestForCurrentUser(PFUser.currentUser()!) {(result: [PFObject]?, error: NSError?) in
                     guard let result = result else {
@@ -64,9 +64,9 @@ class BooksViewController: UIViewController {
                     })
                     
                     ParseHelper.userWithPostsObjectId(objectIdArray, completionBlock: { (result:[PFObject]?, error: NSError?) in
-                        self.dislikesSource = result as? [Post] ?? []
-                        self.unseenPosts = self.dataSource.filter({ (post) -> Bool in
-                            return !self.likesSource.contains(post) && !self.dislikesSource.contains(post)
+                        self.dislikedPosts = result as? [Post] ?? []
+                        self.unseenPosts = self.allPosts.filter({ (post) -> Bool in
+                            return !self.likedPosts.contains(post) && !self.dislikedPosts.contains(post)
                         })
                         self.kolodaView.reloadData()
                     })
