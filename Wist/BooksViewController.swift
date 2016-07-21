@@ -15,7 +15,11 @@ class BooksViewController: UIViewController {
     
     @IBOutlet weak var kolodaView: KolodaView!
     
-    private lazy var dataSource = [Post]()
+    private var dataSource = [Post]()
+    
+    private var likesSource = [Post]()
+    
+    private var postsThatUserHasntLikedYet = [Post]()
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -37,8 +41,82 @@ class BooksViewController: UIViewController {
                 }
             }
             
-            self.kolodaView.reloadData()
+            ParseHelper.likesRequestForCurrentUser(PFUser.currentUser()!) {(result: [PFObject]?, error: NSError?) in
+                guard let result = result else {
+                    return
+                }
+                
+                let postArray = result.map({ (like: PFObject) -> Post in
+                    like["toPost"] as! Post
+                })
+                
+                let objectIdArray = postArray.map({
+                    $0.objectId!
+                })
+                
+                ParseHelper.userWithPostsObjectId(objectIdArray, completionBlock: { (result:[PFObject]?, error: NSError?) in
+                    self.likesSource = result as? [Post] ?? []
+                    
+                    for post in self.likesSource {
+                        do {
+                            let imageData = try post.imageFile?.getData()
+                            post.image.value = UIImage(data: imageData!, scale:1.0)
+                        } catch {
+                            print("could not get image")
+                        }
+                    }
+                    self.postsThatUserHasntLikedYet = self.dataSource.filter({ (post) -> Bool in
+                        return !self.likesSource.contains(post)
+                    })
+                    
+                    self.kolodaView.reloadData()
+                })
+            }
+
+            
+            //            self.postsThatUserHasntLikedYet = self.dataSource.filter({ (post) -> Bool in
+            //                return !self.likesSource.contains(post)
+            //            })
+            //            self.kolodaView.reloadData()
+            
         }
+        
+//        ParseHelper.likesRequestForCurrentUser(PFUser.currentUser()!) {(result: [PFObject]?, error: NSError?) in
+//            guard let result = result else {
+//                return
+//            }
+//            
+//            let postArray = result.map({ (like: PFObject) -> Post in
+//                like["toPost"] as! Post
+//            })
+//            
+//            let objectIdArray = postArray.map({
+//                $0.objectId!
+//            })
+//            
+//            ParseHelper.userWithPostsObjectId(objectIdArray, completionBlock: { (result:[PFObject]?, error: NSError?) in
+//                self.likesSource = result as? [Post] ?? []
+//                
+//                for post in self.likesSource {
+//                    do {
+//                        let imageData = try post.imageFile?.getData()
+//                        post.image.value = UIImage(data: imageData!, scale:1.0)
+//                    } catch {
+//                        print("could not get image")
+//                    }
+//                }
+//                self.postsThatUserHasntLikedYet = self.dataSource.filter({ (post) -> Bool in
+//                    return !self.likesSource.contains(post)
+//                })
+//                
+//                self.kolodaView.reloadData()
+//            })
+//        }
+//        self.postsThatUserHasntLikedYet = self.dataSource.filter({ (post) -> Bool in
+//            return !self.likesSource.contains(post)
+//        })
+//
+//        self.kolodaView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -48,7 +126,7 @@ class BooksViewController: UIViewController {
     }
     
     func koloda(koloda: KolodaView, didSwipeCardAtIndex index: UInt, inDirection direction: SwipeResultDirection) {
-        let post = dataSource[Int(index)]
+        let post = postsThatUserHasntLikedYet[Int(index)]
         if direction == SwipeResultDirection.Right {
             ParseHelper.likePost(PFUser.currentUser()!, post: post)
         } else if direction == SwipeResultDirection.Left {
@@ -93,11 +171,11 @@ extension BooksViewController: KolodaViewDelegate {
 extension BooksViewController: KolodaViewDataSource {
     
     func kolodaNumberOfCards(koloda:KolodaView) -> UInt {
-        return UInt(dataSource.count)
+        return UInt(postsThatUserHasntLikedYet.count)
     }
     
     func koloda(koloda: KolodaView, viewForCardAtIndex index: UInt) -> UIView {
-        let post = dataSource[Int(index)]
+        let post = postsThatUserHasntLikedYet[Int(index)]
         
         let cardView = NSBundle.mainBundle().loadNibNamed("BookCardView", owner: self, options: nil)[0] as! BookCardView
         post.downloadImage()

@@ -23,7 +23,6 @@
 		A2810AF01D3D8A9300A1934A /* ImageEditingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2810AEF1D3D8A9300A1934A /* ImageEditingHelper.swift */; };
 		A287053C1D25844000C7B500 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287053B1D25844000C7B500 /* BooksViewController.swift */; };
 		A28DB20D1D3800B30038D1BF /* BookInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28DB20C1D3800B30038D1BF /* BookInformationViewController.swift */; };
-		A28DB2141D380D460038D1BF /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = A28DB2131D380D460038D1BF /* UIScrollView+EmptyDataSet.m */; };
 		A2900CFB1D343D6400772EC6 /* ParseLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2900CFA1D343D6400772EC6 /* ParseLoginHelper.swift */; };
 		A290EE8D1D32B51B00DE10EC /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A290EE8C1D32B51B00DE10EC /* LikesViewController.swift */; };
 		A2B6DB0E1D261FDB00924C66 /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B6DB0D1D261FDB00924C66 /* PhotoTakingHelper.swift */; };
@@ -53,9 +52,6 @@
 		A2810AEF1D3D8A9300A1934A /* ImageEditingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageEditingHelper.swift; sourceTree = "<group>"; };
 		A287053B1D25844000C7B500 /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		A28DB20C1D3800B30038D1BF /* BookInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookInformationViewController.swift; sourceTree = "<group>"; };
-		A28DB2121D380D460038D1BF /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+EmptyDataSet.h"; path = "../../../Downloads/DZNEmptyDataSet-master/Source/UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
-		A28DB2131D380D460038D1BF /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+EmptyDataSet.m"; path = "../../../Downloads/DZNEmptyDataSet-master/Source/UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
-		A28DB2151D380DAF0038D1BF /* Wist-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Wist-Bridging-Header.h"; sourceTree = "<group>"; };
 		A2900CFA1D343D6400772EC6 /* ParseLoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseLoginHelper.swift; sourceTree = "<group>"; };
 		A290EE8C1D32B51B00DE10EC /* LikesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
 		A2B6DB0D1D261FDB00924C66 /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
@@ -93,8 +89,6 @@
 		A204A3451D27040B00DB2A68 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A28DB2121D380D460038D1BF /* UIScrollView+EmptyDataSet.h */,
-				A28DB2131D380D460038D1BF /* UIScrollView+EmptyDataSet.m */,
 				A20F248A1D26F18400F2D393 /* BookCardView.swift */,
 				A204A3431D26FEE000DB2A68 /* BookCardView.xib */,
 				A213418F1D29CE2F002378CC /* CustomOverlayView.swift */,
@@ -127,7 +121,6 @@
 		A2416A721D24762A0060249C /* Wist */ = {
 			isa = PBXGroup;
 			children = (
-				A28DB2151D380DAF0038D1BF /* Wist-Bridging-Header.h */,
 				A2416A731D24762A0060249C /* AppDelegate.swift */,
 				A2416A771D24762A0060249C /* Main.storyboard */,
 				A27B16B61D2610D8006EC051 /* ViewControllers */,
@@ -327,7 +320,6 @@
 				A2416A861D2495A30060249C /* TabBarViewController.swift in Sources */,
 				A2B6DB0E1D261FDB00924C66 /* PhotoTakingHelper.swift in Sources */,
 				A2416A741D24762A0060249C /* AppDelegate.swift in Sources */,
-				A28DB2141D380D460038D1BF /* UIScrollView+EmptyDataSet.m in Sources */,
 				A20F24831D26DB6D00F2D393 /* ParseHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,7 +440,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryanye.Wist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Wist/Wist-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -464,7 +456,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bryanye.Wist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Wist/Wist-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 			};
 			name = Release;
 		};
