@@ -87,6 +87,15 @@ class ParseHelper {
         
     }
     
+    static func dislikesRequestForCurrentUser(user: PFUser, completionBlock: PFQueryArrayResultBlock) {
+        let dislikesQuery = PFQuery(className: ParseDislikeClass)
+        dislikesQuery.whereKey(ParseDislikeFromUser, equalTo: user)
+        dislikesQuery.includeKey(ParseDislikeToPost)
+        
+        dislikesQuery.findObjectsInBackgroundWithBlock(completionBlock)
+        
+    }
+    
     static func userWithPostsObjectId(objectIds: [String], completionBlock: PFQueryArrayResultBlock) {
         let query = PFQuery(className: ParsePostClass)
         
@@ -95,6 +104,8 @@ class ParseHelper {
         
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
+    
+
     
     static func likesForPost(post: Post, completionBlock: PFQueryArrayResultBlock) {
         let query = PFQuery(className: ParseLikeClass)
