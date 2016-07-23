@@ -12,7 +12,7 @@ import FBSDKCoreKit
 import ParseUI
 import ParseFacebookUtilsV4
 
-class WistSignUpViewController: PFSignUpViewController, PFSignUpViewControllerDelegate {
+class WistSignUpViewController: PFSignUpViewController {
     
     var backgroundImage : UIImageView!
 
@@ -29,10 +29,14 @@ class WistSignUpViewController: PFSignUpViewController, PFSignUpViewControllerDe
         logo.textColor = UIColor.whiteColor()
         logo.font = UIFont(name: "helveticaneue", size: 70)
         signUpView?.logo = logo
+        
+        signUpView?.signUpButton!.setBackgroundImage(nil, forState: .Normal)
+        signUpView?.signUpButton!.backgroundColor = UIColor.wistPurpleColor()
+        
+        signUpView?.dismissButton!.setTitle("Already signed up?", forState: .Normal)
+        signUpView?.dismissButton!.setImage(nil, forState: .Normal)
 
-
-
-        // Do any additional setup after loading the view.
+        self.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
     }
 
     override func viewDidLayoutSubviews() {
@@ -42,6 +46,9 @@ class WistSignUpViewController: PFSignUpViewController, PFSignUpViewControllerDe
         signUpView!.logo!.sizeToFit()
         let logoFrame = signUpView!.logo!.frame
         signUpView!.logo!.frame = CGRectMake(logoFrame.origin.x, signUpView!.usernameField!.frame.origin.y - logoFrame.height - 16, signUpView!.frame.width,  logoFrame.height)
+        
+        let dismissButtonFrame = signUpView!.dismissButton!.frame
+        signUpView?.dismissButton!.frame = CGRectMake(0, signUpView!.signUpButton!.frame.origin.y + signUpView!.signUpButton!.frame.height + 16.0,  signUpView!.frame.width,  dismissButtonFrame.height)
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,4 +67,14 @@ class WistSignUpViewController: PFSignUpViewController, PFSignUpViewControllerDe
     }
     */
 
+}
+
+extension WistSignUpViewController: PFSignUpViewControllerDelegate {
+//    func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//    }
+//    
+//    func signUpViewControllerDidCancelSignUp(signUpController: PFSignUpViewController) -> Void {
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//    }
 }

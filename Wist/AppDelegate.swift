@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             startViewController = loginViewController
         }
         
-        // 5
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = startViewController;
         self.window?.makeKeyAndVisible()

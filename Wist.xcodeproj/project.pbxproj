@@ -106,10 +106,10 @@
 				A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */,
 				A2BF52281D419C99004CDE6F /* EmptyKolodaView.swift */,
 				A2BF52261D419C8C004CDE6F /* EmptyKolodaView.xib */,
+				A2BF52241D4199CB004CDE6F /* WistKolodaView.swift */,
 				A20EE5561D32B96600BD536C /* LikesCollectionViewCell.swift */,
 				A2DA68301D36E18900CA6A6E /* NewItemImageTableViewCell.swift */,
 				A2DA68321D36E19600CA6A6E /* NewItemTextFieldTableViewCell.swift */,
-				A2BF52241D4199CB004CDE6F /* WistKolodaView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
