@@ -41,7 +41,7 @@ class LikesCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         self.contentView.layer.borderWidth = 1
-        self.contentView.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 0.5).CGColor
+        self.contentView.layer.borderColor = UIColor.lightGrayBorder().CGColor
         self.contentView.layer.cornerRadius = 10
         self.contentView.layer.masksToBounds = true
     }

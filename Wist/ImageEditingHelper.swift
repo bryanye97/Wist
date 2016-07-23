@@ -33,3 +33,4 @@ func squareImage(image: UIImage) -> UIImage {
     
     return UIImage(CGImage: imageRef!, scale: UIScreen.mainScreen().scale, orientation: image.imageOrientation)
 }
+

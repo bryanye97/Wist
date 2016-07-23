@@ -13,7 +13,8 @@ import ConvenienceKit
 
 class BooksViewController: UIViewController {
     
-    @IBOutlet weak var kolodaView: KolodaView!
+    @IBOutlet weak var kolodaView: WistKolodaView!
+
     
     private var allPosts = [Post]()
     
@@ -101,6 +102,7 @@ class BooksViewController: UIViewController {
 
 extension BooksViewController: KolodaViewDelegate {
     func kolodaDidRunOutOfCards(koloda: KolodaView) {
+//        kolodaView.displayBackgroundView()
         print("out of books")
     }
     

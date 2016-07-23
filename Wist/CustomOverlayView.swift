@@ -14,8 +14,7 @@ private let overlayLeftImageName = "overlay_skip"
 
 class CustomOverlayView: OverlayView {
     
-    @IBOutlet lazy var overlayImageView: UIImageView! = {
-        [unowned self] in
+    @IBOutlet lazy var overlayImageView: UIImageView! = { [unowned self] in
         
         var imageView = UIImageView(frame: self.bounds)
         self.addSubview(imageView)

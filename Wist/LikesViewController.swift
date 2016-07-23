@@ -17,6 +17,8 @@ class LikesViewController: UIViewController {
     
     var bookToDisplay: Post?
     
+    var loaded = false
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -37,16 +39,8 @@ class LikesViewController: UIViewController {
             ParseHelper.userWithPostsObjectId(objectIdArray, completionBlock: { (result:[PFObject]?, error: NSError?) in
                 self.likedPosts = result as? [Post] ?? []
                 
-                for post in self.likedPosts {
-                    do {
-                        let imageData = try post.imageFile?.getData()
-                        post.image.value = UIImage(data: imageData!, scale:1.0)
-                    } catch {
-                        print("could not get image")
-                    }
-                }
-                
                 self.collectionView.reloadData()
+                self.loaded = true
             })
         }
     }
@@ -96,5 +90,24 @@ extension LikesViewController: UICollectionViewDataSource {
         post.downloadImage()
         cell.post = post
         return cell
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        if likedPosts.count > 0 {
+            collectionView.backgroundView?.hidden = true
+            return 1
+        } else {
+            if self.loaded == true {
+                let messageLabel = UILabel(frame: CGRectMake(0,0,self.view.bounds.size.width, self.view.bounds.size.height))
+                messageLabel.text = "You haven't liked anything yet!"
+                messageLabel.textColor = UIColor.blackColor()
+                messageLabel.numberOfLines = 0
+                messageLabel.textAlignment = .Center
+                messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+                messageLabel.sizeToFit()
+                collectionView.backgroundView = messageLabel
+            }
+            return 0
+        }
     }
 }

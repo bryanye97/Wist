@@ -63,10 +63,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             startViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
         } else {
             
-            let loginViewController = PFLogInViewController()
+            let loginViewController = WistLogInViewController()
             loginViewController.fields = [.UsernameAndPassword, .LogInButton, .SignUpButton, .PasswordForgotten, .Facebook]
             loginViewController.delegate = parseLoginHelper
             loginViewController.signUpController?.delegate = parseLoginHelper
+            loginViewController.emailAsUsername = true
+            loginViewController.signUpController?.emailAsUsername = true
             
             startViewController = loginViewController
         }

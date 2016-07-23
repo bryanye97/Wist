@@ -52,7 +52,7 @@ class BookCardView: UIView {
         
         self.layer.cornerRadius = 10
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 0.5).CGColor
+        self.layer.borderColor = UIColor.lightGrayBorder().CGColor
         self.layer.masksToBounds = true
     }
 }
