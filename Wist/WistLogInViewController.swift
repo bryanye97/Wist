@@ -12,7 +12,7 @@ import FBSDKCoreKit
 import ParseUI
 import ParseFacebookUtilsV4
 
-class WistLogInViewController: PFLogInViewController, PFSignUpViewControllerDelegate {
+class WistLogInViewController: PFLogInViewController {
     
     var backgroundImage : UIImageView!
 
@@ -22,6 +22,7 @@ class WistLogInViewController: PFLogInViewController, PFSignUpViewControllerDele
         self.signUpController = WistSignUpViewController()
         self.signUpController?.loadViewIfNeeded()
         self.signUpController!.delegate = self
+        
         backgroundImage = UIImageView(image: UIImage(named: "wistBackground"))
         backgroundImage.contentMode = UIViewContentMode.ScaleAspectFill
         self.logInView!.insertSubview(backgroundImage, atIndex: 0)
@@ -49,23 +50,6 @@ class WistLogInViewController: PFLogInViewController, PFSignUpViewControllerDele
         
         backgroundImage.frame = CGRectMake(0,  0,  self.logInView!.frame.width,  self.logInView!.frame.height)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-        
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
-        image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    }
     
     func customizeButton(button: UIButton!) {
         button.setBackgroundImage(nil, forState: .Normal)
@@ -73,5 +57,15 @@ class WistLogInViewController: PFLogInViewController, PFSignUpViewControllerDele
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.whiteColor().CGColor
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+}
+
+extension WistLogInViewController: PFSignUpViewControllerDelegate {
+    func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

@@ -36,7 +36,6 @@ class Post: PFObject, PFSubclassing {
     
     override init() {
         super.init()
-        setLocationToCurrentLocation()
     }
     
     override class func initialize() {
@@ -60,15 +59,26 @@ class Post: PFObject, PFSubclassing {
                 UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
             }
             
-            
-            saveInBackgroundWithBlock() { (success: Bool, error: NSError?) in
-                
-                if let error = error {
-                    ErrorHandling.defaultErrorHandler(error)
+            PFGeoPoint.geoPointForCurrentLocationInBackground {
+                (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+                if error == nil {
+                    
+                    self.location = geoPoint!
+                    
+                    self.saveInBackgroundWithBlock() { (success: Bool, error: NSError?) in
+                        
+                        if let error = error {
+                            ErrorHandling.defaultErrorHandler(error)
+                        }
+                        
+                        UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
+                    }
                 }
-                
-                UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
             }
+
+            
+
+
         }
     }
     
@@ -119,16 +129,6 @@ class Post: PFObject, PFSubclassing {
             
             likes.value?.append(user)
             ParseHelper.likePost(user, post: self)
-        }
-    }
-    
-    func setLocationToCurrentLocation() {
-        PFGeoPoint.geoPointForCurrentLocationInBackground {
-            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
-            if error == nil {
-                
-                self.location = geoPoint!
-            }
         }
     }
 }

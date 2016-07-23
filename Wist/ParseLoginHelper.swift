@@ -80,7 +80,6 @@ extension ParseLoginHelper : PFLogInViewControllerDelegate {
 extension ParseLoginHelper : PFSignUpViewControllerDelegate {
     
     func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
-//        signUpController.dismissViewControllerAnimated(true, completion: nil)
         self.callback(user, nil)
     }
     

@@ -36,7 +36,7 @@ class WistSignUpViewController: PFSignUpViewController {
         signUpView?.dismissButton!.setTitle("Already signed up?", forState: .Normal)
         signUpView?.dismissButton!.setImage(nil, forState: .Normal)
 
-        self.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        self.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
     }
 
     override func viewDidLayoutSubviews() {
@@ -51,30 +51,7 @@ class WistSignUpViewController: PFSignUpViewController {
         signUpView?.dismissButton!.frame = CGRectMake(0, signUpView!.signUpButton!.frame.origin.y + signUpView!.signUpButton!.frame.height + 16.0,  signUpView!.frame.width,  dismissButtonFrame.height)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-
-extension WistSignUpViewController: PFSignUpViewControllerDelegate {
-//    func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
-//        self.dismissViewControllerAnimated(true, completion: nil)
-//    }
-//    
-//    func signUpViewControllerDidCancelSignUp(signUpController: PFSignUpViewController) -> Void {
-//        self.dismissViewControllerAnimated(true, completion: nil)
-//    }
 }

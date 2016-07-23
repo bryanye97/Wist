@@ -14,7 +14,6 @@ import ConvenienceKit
 class BooksViewController: UIViewController {
     
     @IBOutlet weak var kolodaView: WistKolodaView!
-
     
     private var allPosts = [Post]()
     
@@ -29,16 +28,12 @@ class BooksViewController: UIViewController {
         
         ParseHelper.kolodaRequestForCurrentUser {(result: [PFObject]?, error: NSError?) -> Void in
             
-            guard let result = result else {
-                return
-            }
+            guard let result = result else { return }
             
             self.allPosts = result as? [Post] ?? []
 
             ParseHelper.likesRequestForCurrentUser(PFUser.currentUser()!) {(result: [PFObject]?, error: NSError?) in
-                guard let result = result else {
-                    return
-                }
+                guard let result = result else { return }
                 
                 let postArray = result.map({ (like: PFObject) -> Post in
                     like["toPost"] as! Post

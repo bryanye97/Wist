@@ -79,6 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         
         let acl = PFACL()
         acl.publicReadAccess = true
+        acl.publicWriteAccess = true
         PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
