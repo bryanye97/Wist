@@ -12,15 +12,16 @@ import FBSDKCoreKit
 import ParseUI
 import ParseFacebookUtilsV4
 
-class WistLogInViewController: PFLogInViewController, PFLogInViewControllerDelegate {
+class WistLogInViewController: PFLogInViewController, PFSignUpViewControllerDelegate {
     
     var backgroundImage : UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.signUpController = WistSignUpViewController()
-        
+        self.signUpController = WistSignUpViewController()
+        self.signUpController?.loadViewIfNeeded()
+        self.signUpController!.delegate = self
         backgroundImage = UIImageView(image: UIImage(named: "wistBackground"))
         backgroundImage.contentMode = UIViewContentMode.ScaleAspectFill
         self.logInView!.insertSubview(backgroundImage, atIndex: 0)

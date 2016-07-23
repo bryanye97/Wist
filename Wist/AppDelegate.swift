@@ -13,7 +13,7 @@ import ParseUI
 import ParseFacebookUtilsV4
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate{
     
     var parseLoginHelper: ParseLoginHelper!
     
@@ -66,7 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let loginViewController = WistLogInViewController()
             loginViewController.fields = [.UsernameAndPassword, .LogInButton, .SignUpButton, .PasswordForgotten, .Facebook]
             loginViewController.delegate = parseLoginHelper
-            loginViewController.signUpController?.delegate = parseLoginHelper
             loginViewController.emailAsUsername = true
             loginViewController.signUpController?.emailAsUsername = true
             
