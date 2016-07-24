@@ -46,31 +46,7 @@ class BookCardView: UIView {
     }
     
     override func awakeFromNib() {
-        
-        self.layer.cornerRadius = 10
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.lightGrayBorder().CGColor
-        self.layer.masksToBounds = true
+        addBorderAndRadiusToView(self, borderWidth: 1, cornerRadius: 10)
     }
-    
-
-//        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)
-//        
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-//        alertController.addAction(cancelAction)
-//        
-//        let saveAction = UIAlertAction(title: "Save item", style: .Default) { (action) in
-//        }
-//        alertController.addAction(saveAction)
-//        
-//        let messageAction = UIAlertAction(title: "Message seller", style: .Default) { (action) in
-//            
-//        }
-//        alertController.addAction(messageAction)
-//        
-//        
-//        
-//        
-//        self.presentViewController(alertController, animated: true, completion: nil)
     
 }

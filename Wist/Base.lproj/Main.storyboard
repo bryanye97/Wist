@@ -70,7 +70,103 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QFc-iz-Che" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-230" y="-80"/>
+            <point key="canvasLocation" x="-230" y="-152"/>
+        </scene>
+        <!--Message View Controller-->
+        <scene sceneID="3oA-HL-X0x">
+            <objects>
+                <viewController id="lND-O9-xRK" customClass="MessageViewController" customModule="Wist" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r4l-zF-nJm"/>
+                        <viewControllerLayoutGuide type="bottom" id="iI1-am-lmn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MUW-op-gp9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="ic_message" id="Mup-aN-lWY">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IZ3-mS-Bdx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1755" y="-276"/>
+        </scene>
+        <!--Chat List View Controller-->
+        <scene sceneID="SFF-oe-HSn">
+            <objects>
+                <viewController id="Ksr-zl-rFT" customClass="ChatListViewController" customModule="Wist" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vs7-mf-1US"/>
+                        <viewControllerLayoutGuide type="bottom" id="6TB-hx-14u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="POd-3T-95C">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LFn-U5-PnB">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="85" id="F78-75-XME" customClass="ChatListTableViewCell" customModule="Wist" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="85"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F78-75-XME" id="BAe-PR-Rio">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="84.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TZY-Wn-mct">
+                                                    <rect key="frame" x="8" y="5" width="75" height="75"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="75" id="Eml-Jt-af3"/>
+                                                        <constraint firstAttribute="height" constant="75" id="lvj-89-ABq"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4da-fQ-TN1">
+                                                    <rect key="frame" x="91" y="32" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Wcp-dd-nLV"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="TZY-Wn-mct" firstAttribute="centerY" secondItem="BAe-PR-Rio" secondAttribute="centerY" id="G34-Kt-doK"/>
+                                                <constraint firstItem="4da-fQ-TN1" firstAttribute="leading" secondItem="TZY-Wn-mct" secondAttribute="trailing" constant="8" id="HSJ-ss-RAr"/>
+                                                <constraint firstItem="4da-fQ-TN1" firstAttribute="centerY" secondItem="BAe-PR-Rio" secondAttribute="centerY" id="NLN-LG-dGa"/>
+                                                <constraint firstItem="TZY-Wn-mct" firstAttribute="leading" secondItem="BAe-PR-Rio" secondAttribute="leadingMargin" id="S0B-Wi-hBv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bookImageView" destination="TZY-Wn-mct" id="sId-T7-vK4"/>
+                                            <outlet property="bookTitleLabel" destination="4da-fQ-TN1" id="pLc-9E-AOx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="LFn-U5-PnB" secondAttribute="trailing" id="3wb-Pl-NJP"/>
+                            <constraint firstItem="LFn-U5-PnB" firstAttribute="top" secondItem="POd-3T-95C" secondAttribute="top" id="GJT-dY-qnr"/>
+                            <constraint firstItem="6TB-hx-14u" firstAttribute="top" secondItem="LFn-U5-PnB" secondAttribute="bottom" id="URf-8F-8Ob"/>
+                            <constraint firstItem="LFn-U5-PnB" firstAttribute="leading" secondItem="POd-3T-95C" secondAttribute="leading" id="jAb-Sw-fU7"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="ic_message" id="HG8-X4-LU7">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="tableView" destination="LFn-U5-PnB" id="gmi-i0-pvY"/>
+                        <segue destination="lND-O9-xRK" kind="show" id="T1x-Ke-Viy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b0K-rM-8j8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1084" y="-276"/>
         </scene>
         <!--Book Information View Controller-->
         <scene sceneID="B4o-34-WOY">
@@ -220,7 +316,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thd-mh-jUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="aen-fH-jZi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="476" y="-2151"/>
+            <point key="canvasLocation" x="488" y="-1979"/>
         </scene>
         <!--New Item View Controller-->
         <scene sceneID="A3c-vg-Kuv">
@@ -400,7 +496,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zh-92-NLk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="eyA-Su-xEa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-230" y="-2151"/>
+            <point key="canvasLocation" x="-230" y="-1779"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="BsP-Hc-4zf">
@@ -471,6 +567,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Am4-sK-BAC" kind="relationship" relationship="viewControllers" id="SHL-7w-kXG"/>
+                        <segue destination="Ksr-zl-rFT" kind="relationship" relationship="viewControllers" id="MVl-Gt-a6x"/>
                         <segue destination="gPp-Ey-Wyr" kind="relationship" relationship="viewControllers" id="Owx-iW-q4s"/>
                     </connections>
                 </tabBarController>
@@ -595,7 +692,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2C2-1N-ZaV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="3JF-56-0K9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="476" y="-80"/>
+            <point key="canvasLocation" x="460" y="-144"/>
         </scene>
     </scenes>
     <resources>
@@ -608,6 +705,7 @@
         <image name="ic_book" width="24" height="24"/>
         <image name="ic_face" width="24" height="24"/>
         <image name="ic_flag_48pt" width="48" height="48"/>
+        <image name="ic_message" width="24" height="24"/>
         <image name="likeButton" width="70" height="70"/>
     </resources>
 </document>

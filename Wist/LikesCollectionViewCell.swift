@@ -40,10 +40,7 @@ class LikesCollectionViewCell: UICollectionViewCell {
     }
     
     override func awakeFromNib() {
-        self.contentView.layer.borderWidth = 1
-        self.contentView.layer.borderColor = UIColor.lightGrayBorder().CGColor
-        self.contentView.layer.cornerRadius = 10
-        self.contentView.layer.masksToBounds = true
+        addBorderAndRadiusToView(self.contentView, borderWidth: 1, cornerRadius: 10)
     }
     
     func stringFromUserList(userList: [PFUser]) -> String {

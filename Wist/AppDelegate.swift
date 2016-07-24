@@ -11,6 +11,7 @@ import Parse
 import FBSDKCoreKit
 import ParseUI
 import ParseFacebookUtilsV4
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
@@ -42,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         UITabBar.appearance().barTintColor = UIColor.whiteColor()
         UITabBar.appearance().tintColor = UIColor(red: 101/255, green: 52/255, blue: 255/255, alpha: 1)
         
+        FIRApp.configure()
         
         let configuration = ParseClientConfiguration {
             $0.applicationId = "Wist"

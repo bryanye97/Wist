@@ -9,6 +9,10 @@ target 'Wist' do
   pod 'Parse'
   pod 'ParseFacebookUtilsV4'
   pod 'ParseUI'
+  pod 'Firebase'
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth'
+  pod 'JSQMessagesViewController'
 end
 
 post_install do |installer|

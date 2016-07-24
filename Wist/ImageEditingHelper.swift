@@ -34,3 +34,10 @@ func squareImage(image: UIImage) -> UIImage {
     return UIImage(CGImage: imageRef!, scale: UIScreen.mainScreen().scale, orientation: image.imageOrientation)
 }
 
+func addBorderAndRadiusToView(view: UIView, borderWidth: Double, cornerRadius: CGFloat) {
+    view.layer.borderWidth = 1
+    view.layer.borderColor = UIColor.lightGrayColor().CGColor
+    view.layer.cornerRadius = cornerRadius
+    view.layer.masksToBounds = true
+}
+
