@@ -11,6 +11,9 @@ import Parse
 
 class ParseHelper {
     
+    static let ParsePostClass = "Post"
+    static let ParsePostUser = "user"
+    
     static let ParseLikeClass = "Like"
     static let ParseLikeToPost = "toPost"
     static let ParseLikeFromUser = "fromUser"
@@ -19,8 +22,9 @@ class ParseHelper {
     static let ParseDislikeToPost = "toPost"
     static let ParseDislikeFromUser = "fromUser"
     
-    static let ParsePostClass = "Post"
-    static let ParsePostUser = "user"
+    static let ParseFlaggedContentClass    = "FlaggedContent"
+    static let ParseFlaggedContentFromUser = "fromUser"
+    static let ParseFlaggedContentToPost   = "toPost"
     
     static func kolodaRequestForCurrentUser(completionBlock: PFQueryArrayResultBlock) {
 
@@ -36,7 +40,7 @@ class ParseHelper {
             if error == nil {
                 if let geoPoint = geoPoint {
                     userGeoPoint = geoPoint
-                    query.whereKey("location", nearGeoPoint: userGeoPoint!, withinMiles: 30)
+                    query.whereKey("location", nearGeoPoint: userGeoPoint!, withinMiles: 80)
                     query.findObjectsInBackgroundWithBlock(completionBlock)
                 } else {
                     print("error")
@@ -63,7 +67,7 @@ class ParseHelper {
             
             if let results = results {
                 for like in results {
-                    like.deleteInBackgroundWithBlock(nil)
+                    like.deleteInBackgroundWithBlock(ErrorHandling.errorHandlingCallback)
                 }
             }
         }
@@ -113,6 +117,18 @@ class ParseHelper {
         query.includeKey(ParseLikeFromUser)
         
         query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    static func flagPost(user: PFUser, post: Post) {
+        let flagObject = PFObject(className: ParseFlaggedContentClass)
+        flagObject.setObject(user, forKey: ParseFlaggedContentFromUser)
+        flagObject.setObject(post, forKey: ParseFlaggedContentToPost)
+        
+        let ACL = PFACL(user: PFUser.currentUser()!)
+        ACL.publicReadAccess = true
+        flagObject.ACL = ACL
+        
+        flagObject.saveInBackgroundWithBlock(ErrorHandling.errorHandlingCallback)
     }
     
 }

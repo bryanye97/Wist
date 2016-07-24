@@ -103,7 +103,7 @@ extension LikesViewController: UICollectionViewDataSource {
                 messageLabel.textColor = UIColor.blackColor()
                 messageLabel.numberOfLines = 0
                 messageLabel.textAlignment = .Center
-                messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+                messageLabel.font = UIFont(name: "Helvetica Neue", size: 15)
                 messageLabel.sizeToFit()
                 collectionView.backgroundView = messageLabel
             }

@@ -24,26 +24,12 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bookConditionLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5b1-7t-oeR">
-                            <rect key="frame" x="8" y="30" width="80" height="10"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="Je3-qc-ws7"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                            <variation key="default">
-                                <mask key="constraints">
-                                    <exclude reference="Je3-qc-ws7"/>
-                                </mask>
-                            </variation>
-                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="priceLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jb-b8-C3i">
-                            <rect key="frame" x="512" y="19" width="80" height="20.5"/>
+                            <rect key="frame" x="512" y="19" width="79.5" height="20.5"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20.5" id="mfx-Mf-lSb"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -55,8 +41,6 @@
                         <constraint firstItem="0jb-b8-C3i" firstAttribute="centerY" secondItem="DT1-Gv-jQr" secondAttribute="centerY" id="C9o-Vi-Bc8"/>
                         <constraint firstItem="0jb-b8-C3i" firstAttribute="trailing" secondItem="DT1-Gv-jQr" secondAttribute="trailingMargin" id="E2F-PN-88B"/>
                         <constraint firstItem="gFs-Ci-rxd" firstAttribute="leading" secondItem="DT1-Gv-jQr" secondAttribute="leadingMargin" id="PwU-sl-ear"/>
-                        <constraint firstItem="5b1-7t-oeR" firstAttribute="top" secondItem="gFs-Ci-rxd" secondAttribute="bottom" constant="1" id="uE1-h7-Bgx"/>
-                        <constraint firstItem="5b1-7t-oeR" firstAttribute="leading" secondItem="DT1-Gv-jQr" secondAttribute="leadingMargin" id="uUB-pO-Cw5"/>
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jNL-bY-vvZ">
@@ -75,7 +59,6 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="bookConditionLabel" destination="5b1-7t-oeR" id="3NQ-fz-RYD"/>
                 <outlet property="bookImageView" destination="jNL-bY-vvZ" id="EeD-wE-iWN"/>
                 <outlet property="bookNameLabel" destination="gFs-Ci-rxd" id="pft-FO-w36"/>
                 <outlet property="priceLabel" destination="0jb-b8-C3i" id="EM6-oo-g27"/>

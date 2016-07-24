@@ -23,6 +23,8 @@ class BooksViewController: UIViewController {
     
     private var unseenPosts = [Post]()
     
+    var bookToDisplay: Post?
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -93,6 +95,17 @@ class BooksViewController: UIViewController {
     @IBAction func dislikeButtonTapped(sender: UIButton) {
         kolodaView?.swipe(SwipeResultDirection.Left)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "viewBookPreview" {
+            let destinationViewController = segue.destinationViewController as! BookPreviewViewController
+            destinationViewController.post = bookToDisplay
+        }
+    }
+
+    
+    @IBAction func unwindToBooks(segue: UIStoryboardSegue) {
+    }
 }
 
 extension BooksViewController: KolodaViewDelegate {
@@ -102,22 +115,10 @@ extension BooksViewController: KolodaViewDelegate {
     }
     
     func koloda(koloda: KolodaView, didSelectCardAtIndex index: UInt) {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        
-        let saveAction = UIAlertAction(title: "Save item", style: .Default) { (action) in
-        }
-        alertController.addAction(saveAction)
-        
-        let messageAction = UIAlertAction(title: "Message seller", style: .Default) { (action) in
-            self.performSegueWithIdentifier("testSegue", sender: self)
-        }
-        alertController.addAction(messageAction)
-        
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.bookToDisplay = self.unseenPosts[Int(index)]
+        self.performSegueWithIdentifier("viewBookPreview", sender: self)
+
+     
     }
 }
 

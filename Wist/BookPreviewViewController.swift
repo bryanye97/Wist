@@ -1,23 +1,21 @@
 //
-//  BookInformationViewController.swift
+//  BookPreviewViewController.swift
 //  Wist
 //
-//  Created by Bryan Ye on 14/07/2016.
+//  Created by Bryan Ye on 23/07/2016.
 //  Copyright © 2016 Bryan Ye. All rights reserved.
 //
 
 import UIKit
 import Parse
 
-class BookInformationViewController: UIViewController {
-    
+class BookPreviewViewController: UIViewController {
+
     var post: Post?
     
     @IBOutlet weak var bookTitleLabel: UILabel!
     
     @IBOutlet weak var bookImageView: UIImageView!
-    
-    @IBOutlet weak var emailLabel: UILabel!
     
     @IBOutlet weak var conditionLabel: UILabel!
     
@@ -28,9 +26,8 @@ class BookInformationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let post = post {
-            bookTitleLabel.text = post.bookName!
+            bookTitleLabel.text = post.bookName
             bookImageView.image = post.image.value
-            emailLabel.text = post.user?.email
             conditionLabel.text = post.bookCondition
             genreLabel.text = post.bookGenre
             priceLabel.text = post.bookPrice
@@ -38,11 +35,14 @@ class BookInformationViewController: UIViewController {
         
     }
     
-    @IBAction func unlikePost(sender: UIButton) {
-        if let post = post {
-            ParseHelper.unlikePost(PFUser.currentUser()!, post: post)
-        }
+    func stringToBoldAndSpacedFormat(string: String) -> String {
+        let upperCaseString = string.uppercaseString
         
+        let string = String(
+            upperCaseString.characters.enumerate().map() {
+                [$0.element, " "]
+                }.flatten())
+        return string
     }
     
     @IBAction func flagButtonTapped(sender: UIButton) {

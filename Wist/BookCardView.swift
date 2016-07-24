@@ -13,11 +13,9 @@ import Bond
 class BookCardView: UIView {
     
     var shadowLayer: CAShapeLayer!
-    
+
     
     @IBOutlet weak var bookImageView: UIImageView!
-    
-    @IBOutlet weak var bookConditionLabel: UILabel!
     
     @IBOutlet weak var bookNameLabel: UILabel!
     
@@ -37,7 +35,6 @@ class BookCardView: UIView {
             }
             
             if let post = post {
-                bookConditionLabel.text = post.bookCondition
                 bookNameLabel.text = post.bookName
                 priceLabel.text = post.bookPrice
                 
@@ -55,4 +52,25 @@ class BookCardView: UIView {
         self.layer.borderColor = UIColor.lightGrayBorder().CGColor
         self.layer.masksToBounds = true
     }
+    
+
+//        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)
+//        
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+//        alertController.addAction(cancelAction)
+//        
+//        let saveAction = UIAlertAction(title: "Save item", style: .Default) { (action) in
+//        }
+//        alertController.addAction(saveAction)
+//        
+//        let messageAction = UIAlertAction(title: "Message seller", style: .Default) { (action) in
+//            
+//        }
+//        alertController.addAction(messageAction)
+//        
+//        
+//        
+//        
+//        self.presentViewController(alertController, animated: true, completion: nil)
+    
 }
