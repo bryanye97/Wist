@@ -12,6 +12,8 @@ import FBSDKCoreKit
 import ParseUI
 import ParseFacebookUtilsV4
 import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
@@ -37,13 +39,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             }
         }
     }
+    
+//    func addMessage(chatroomRef: FIRDatabaseReference, sender: String, message: String) {
+//        chatroomRef.childByAutoId().setValue(createMessagingDictionary(sender, message: message))
+//    }
+//    
+//    func createMessagingDictionary(sender: String, message: String) -> [String: AnyObject] {
+//         return ["sender": sender, "message": message, "date": NSDate().timeIntervalSince1970]
+//    }
+//    
+//    func createNewChatroom(rootRef: FIRDatabaseReference) -> FIRDatabaseReference {
+//        let chatroomRef = rootRef.child("Messaging").childByAutoId()
+//        return chatroomRef
+//    }
+    
+    func firebaseTest() {
+//        let ref = FIRDatabase.database().reference()
+        FIRAuth.auth()?.signInAnonymouslyWithCompletion() { (user, error) in
+//            print(user)
+//            print(error)
+//            let newChatRoom = self.createNewChatroom(ref)
+//            let chatroomKey = newChatRoom.key
+////            createChatroomInParse(chatroomKey)
+//            for (i,value) in ["hello", "1321321", "32312312312312312312312", "tim31321321o", "timooooo", "teeemo"].enumerate() {
+//                
+//                let userArray = ["timo", "eura"]
+//                self.addMessage(newChatRoom, sender: userArray[i%2], message: value)
+//                
+//            }
+        }
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
     
         UITabBar.appearance().barTintColor = UIColor.whiteColor()
         UITabBar.appearance().tintColor = UIColor(red: 101/255, green: 52/255, blue: 255/255, alpha: 1)
         
         FIRApp.configure()
+        
+       
+        FIRAuth.auth()?.signInAnonymouslyWithCompletion({ (user, error) in
+            print(user)
+            print(error)
+        })
         
         let configuration = ParseClientConfiguration {
             $0.applicationId = "Wist"

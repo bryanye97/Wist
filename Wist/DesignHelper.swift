@@ -1,5 +1,5 @@
 //
-//  ImageEditingHelper.swift
+//  DesignHelper.swift
 //  Wist
 //
 //  Created by Bryan Ye on 18/07/2016.
@@ -34,10 +34,25 @@ func squareImage(image: UIImage) -> UIImage {
     return UIImage(CGImage: imageRef!, scale: UIScreen.mainScreen().scale, orientation: image.imageOrientation)
 }
 
-func addBorderAndRadiusToView(view: UIView, borderWidth: Double, cornerRadius: CGFloat) {
-    view.layer.borderWidth = 1
-    view.layer.borderColor = UIColor.lightGrayColor().CGColor
-    view.layer.cornerRadius = cornerRadius
-    view.layer.masksToBounds = true
+extension UIView {
+    func addBorderAndRadiusToView(borderWidth: Double, cornerRadius: CGFloat) {
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.layer.cornerRadius = cornerRadius
+        self.layer.masksToBounds = true
+    }
 }
+
+
+func stringToBoldAndSpacedFormat(string: String) -> String {
+    let upperCaseString = string.uppercaseString
+    
+    let string = String(
+        upperCaseString.characters.enumerate().map() {
+            [$0.element, " "]
+            }.flatten())
+    return string
+}
+
+
 

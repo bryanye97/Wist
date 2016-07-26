@@ -46,7 +46,7 @@ class BookCardView: UIView {
     }
     
     override func awakeFromNib() {
-        addBorderAndRadiusToView(self, borderWidth: 1, cornerRadius: 10)
+        self.addBorderAndRadiusToView(1, cornerRadius: 10)
     }
     
 }

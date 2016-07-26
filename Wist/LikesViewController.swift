@@ -99,7 +99,7 @@ extension LikesViewController: UICollectionViewDataSource {
         } else {
             if self.loaded == true {
                 let messageLabel = UILabel(frame: CGRectMake(0,0,self.view.bounds.size.width, self.view.bounds.size.height))
-                messageLabel.text = "You haven't liked anything yet!"
+                messageLabel.text = "You haven't saved any books. Go and like some!"
                 messageLabel.textColor = UIColor.blackColor()
                 messageLabel.numberOfLines = 0
                 messageLabel.textAlignment = .Center

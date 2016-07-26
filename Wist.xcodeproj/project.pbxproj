@@ -22,8 +22,11 @@
 		A2416A861D2495A30060249C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2416A851D2495A30060249C /* TabBarViewController.swift */; };
 		A26A2D011D454A11001262CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A26A2D001D454A11001262CA /* GoogleService-Info.plist */; };
 		A26AE4421D3EC361007FDC32 /* UIColor Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26AE4411D3EC361007FDC32 /* UIColor Extension.swift */; };
+		A273C4C21D469329009992C7 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A273C4C11D469329009992C7 /* FirebaseHelper.swift */; };
+		A273C4E81D46D552009992C7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A273C4E71D46D552009992C7 /* Message.swift */; };
+		A273C4EA1D46D6E6009992C7 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A273C4E91D46D6E6009992C7 /* MessageTableViewCell.swift */; };
 		A27B16B31D26100C006EC051 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B16B21D26100C006EC051 /* ProfileViewController.swift */; };
-		A2810AF01D3D8A9300A1934A /* ImageEditingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2810AEF1D3D8A9300A1934A /* ImageEditingHelper.swift */; };
+		A2810AF01D3D8A9300A1934A /* DesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2810AEF1D3D8A9300A1934A /* DesignHelper.swift */; };
 		A287053C1D25844000C7B500 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287053B1D25844000C7B500 /* BooksViewController.swift */; };
 		A28DB20D1D3800B30038D1BF /* BookInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28DB20C1D3800B30038D1BF /* BookInformationViewController.swift */; };
 		A2900CFB1D343D6400772EC6 /* ParseLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2900CFA1D343D6400772EC6 /* ParseLoginHelper.swift */; };
@@ -62,8 +65,11 @@
 		A2416A851D2495A30060249C /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		A26A2D001D454A11001262CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A26AE4411D3EC361007FDC32 /* UIColor Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor Extension.swift"; sourceTree = "<group>"; };
+		A273C4C11D469329009992C7 /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
+		A273C4E71D46D552009992C7 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		A273C4E91D46D6E6009992C7 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		A27B16B21D26100C006EC051 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		A2810AEF1D3D8A9300A1934A /* ImageEditingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageEditingHelper.swift; sourceTree = "<group>"; };
+		A2810AEF1D3D8A9300A1934A /* DesignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignHelper.swift; sourceTree = "<group>"; };
 		A287053B1D25844000C7B500 /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		A28DB20C1D3800B30038D1BF /* BookInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookInformationViewController.swift; sourceTree = "<group>"; };
 		A2900CFA1D343D6400772EC6 /* ParseLoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseLoginHelper.swift; sourceTree = "<group>"; };
@@ -188,10 +194,11 @@
 		A2131FBE1D44136F00C6A5D5 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				A2E37D751D4577E400B113E3 /* ChatListTableViewCell.swift */,
+				A273C4E91D46D6E6009992C7 /* MessageTableViewCell.swift */,
 				A20EE5561D32B96600BD536C /* LikesCollectionViewCell.swift */,
 				A2DA68301D36E18900CA6A6E /* NewItemImageTableViewCell.swift */,
 				A2DA68321D36E19600CA6A6E /* NewItemTextFieldTableViewCell.swift */,
-				A2E37D751D4577E400B113E3 /* ChatListTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -266,10 +273,11 @@
 			isa = PBXGroup;
 			children = (
 				A2DFF73B1D2622B400DEE946 /* ErrorHandling.swift */,
-				A2B6DB0D1D261FDB00924C66 /* PhotoTakingHelper.swift */,
 				A20F24821D26DB6D00F2D393 /* ParseHelper.swift */,
+				A273C4C11D469329009992C7 /* FirebaseHelper.swift */,
+				A2B6DB0D1D261FDB00924C66 /* PhotoTakingHelper.swift */,
 				A2900CFA1D343D6400772EC6 /* ParseLoginHelper.swift */,
-				A2810AEF1D3D8A9300A1934A /* ImageEditingHelper.swift */,
+				A2810AEF1D3D8A9300A1934A /* DesignHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -278,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				A2B6DB121D26207D00924C66 /* Post.swift */,
+				A273C4E71D46D552009992C7 /* Message.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -427,7 +436,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2810AF01D3D8A9300A1934A /* ImageEditingHelper.swift in Sources */,
+				A273C4C21D469329009992C7 /* FirebaseHelper.swift in Sources */,
+				A2810AF01D3D8A9300A1934A /* DesignHelper.swift in Sources */,
+				A273C4EA1D46D6E6009992C7 /* MessageTableViewCell.swift in Sources */,
 				A2DFF73C1D2622B400DEE946 /* ErrorHandling.swift in Sources */,
 				A20F248B1D26F18400F2D393 /* BookCardView.swift in Sources */,
 				A21341901D29CE2F002378CC /* CustomOverlayView.swift in Sources */,
@@ -453,6 +464,7 @@
 				A2DA682F1D36D7DB00CA6A6E /* NewItemViewController.swift in Sources */,
 				A2416A861D2495A30060249C /* TabBarViewController.swift in Sources */,
 				A2B6DB0E1D261FDB00924C66 /* PhotoTakingHelper.swift in Sources */,
+				A273C4E81D46D552009992C7 /* Message.swift in Sources */,
 				A2416A741D24762A0060249C /* AppDelegate.swift in Sources */,
 				A20F24831D26DB6D00F2D393 /* ParseHelper.swift in Sources */,
 			);

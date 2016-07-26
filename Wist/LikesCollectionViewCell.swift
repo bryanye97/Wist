@@ -40,7 +40,7 @@ class LikesCollectionViewCell: UICollectionViewCell {
     }
     
     override func awakeFromNib() {
-        addBorderAndRadiusToView(self.contentView, borderWidth: 1, cornerRadius: 10)
+        self.contentView.addBorderAndRadiusToView(1, cornerRadius: 10)
     }
     
     func stringFromUserList(userList: [PFUser]) -> String {

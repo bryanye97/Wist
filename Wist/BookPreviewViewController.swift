@@ -35,16 +35,6 @@ class BookPreviewViewController: UIViewController {
         
     }
     
-    func stringToBoldAndSpacedFormat(string: String) -> String {
-        let upperCaseString = string.uppercaseString
-        
-        let string = String(
-            upperCaseString.characters.enumerate().map() {
-                [$0.element, " "]
-                }.flatten())
-        return string
-    }
-    
     @IBAction func flagButtonTapped(sender: UIButton) {
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)

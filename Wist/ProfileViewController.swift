@@ -13,10 +13,24 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var usernameLabel: UILabel!
     
+    var photoTakingHelper: PhotoTakingHelper?
+    
+    @IBOutlet weak var profilePictureImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action: #selector(self.imageTapped))
+        profilePictureImageView.userInteractionEnabled = true
+        profilePictureImageView.addGestureRecognizer(tapGestureRecognizer)
+        
         usernameLabel.text = PFUser.currentUser()?.username
+    }
+    
+    func imageTapped() {
+        photoTakingHelper = PhotoTakingHelper(viewController: self, callback: { (image: UIImage?) in
+            self.profilePictureImageView.image = image
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,6 +46,9 @@ class ProfileViewController: UIViewController {
  
     @IBAction func unwindToProfile(segue: UIStoryboardSegue) {
     }
+    
+//    guard let imageData = UIImageJPEGRepresentation(image, 1.0) else {return}
+//    guard let imageFile = PFFile(name: "image.jpg", data: imageData) else {return}
 
     
 }

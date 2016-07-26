@@ -8,6 +8,8 @@
 
 import Foundation
 import Parse
+import Firebase
+import FirebaseDatabase
 
 class ParseHelper {
     
@@ -17,6 +19,8 @@ class ParseHelper {
     static let ParseLikeClass = "Like"
     static let ParseLikeToPost = "toPost"
     static let ParseLikeFromUser = "fromUser"
+    static let ParseLikeToUser = "toUser"
+    static let ParseLikeChatRoomKey = "chatRoomKey"
     
     static let ParseDislikeClass = "Dislike"
     static let ParseDislikeToPost = "toPost"
@@ -25,6 +29,8 @@ class ParseHelper {
     static let ParseFlaggedContentClass    = "FlaggedContent"
     static let ParseFlaggedContentFromUser = "fromUser"
     static let ParseFlaggedContentToPost   = "toPost"
+    
+    static let ParseUserClass = "User"
     
     static func kolodaRequestForCurrentUser(completionBlock: PFQueryArrayResultBlock) {
 
@@ -50,9 +56,17 @@ class ParseHelper {
     }
     
     static func likePost(user: PFUser, post: Post) {
+        
+        let ref = FIRDatabase.database().reference()
+        let newChatRoom = FirebaseHelper.createNewChatroom(ref)
+        
+        let chatroomKey = newChatRoom.key
+        
         let likedObject = PFObject(className: ParseLikeClass)
         likedObject[ParseLikeFromUser] = user
         likedObject[ParseLikeToPost] = post
+        likedObject[ParseLikeToUser] = post.user
+        likedObject[ParseLikeChatRoomKey] = chatroomKey
         
         likedObject.saveInBackgroundWithBlock(nil)
     }
@@ -91,6 +105,14 @@ class ParseHelper {
         
     }
     
+    static func likesRequestToCurrentUser(user: PFUser, completionBlock: PFQueryArrayResultBlock) {
+        let likesQuery = PFQuery(className: ParseLikeClass)
+        likesQuery.whereKey(ParseLikeToUser, equalTo:user)
+        likesQuery.includeKey(ParseLikeToPost)
+        
+        likesQuery.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
     static func dislikesRequestForCurrentUser(user: PFUser, completionBlock: PFQueryArrayResultBlock) {
         let dislikesQuery = PFQuery(className: ParseDislikeClass)
         dislikesQuery.whereKey(ParseDislikeFromUser, equalTo: user)
@@ -109,7 +131,13 @@ class ParseHelper {
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
-
+    static func usersContainedInObjectId(objectIds: [String], completionBlock: PFQueryArrayResultBlock) {
+        let query = PFQuery(className: ParseUserClass)
+        query.whereKey("objectId", containedIn: objectIds)
+        
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
     
     static func likesForPost(post: Post, completionBlock: PFQueryArrayResultBlock) {
         let query = PFQuery(className: ParseLikeClass)
