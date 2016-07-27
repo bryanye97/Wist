@@ -49,9 +49,7 @@ class BooksViewController: UIViewController {
                     self.likedPosts = result as? [Post] ?? []
                 })
                 ParseHelper.dislikesRequestForCurrentUser(PFUser.currentUser()!) {(result: [PFObject]?, error: NSError?) in
-                    guard let result = result else {
-                        return
-                    }
+                    guard let result = result else { return }
                     
                     let postArray = result.map({ (like: PFObject) -> Post in
                         like["toPost"] as! Post

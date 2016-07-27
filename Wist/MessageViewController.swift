@@ -11,15 +11,28 @@ import Parse
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
-import JSQMessagesViewController
 
 class MessageViewController: UIViewController {
     
     let ref = FIRDatabase.database().reference()
     
     let myOwnChatName = PFUser.currentUser()!.username
-    var chatRoomKey: String?
+    
     var messageArray: [Message] = []
+    
+    var messagingObject: Messaging? {
+        didSet {
+            buyUser = messagingObject?.buyUser
+            sellUser = messagingObject?.sellUser
+            post = messagingObject?.post
+            chatRoomKey = messagingObject?.chatRoomKey
+        }
+    }
+    
+    var buyUser: PFUser?
+    var sellUser: PFUser?
+    var post: Post?
+    var chatRoomKey: String?
     
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -30,27 +43,63 @@ class MessageViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        print("chat room key shoudl be set : \(chatRoomKey)")
-        ref.child("Messaging").child(chatRoomKey!).observeEventType(.Value) { (snap: FIRDataSnapshot) in
-            self.messageArray = []
-            for s in snap.children{
-                print(s)
-                
-                self.messageArray.append(Message(dictFromFIR: (s as! FIRDataSnapshot).value as! [String: AnyObject]))
-                self.tableView.reloadData()
+        
+        print(buyUser)
+        print(sellUser)
+        print(post)
+        print("check chatRoomKey : \(chatRoomKey)")
+        
+        guard let buyUser = buyUser else { return }
+        guard let sellUser = sellUser else { return }
+        guard let post = post else { return }
+        
+        ParseHelper.messagingObjectForBuyUserSellUserAndPost(buyUser, sellUser: sellUser, post: post) { (result: [PFObject]?, error: NSError?) in
+            guard let result = result else { return }
+            
+            self.chatRoomKey = result[0]["chatRoomKey"] as? String
+
+            print("check chatRoomKey again: \(self.chatRoomKey)")
+            
+            guard let chatRoomKey = self.chatRoomKey else { return }
+            
+            self.ref.child("Messaging").child(chatRoomKey).observeEventType(.Value) { (snap: FIRDataSnapshot) in
+                self.messageArray = []
+                for s in snap.children{
+                    print(s)
+                    self.messageArray.append(Message(dictFromFIR: (s as! FIRDataSnapshot).value as! [String: AnyObject]))
+                    self.tableView.reloadData()
+                }
             }
         }
     }
     
     @IBAction func sendButtonTapped(sender: AnyObject) {
         if messageTextField.text?.characters.count > 0 {
-            //            let message = Message(user: myOwnChatName ?? "", messageString: messageTextField.text!)
-            guard let chatRoomKey = chatRoomKey else {return}
-            print(chatRoomKey)
+            
+            if chatRoomKey == nil {
+
+                let newChatRoom = FirebaseHelper.createNewChatroom(self.ref)
+                chatRoomKey = newChatRoom.key
+                
+                guard let buyUser = buyUser else { return }
+                guard let sellUser = sellUser else { return }
+                guard let post = post else { return }
+                guard let chatRoomKey = chatRoomKey else { return }
+                
+                let messaging = Messaging()
+                messaging.buyUser = buyUser
+                messaging.sellUser = sellUser
+                messaging.post = post
+                messaging.chatRoomKey = chatRoomKey
+                messaging.uploadPost()
+                
+            }
+            
+            guard let chatRoomKey = chatRoomKey else { return }
+            
             FirebaseHelper.addMessage(ref.child("Messaging").child(chatRoomKey), sender: myOwnChatName ?? "", message: messageTextField.text ?? "")
             messageTextField.text = ""
             resignFirstResponder()
-            //            messageArray.append(message)
             tableView.reloadData()
         }
     }

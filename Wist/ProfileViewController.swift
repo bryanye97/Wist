@@ -31,6 +31,7 @@ class ProfileViewController: UIViewController {
         photoTakingHelper = PhotoTakingHelper(viewController: self, callback: { (image: UIImage?) in
             self.profilePictureImageView.image = image
         })
+        
     }
 
     override func didReceiveMemoryWarning() {

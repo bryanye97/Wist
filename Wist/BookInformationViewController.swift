@@ -38,6 +38,11 @@ class BookInformationViewController: UIViewController {
         
     }
     
+    @IBAction func messageButtonTapped(sender: UIButton) {
+        self.performSegueWithIdentifier("message", sender: self)
+    }
+    
+    
     @IBAction func unlikePost(sender: UIButton) {
         if let post = post {
             ParseHelper.unlikePost(PFUser.currentUser()!, post: post)
@@ -59,5 +64,14 @@ class BookInformationViewController: UIViewController {
         alertController.addAction(cancelAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "message" {
+            let destinationViewController = segue.destinationViewController as! MessageViewController
+            destinationViewController.buyUser = PFUser.currentUser()!
+            destinationViewController.sellUser = post?.user
+            destinationViewController.post = post
+        }
     }
 }

@@ -20,7 +20,6 @@ class ParseHelper {
     static let ParseLikeToPost = "toPost"
     static let ParseLikeFromUser = "fromUser"
     static let ParseLikeToUser = "toUser"
-    static let ParseLikeChatRoomKey = "chatRoomKey"
     
     static let ParseDislikeClass = "Dislike"
     static let ParseDislikeToPost = "toPost"
@@ -29,6 +28,12 @@ class ParseHelper {
     static let ParseFlaggedContentClass    = "FlaggedContent"
     static let ParseFlaggedContentFromUser = "fromUser"
     static let ParseFlaggedContentToPost   = "toPost"
+    
+    static let ParseMessagingClass = "Messaging"
+    static let ParseMessagingBuyUser = "buyUser"
+    static let ParseMessagingSellUser = "sellUser"
+    static let ParseMessagingPost = "post"
+    static let ParseMessagingChatRoomKey = "chatRoomKey"
     
     static let ParseUserClass = "User"
     
@@ -57,16 +62,10 @@ class ParseHelper {
     
     static func likePost(user: PFUser, post: Post) {
         
-        let ref = FIRDatabase.database().reference()
-        let newChatRoom = FirebaseHelper.createNewChatroom(ref)
-        
-        let chatroomKey = newChatRoom.key
-        
         let likedObject = PFObject(className: ParseLikeClass)
         likedObject[ParseLikeFromUser] = user
         likedObject[ParseLikeToPost] = post
         likedObject[ParseLikeToUser] = post.user
-        likedObject[ParseLikeChatRoomKey] = chatroomKey
         
         likedObject.saveInBackgroundWithBlock(nil)
     }
@@ -157,6 +156,34 @@ class ParseHelper {
         flagObject.ACL = ACL
         
         flagObject.saveInBackgroundWithBlock(ErrorHandling.errorHandlingCallback)
+    }
+    
+    static func messagingObjectForBuyUserSellUserAndPost(buyUser: PFUser, sellUser: PFUser, post: Post, completionBlock: PFQueryArrayResultBlock) {
+        let query = PFQuery(className: ParseMessagingClass)
+        query.whereKey(ParseMessagingBuyUser, equalTo: buyUser)
+        query.whereKey(ParseMessagingSellUser, equalTo: sellUser)
+        query.whereKey(ParseMessagingPost, equalTo: post)
+        
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    static func messagingObjectsForBuyUser(buyUser: PFUser, completionBlock: PFQueryArrayResultBlock) {
+        let query = PFQuery(className: ParseMessagingClass)
+        query.whereKey(ParseMessagingBuyUser, equalTo: buyUser)
+        query.includeKey(ParseMessagingSellUser)
+        query.includeKey(ParseMessagingPost)
+        
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+        
+    }
+    
+    static func messagingObjectsForSellUser(sellUser: PFUser, completionBlock: PFQueryArrayResultBlock) {
+        let query = PFQuery(className: ParseMessagingClass)
+        query.whereKey(ParseMessagingSellUser, equalTo: sellUser)
+        query.includeKey(ParseMessagingBuyUser)
+        query.includeKey(ParseMessagingPost)
+        
+        query.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
 }

@@ -81,11 +81,11 @@
                         <viewControllerLayoutGuide type="bottom" id="iI1-am-lmn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MUW-op-gp9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qOa-1j-o1T">
-                                <rect key="frame" x="0.0" y="64" width="600" height="435"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="835"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="lvG-kJ-X0I" customClass="MessageTableViewCell" customModule="Wist" customModuleProvider="target">
@@ -141,7 +141,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pN-Gn-Ykj">
-                                <rect key="frame" x="0.0" y="507" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="907" width="600" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPI-cB-GvE">
                                         <rect key="frame" x="548" y="7" width="36" height="30"/>
@@ -250,7 +250,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="1SL-sp-x9Q"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -403,6 +403,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zk6-UI-S3U">
+                                <rect key="frame" x="20" y="764" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="messageButtonTapped:" destination="Eje-RR-YrD" eventType="touchUpInside" id="m5L-QA-rdW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -414,6 +421,7 @@
                             <constraint firstItem="RFb-CQ-Ri4" firstAttribute="leading" secondItem="nvV-0m-2Mu" secondAttribute="leadingMargin" id="GAn-lq-Y9Y"/>
                             <constraint firstItem="GUy-sJ-kuv" firstAttribute="top" secondItem="lMH-vi-ILx" secondAttribute="bottom" id="HAE-Xj-imL"/>
                             <constraint firstAttribute="trailing" secondItem="KTv-re-nqO" secondAttribute="trailing" id="HbU-hm-xDC"/>
+                            <constraint firstItem="Zk6-UI-S3U" firstAttribute="leading" secondItem="nvV-0m-2Mu" secondAttribute="leadingMargin" id="RQw-PY-H3v"/>
                             <constraint firstItem="DQW-95-ooS" firstAttribute="leading" secondItem="nvV-0m-2Mu" secondAttribute="leading" id="Rd0-1R-i9G"/>
                             <constraint firstItem="KTv-re-nqO" firstAttribute="top" secondItem="VgD-7H-DQ6" secondAttribute="bottom" id="TOe-OL-KVF"/>
                             <constraint firstItem="DQW-95-ooS" firstAttribute="top" secondItem="KTv-re-nqO" secondAttribute="bottom" id="bX3-rw-4kN"/>
@@ -422,6 +430,7 @@
                             <constraint firstItem="1rz-HG-NMI" firstAttribute="top" secondItem="S0U-2D-2te" secondAttribute="bottom" id="kYe-VW-nDG"/>
                             <constraint firstAttribute="trailing" secondItem="DQW-95-ooS" secondAttribute="trailing" id="lrv-W6-zG6"/>
                             <constraint firstItem="t4e-yJ-5wH" firstAttribute="top" secondItem="DQW-95-ooS" secondAttribute="bottom" constant="8" id="nX8-bz-oaT"/>
+                            <constraint firstItem="Zk6-UI-S3U" firstAttribute="top" secondItem="RFb-CQ-Ri4" secondAttribute="bottom" constant="8" id="oTY-bb-ZLg"/>
                             <constraint firstItem="S0U-2D-2te" firstAttribute="leading" secondItem="nvV-0m-2Mu" secondAttribute="leadingMargin" id="pGw-kN-O0h"/>
                             <constraint firstItem="IW0-kJ-gFR" firstAttribute="trailing" secondItem="nvV-0m-2Mu" secondAttribute="trailingMargin" id="sMM-DF-GKX"/>
                         </constraints>
@@ -435,6 +444,7 @@
                         <outlet property="emailLabel" destination="RFb-CQ-Ri4" id="gUa-dG-7Vs"/>
                         <outlet property="genreLabel" destination="1rz-HG-NMI" id="IJQ-sa-m7b"/>
                         <outlet property="priceLabel" destination="IW0-kJ-gFR" id="qI5-HY-a9s"/>
+                        <segue destination="lND-O9-xRK" kind="show" identifier="message" id="i3l-NM-McS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thd-mh-jUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -845,4 +855,7 @@
         <image name="ic_message" width="24" height="24"/>
         <image name="likeButton" width="70" height="70"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="i3l-NM-McS"/>
+    </inferredMetricsTieBreakers>
 </document>

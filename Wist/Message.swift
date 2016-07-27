@@ -13,11 +13,6 @@ class Message {
     let message: String?
     var date: NSDate?
     
-    init(){
-        date = nil
-        message = nil
-        user = nil
-    }
     init(dictFromFIR: [String: AnyObject]){
         date = (dictFromFIR["date"] ?? NSDate(timeIntervalSince1970: 0)) as? NSDate
         message = (dictFromFIR["message"] as! String) ?? ""

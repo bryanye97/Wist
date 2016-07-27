@@ -11,6 +11,7 @@ import UIKit
 class MessageTableViewCell: UITableViewCell {
     
     @IBOutlet weak var chatLabel: UILabel!
+    
     func setupCell(message: Message, isFromCurrentUser: Bool) {
         chatLabel.layer.cornerRadius = 14
         chatLabel.text = message.message

@@ -8,9 +8,7 @@
 
 import UIKit
 import Parse
-//import FBSDKCoreKit
 import ParseUI
-//import ParseFacebookUtilsV4
 
 class WistLogInViewController: PFLogInViewController {
     

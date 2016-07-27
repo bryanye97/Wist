@@ -8,18 +8,25 @@
 
 import UIKit
 import Parse
+import Firebase
+import FirebaseDatabase
 
 class ChatListViewController: UIViewController {
     
-    private var likedPosts = [Post]()
+    //    private var likedPosts = [Post]()
+    //
+    //    private var yourPostsThatHaveBeenLiked = [Post]()
+    //
+    //    private var chatRoomKeysForPostsYouLiked = [String]()
+    //
+    //    private var chatRoomKeysForYourPostsThatHaveBeenLiked = [String]()
     
-    private var yourPostsThatHaveBeenLiked = [Post]()
+    //    var chatRoomKeyToAccess: String?
     
-    private var chatRoomKeysForPostsYouLiked = [String]()
+    private var buyMessagingArray = [Messaging]()
+    private var sellMessagingArray = [Messaging]()
+    private var messagingObjectForChatSelected: Messaging?
     
-    private var chatRoomKeysForYourPostsThatHaveBeenLiked = [String]()
-    
-    var chatRoomKeyToAccess: String?
     
     var loaded = false
     
@@ -28,55 +35,18 @@ class ChatListViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        ParseHelper.likesRequestForCurrentUser(PFUser.currentUser()!) {(result: [PFObject]?, error: NSError?) in
-            guard let result = result else {
-                return
-            }
+        ParseHelper.messagingObjectsForBuyUser(PFUser.currentUser()!) { (result: [PFObject]?, error: NSError?) in
+            guard let result = result else { return }
             
-            self.chatRoomKeysForPostsYouLiked = result.map({ (like: PFObject) -> String in
-                like["chatRoomKey"] as! String
-            })
+            self.buyMessagingArray = result as? [Messaging] ?? []
             
-            let postArray = result.map({ (like: PFObject) -> Post in
-                like["toPost"] as! Post
-            })
-            
-            let objectIdArray = postArray.map({
-                $0.objectId!
-            })
-            
-            ParseHelper.userWithPostsObjectId(objectIdArray, completionBlock: { (result:[PFObject]?, error: NSError?) in
+            ParseHelper.messagingObjectsForSellUser(PFUser.currentUser()!, completionBlock: { (result: [PFObject]?, error: NSError?) in
                 guard let result = result else { return }
                 
-                self.likedPosts = result as? [Post] ?? []
+                self.sellMessagingArray = result as? [Messaging] ?? []
                 
-                ParseHelper.likesRequestToCurrentUser(PFUser.currentUser()!, completionBlock: { (result: [PFObject]?, error: NSError?) in
-                    guard let result = result else { return }
-                    
-                    
-                    self.chatRoomKeysForPostsYouLiked = result.map({ (like: PFObject) -> String in
-                        like["chatRoomKey"] as! String
-                    })
-                    
-                    let postArray = result.map({ (like: PFObject) -> Post in
-                        like["toPost"] as! Post
-                    })
-                    
-                    let objectIdArray = postArray.map({
-                        $0.objectId!
-                    })
-                    
-                    ParseHelper.userWithPostsObjectId(objectIdArray, completionBlock: { (result: [PFObject]?, error: NSError?) in
-                        guard let result = result else { return }
-                        
-                        self.yourPostsThatHaveBeenLiked = result as? [Post] ?? []
-                        
-                        self.tableView.reloadData()
-                        self.loaded = true
-                    })
-                    
-                })
-                
+                self.tableView.reloadData()
+                self.loaded = true
                 
             })
         }
@@ -92,7 +62,7 @@ class ChatListViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "message" {
             let destinationViewController = segue.destinationViewController as! MessageViewController
-            destinationViewController.chatRoomKey = chatRoomKeyToAccess
+            destinationViewController.messagingObject = self.messagingObjectForChatSelected
         }
     }
     
@@ -103,7 +73,9 @@ class ChatListViewController: UIViewController {
 extension ChatListViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("selected \(indexPath.row)")
-        chatRoomKeyToAccess = chatRoomKeysForPostsYouLiked[indexPath.row]
+        let messagingObject = buyMessagingArray[indexPath.row]
+        messagingObjectForChatSelected = messagingObject
+        
         self.performSegueWithIdentifier("message", sender: self)
     }
     
@@ -111,35 +83,45 @@ extension ChatListViewController: UITableViewDelegate {
 
 extension ChatListViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let post = likedPosts[indexPath.row]
+        let messagingObject = buyMessagingArray[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! ChatListTableViewCell
-        cell.backgroundColor = UIColor.clearColor()
-        post.downloadImage()
-        cell.post = post
+        cell.messaging = messagingObject
+        
+        
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return likedPosts.count
+            return buyMessagingArray.count
         } else if section == 1 {
-            return yourPostsThatHaveBeenLiked.count
+            return sellMessagingArray.count
         } else {
-            return 0
+            
         }
-    }
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Buy books"
-        } else if section == 1 {
-            return "Sell books"
-        } else {
-            return nil
-        }
+        let messageLabel = UILabel(frame: CGRectMake(0,0,self.view.bounds.size.width, self.view.bounds.size.height))
+        messageLabel.text = "You haven't saved any books. Go and like some!"
+        messageLabel.textColor = UIColor.blackColor()
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .Center
+        messageLabel.font = UIFont(name: "Helvetica Neue", size: 15)
+        messageLabel.sizeToFit()
+        tableView.backgroundView = messageLabel
+        return 0
     }
 }
+
+func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return 2
+}
+
+func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    if section == 0 {
+        return "Buy books"
+    } else if section == 1 {
+        return "Sell books"
+    } else {
+        return nil
+    }
+}
+

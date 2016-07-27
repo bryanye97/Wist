@@ -18,23 +18,21 @@ class ChatListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var usernameLabel: UILabel!
     
-    var postDisposable: DisposableType?
+    var messagingDisposable: DisposableType?
     
-    var post: Post? {
+    var messaging: Messaging? {
         didSet {
             
-            postDisposable?.dispose()
+            messagingDisposable?.dispose()
             
-            if let oldValue = oldValue where oldValue != post {
-                oldValue.image.value = nil
-            }
+//            if let oldValue = oldValue where oldValue != post {
+//                oldValue.image.value = nil
+//            }
             
-            if let post = post {
-                usernameLabel.text  = post.user?.username
-                bookTitleLabel.text = post.bookName
-                
-                postDisposable = post.image.bindTo(bookImageView.bnd_image)
-                
+            if let messaging = messaging {
+                usernameLabel.text  = messaging.sellUser?.username
+                bookTitleLabel.text = messaging.post?.bookName
+//                postDisposable = post.image.bindTo(bookImageView.bnd_image)
             }
         }
     }
@@ -47,7 +45,6 @@ class ChatListTableViewCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }

@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     static func lightGrayBorder() -> UIColor {
-        return UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 0.5)
+        return UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 0.1)
     }
     
     static func wistPurpleColor() -> UIColor {
