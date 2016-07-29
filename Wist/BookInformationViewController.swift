@@ -28,12 +28,12 @@ class BookInformationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let post = post {
-            bookTitleLabel.text = post.bookName!
+            bookTitleLabel.text = post.bookName ?? ""
             bookImageView.image = post.image.value
-            emailLabel.text = post.user?.email
-            conditionLabel.text = post.bookCondition
-            genreLabel.text = post.bookGenre
-            priceLabel.text = post.bookPrice
+            emailLabel.text = post.user?.email ?? ""
+            conditionLabel.text = post.bookCondition ?? ""
+            genreLabel.text = post.bookGenre ?? ""
+            priceLabel.text = post.bookPrice ?? ""
         }
         
     }
@@ -45,9 +45,10 @@ class BookInformationViewController: UIViewController {
     
     @IBAction func unlikePost(sender: UIButton) {
         if let post = post {
-            ParseHelper.unlikePost(PFUser.currentUser()!, post: post)
+            if let currentUser = PFUser.currentUser() {
+                ParseHelper.unlikePost(currentUser, post: post)
+            }
         }
-        
     }
     
     @IBAction func flagButtonTapped(sender: UIButton) {
@@ -56,7 +57,9 @@ class BookInformationViewController: UIViewController {
         alertController.view.tintColor = .blackColor()
         
         let reportAction = UIAlertAction(title: "Report Content", style: .Default) { (action) in
-            self.post?.flagPost(PFUser.currentUser()!)
+            if let currentUser = PFUser.currentUser() {
+            self.post?.flagPost(currentUser)
+            }
         }
         alertController.addAction(reportAction)
         
@@ -69,8 +72,12 @@ class BookInformationViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "message" {
             let destinationViewController = segue.destinationViewController as! MessageViewController
-            destinationViewController.buyUser = PFUser.currentUser()!
-            destinationViewController.sellUser = post?.user
+            if let currentUser = PFUser.currentUser() {
+                destinationViewController.buyUser = currentUser
+            }
+            
+            guard let post = post else { return }
+            destinationViewController.sellUser = post.user
             destinationViewController.post = post
         }
     }

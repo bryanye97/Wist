@@ -7,5 +7,3 @@
 //
 
 import Foundation
-
-let firebaseAppURL = "https://wist-42742.firebaseio.com/"

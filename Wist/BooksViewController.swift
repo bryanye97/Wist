@@ -29,7 +29,6 @@ class BooksViewController: UIViewController {
         super.viewDidAppear(animated)
         
         ParseHelper.kolodaRequestForCurrentUser {(result: [PFObject]?, error: NSError?) -> Void in
-            
             guard let result = result else { return }
             
             self.allPosts = result as? [Post] ?? []
@@ -47,26 +46,28 @@ class BooksViewController: UIViewController {
                 
                 ParseHelper.userWithPostsObjectId(objectIdArray, completionBlock: { (result:[PFObject]?, error: NSError?) in
                     self.likedPosts = result as? [Post] ?? []
-                })
-                ParseHelper.dislikesRequestForCurrentUser(PFUser.currentUser()!) {(result: [PFObject]?, error: NSError?) in
-                    guard let result = result else { return }
                     
-                    let postArray = result.map({ (like: PFObject) -> Post in
-                        like["toPost"] as! Post
-                    })
-                    
-                    let objectIdArray = postArray.map({
-                        $0.objectId!
-                    })
-                    
-                    ParseHelper.userWithPostsObjectId(objectIdArray, completionBlock: { (result:[PFObject]?, error: NSError?) in
-                        self.dislikedPosts = result as? [Post] ?? []
-                        self.unseenPosts = self.allPosts.filter({ (post) -> Bool in
-                            return !self.likedPosts.contains(post) && !self.dislikedPosts.contains(post)
+                    ParseHelper.dislikesRequestForCurrentUser(PFUser.currentUser()!) {(result: [PFObject]?, error: NSError?) in
+                        guard let result = result else { return }
+                        
+                        let postArray = result.map({ (like: PFObject) -> Post in
+                            like["toPost"] as! Post
                         })
-                        self.kolodaView.reloadData()
-                    })
-                }
+                        
+                        let objectIdArray = postArray.map({
+                            $0.objectId!
+                        })
+                        
+                        ParseHelper.userWithPostsObjectId(objectIdArray, completionBlock: { (result:[PFObject]?, error: NSError?) in
+                            self.dislikedPosts = result as? [Post] ?? []
+                            self.unseenPosts = self.allPosts.filter({ (post) -> Bool in
+                                return !self.likedPosts.contains(post) && !self.dislikedPosts.contains(post)
+                            })
+                            self.kolodaView.reloadData()
+                        })
+                    }
+                })
+ 
             }
         }
     }
@@ -115,8 +116,6 @@ extension BooksViewController: KolodaViewDelegate {
     func koloda(koloda: KolodaView, didSelectCardAtIndex index: UInt) {
         self.bookToDisplay = self.unseenPosts[Int(index)]
         self.performSegueWithIdentifier("viewBookPreview", sender: self)
-
-     
     }
 }
 

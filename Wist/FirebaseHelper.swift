@@ -12,16 +12,7 @@ import FirebaseDatabase
 
 class FirebaseHelper {
     
-    static var ref = FIRDatabase.database().reference()
-    
-//    static func checkIfMessagesExistInChatRoom(chatRoomKey: String) {
-//        FirebaseHelper.ref.child("Messaging").child(chatRoomKey).observeSingleEventOfType(.Value) { (snapshot) in
-//            print(snapshot.value)
-//            if snapshot.value != nil {
-//                
-//            }
-//        }
-//    }
+    static let ref = FIRDatabase.database().reference()
     
     static func addMessage(chatroomRef: FIRDatabaseReference, sender: String, message: String) {
         chatroomRef.childByAutoId().setValue(createMessagingDictionary(sender, message: message))
@@ -36,7 +27,4 @@ class FirebaseHelper {
         return chatroomRef
     }
     
-//    static func uploadMessage(message: Message, chatRoomKey: String) {
-//        
-//    }
 }

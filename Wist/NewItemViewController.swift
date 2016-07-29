@@ -45,22 +45,18 @@ class NewItemViewController: UIViewController {
         let bookNameIndexPath = NSIndexPath.init(forRow: 0, inSection: 1)
         let bookNameCell = tableView.cellForRowAtIndexPath(bookNameIndexPath) as! NewItemTextFieldTableViewCell
         post.bookName = bookNameCell.textField.text
-        print(post.bookName)
-        
+
         let bookConditionIndexPath = NSIndexPath.init(forRow: 1, inSection: 1)
         let bookConditionCell = tableView.cellForRowAtIndexPath(bookConditionIndexPath) as! NewItemTextFieldTableViewCell
         post.bookCondition = bookConditionCell.textField.text
-        print(post.bookCondition)
-        
+
         let bookGenreIndexPath = NSIndexPath.init(forRow: 2, inSection: 1)
         let bookGenreCell = tableView.cellForRowAtIndexPath(bookGenreIndexPath) as! NewItemTextFieldTableViewCell
         post.bookGenre = bookGenreCell.textField.text
-        print(post.bookGenre)
-        
+
         let bookPriceIndexPath = NSIndexPath.init(forRow: 3, inSection: 1)
         let bookPriceCell = tableView.cellForRowAtIndexPath(bookPriceIndexPath) as! NewItemTextFieldTableViewCell
         post.bookPrice = "$" + bookPriceCell.textField.text! ?? ""
-        print(post.bookPrice)
         
         self.post.uploadPost()
     }

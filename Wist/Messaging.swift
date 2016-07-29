@@ -11,6 +11,8 @@ import Parse
 
 class Messaging: PFObject, PFSubclassing {
     
+    
+    
     @NSManaged var buyUser: PFUser?
     @NSManaged var sellUser: PFUser?
     @NSManaged var post: Post?

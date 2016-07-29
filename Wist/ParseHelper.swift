@@ -41,6 +41,7 @@ class ParseHelper {
 
         
         let query = Post.query()!
+        query.whereKey(ParsePostUser, notEqualTo: PFUser.currentUser()!)
         query.includeKey(ParsePostUser)
 
         
@@ -170,6 +171,7 @@ class ParseHelper {
     static func messagingObjectsForBuyUser(buyUser: PFUser, completionBlock: PFQueryArrayResultBlock) {
         let query = PFQuery(className: ParseMessagingClass)
         query.whereKey(ParseMessagingBuyUser, equalTo: buyUser)
+        query.includeKey(ParseMessagingBuyUser)
         query.includeKey(ParseMessagingSellUser)
         query.includeKey(ParseMessagingPost)
         
@@ -181,6 +183,7 @@ class ParseHelper {
         let query = PFQuery(className: ParseMessagingClass)
         query.whereKey(ParseMessagingSellUser, equalTo: sellUser)
         query.includeKey(ParseMessagingBuyUser)
+        query.includeKey(ParseMessagingSellUser)
         query.includeKey(ParseMessagingPost)
         
         query.findObjectsInBackgroundWithBlock(completionBlock)

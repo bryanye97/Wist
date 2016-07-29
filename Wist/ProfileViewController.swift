@@ -46,10 +46,5 @@ class ProfileViewController: UIViewController {
     }
  
     @IBAction func unwindToProfile(segue: UIStoryboardSegue) {
-    }
-    
-//    guard let imageData = UIImageJPEGRepresentation(image, 1.0) else {return}
-//    guard let imageFile = PFFile(name: "image.jpg", data: imageData) else {return}
-
-    
+    }    
 }

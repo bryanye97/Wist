@@ -36,6 +36,7 @@
 		A2BF52251D4199CB004CDE6F /* WistKolodaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF52241D4199CB004CDE6F /* WistKolodaView.swift */; };
 		A2BF52271D419C8C004CDE6F /* EmptyKolodaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2BF52261D419C8C004CDE6F /* EmptyKolodaView.xib */; };
 		A2BF52291D419C99004CDE6F /* EmptyKolodaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF52281D419C99004CDE6F /* EmptyKolodaView.swift */; };
+		A2C4B0511D4AA1CC00521F93 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C4B0501D4AA1CC00521F93 /* CustomLabel.swift */; };
 		A2C9D6F71D25A2AB0006D4D4 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */; };
 		A2CBB1C71D42FAF900B1CD26 /* WistSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBB1C61D42FAF900B1CD26 /* WistSignUpViewController.swift */; };
 		A2DA682F1D36D7DB00CA6A6E /* NewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA682E1D36D7DB00CA6A6E /* NewItemViewController.swift */; };
@@ -80,6 +81,7 @@
 		A2BF52241D4199CB004CDE6F /* WistKolodaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WistKolodaView.swift; sourceTree = "<group>"; };
 		A2BF52261D419C8C004CDE6F /* EmptyKolodaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyKolodaView.xib; sourceTree = "<group>"; };
 		A2BF52281D419C99004CDE6F /* EmptyKolodaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyKolodaView.swift; sourceTree = "<group>"; };
+		A2C4B0501D4AA1CC00521F93 /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OverlayView.xib; path = ../OverlayView.xib; sourceTree = "<group>"; };
 		A2CBB1C21D42E02A00B1CD26 /* helveticaneue.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = helveticaneue.ttf; sourceTree = "<group>"; };
 		A2CBB1C61D42FAF900B1CD26 /* WistSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WistSignUpViewController.swift; sourceTree = "<group>"; };
@@ -120,11 +122,12 @@
 		A204A3451D27040B00DB2A68 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A2131FBE1D44136F00C6A5D5 /* Cells */,
 				A2BF52241D4199CB004CDE6F /* WistKolodaView.swift */,
 				A2131FBB1D4412FB00C6A5D5 /* Book card */,
 				A2131FBD1D44134900C6A5D5 /* Overlay */,
 				A2131FBC1D44130800C6A5D5 /* Empty data view */,
-				A2131FBE1D44136F00C6A5D5 /* Cells */,
+				A2C4B0501D4AA1CC00521F93 /* CustomLabel.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				A290EE8D1D32B51B00DE10EC /* LikesViewController.swift in Sources */,
 				A2F374551D456AC0006CD33A /* Constants.swift in Sources */,
 				A2E37D761D4577E400B113E3 /* ChatListTableViewCell.swift in Sources */,
+				A2C4B0511D4AA1CC00521F93 /* CustomLabel.swift in Sources */,
 				A2CBB1C71D42FAF900B1CD26 /* WistSignUpViewController.swift in Sources */,
 				A2E941561D42911B005B2E60 /* WistLogInViewController.swift in Sources */,
 				A23274371D454FD200788C9C /* MessageViewController.swift in Sources */,

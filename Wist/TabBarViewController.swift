@@ -16,6 +16,9 @@ class TabBarViewController: UITabBarController {
         let statusBarSize = UIApplication.sharedApplication().statusBarFrame.size
         let statusBarHeight = statusBarSize.height
         self.tabBar.frame = CGRectMake(0,statusBarHeight,screenSize.width,50)
+        
+        self.tabBar.layer.addBorder(.Bottom, color: .lightGrayBorder(), thickness: 1.5)
+        
         self.tabBar.clipsToBounds = true
     }
 }

@@ -25,18 +25,17 @@ class ChatListTableViewCell: UITableViewCell {
             
             messagingDisposable?.dispose()
             
-//            if let oldValue = oldValue where oldValue != post {
-//                oldValue.image.value = nil
-//            }
+            if let oldValue = oldValue where oldValue != messaging {
+                oldValue.post?.image.value = nil
+            }
             
             if let messaging = messaging {
-                usernameLabel.text  = messaging.sellUser?.username
                 bookTitleLabel.text = messaging.post?.bookName
-//                postDisposable = post.image.bindTo(bookImageView.bnd_image)
+                messagingDisposable = messaging.post?.image.bindTo(bookImageView.bnd_image)
             }
         }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         bookImageView.addBorderAndRadiusToView(1, cornerRadius: bookImageView.frame.width/2)

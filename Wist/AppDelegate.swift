@@ -39,36 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             }
         }
     }
-    
-//    func addMessage(chatroomRef: FIRDatabaseReference, sender: String, message: String) {
-//        chatroomRef.childByAutoId().setValue(createMessagingDictionary(sender, message: message))
-//    }
-//    
-//    func createMessagingDictionary(sender: String, message: String) -> [String: AnyObject] {
-//         return ["sender": sender, "message": message, "date": NSDate().timeIntervalSince1970]
-//    }
-//    
-//    func createNewChatroom(rootRef: FIRDatabaseReference) -> FIRDatabaseReference {
-//        let chatroomRef = rootRef.child("Messaging").childByAutoId()
-//        return chatroomRef
-//    }
-    
-    func firebaseTest() {
-//        let ref = FIRDatabase.database().reference()
-        FIRAuth.auth()?.signInAnonymouslyWithCompletion() { (user, error) in
-//            print(user)
-//            print(error)
-//            let newChatRoom = self.createNewChatroom(ref)
-//            let chatroomKey = newChatRoom.key
-////            createChatroomInParse(chatroomKey)
-//            for (i,value) in ["hello", "1321321", "32312312312312312312312", "tim31321321o", "timooooo", "teeemo"].enumerate() {
-//                
-//                let userArray = ["timo", "eura"]
-//                self.addMessage(newChatRoom, sender: userArray[i%2], message: value)
-//                
-//            }
-        }
-    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -78,10 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         
         FIRApp.configure()
         
-       
         FIRAuth.auth()?.signInAnonymouslyWithCompletion({ (user, error) in
-            print(user)
-            print(error)
+            print("Firebase user: \(user)")
+            print("Firebase error: \(error)")
         })
         
         let configuration = ParseClientConfiguration {
@@ -90,20 +59,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         }
         Parse.initializeWithConfiguration(configuration)
         
-
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
-        
         
         let user = PFUser.currentUser()
         
         let startViewController: UIViewController
         
         if (user != nil) {
-            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             startViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
-        } else {
             
+        } else {
             let loginViewController = WistLogInViewController()
             loginViewController.fields = [.UsernameAndPassword, .LogInButton, .SignUpButton, .PasswordForgotten, .Facebook]
             loginViewController.delegate = parseLoginHelper
@@ -112,7 +78,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             
             startViewController = loginViewController
         }
-        
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = startViewController;

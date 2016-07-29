@@ -21,12 +21,8 @@ class LikesViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
         ParseHelper.likesRequestForCurrentUser(PFUser.currentUser()!) {(result: [PFObject]?, error: NSError?) in
-            guard let result = result else {
-                return
-            }
+            guard let result = result else { return }
             
             let postArray = result.map({ (like: PFObject) -> Post in
                 like["toPost"] as! Post
@@ -51,11 +47,6 @@ class LikesViewController: UIViewController {
         collectionView.dataSource = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showBookInformationSegue" {
             let destinationViewController = segue.destinationViewController as! BookInformationViewController
@@ -82,11 +73,8 @@ extension LikesViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let post = likedPosts[indexPath.row]
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! LikesCollectionViewCell
-        
-        
-        cell.backgroundColor = UIColor.clearColor()
-        
         post.downloadImage()
         cell.post = post
         return cell

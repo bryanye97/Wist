@@ -10,10 +10,14 @@ import UIKit
 
 extension UIColor {
     static func lightGrayBorder() -> UIColor {
-        return UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 0.1)
+        return UIColor(red:222/255.0, green:225/255.0, blue:227/255.0, alpha: 0.5)
     }
     
     static func wistPurpleColor() -> UIColor {
         return UIColor(red:101/255.0, green:52/255.0, blue:255/255.0, alpha: 1)
+    }
+    
+    static func grayChatBubbleColor() -> UIColor {
+        return UIColor(red:240/255.0, green:240/255.0, blue:240/255.0, alpha: 1)
     }
 }

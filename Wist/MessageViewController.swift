@@ -14,6 +14,12 @@ import FirebaseAuth
 
 class MessageViewController: UIViewController {
     
+    @IBOutlet weak var otherUsernameLabel: UILabel!
+    
+    @IBOutlet weak var navigationView: UIView!
+    
+    @IBOutlet weak var sendMessageView: UIView!
+    
     let ref = FIRDatabase.database().reference()
     
     let myOwnChatName = PFUser.currentUser()!.username
@@ -29,6 +35,8 @@ class MessageViewController: UIViewController {
         }
     }
     
+    var otherUsername: String?
+    
     var buyUser: PFUser?
     var sellUser: PFUser?
     var post: Post?
@@ -41,14 +49,36 @@ class MessageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationView.layer.addBorder(.Bottom, color: .lightGrayBorder(), thickness: 1.5)
+
+        
+        sendMessageView.layer.addBorder(.Top, color: .lightGrayBorder(), thickness: 1.5)
+        
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
+
+        
+        otherUsernameLabel.text = otherUsername ?? ""
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(MessageViewController.keyboardWillShow(_:)),
+                                                         name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(MessageViewController.keyboardWillHide(_:)),
+                                                         name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(MessageViewController.keyboardDidShow(_:)),
+                                                         name:UIKeyboardDidShowNotification,
+                                                         object: nil);
+        
+        messageTextField.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        
-        print(buyUser)
-        print(sellUser)
-        print(post)
-        print("check chatRoomKey : \(chatRoomKey)")
-        
+
         guard let buyUser = buyUser else { return }
         guard let sellUser = sellUser else { return }
         guard let post = post else { return }
@@ -57,21 +87,20 @@ class MessageViewController: UIViewController {
             guard let result = result else { return }
             
             self.chatRoomKey = result[0]["chatRoomKey"] as? String
-
-            print("check chatRoomKey again: \(self.chatRoomKey)")
             
             guard let chatRoomKey = self.chatRoomKey else { return }
             
             self.ref.child("Messaging").child(chatRoomKey).observeEventType(.Value) { (snap: FIRDataSnapshot) in
                 self.messageArray = []
-                for s in snap.children{
-                    print(s)
+                for s in snap.children {
                     self.messageArray.append(Message(dictFromFIR: (s as! FIRDataSnapshot).value as! [String: AnyObject]))
                     self.tableView.reloadData()
+//                    self.scrollToBottomMessage()
                 }
             }
         }
     }
+    
     
     @IBAction func sendButtonTapped(sender: AnyObject) {
         if messageTextField.text?.characters.count > 0 {
@@ -101,9 +130,41 @@ class MessageViewController: UIViewController {
             messageTextField.text = ""
             resignFirstResponder()
             tableView.reloadData()
+//            scrollToBottomMessage()
         }
     }
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            if view.frame.origin.y == 0{
+                self.view.frame.origin.y -= (keyboardSize.height + 8)
+            }
+        }
+        
+    }
     
+    func keyboardWillHide(notification: NSNotification) {
+            if view.frame.origin.y != 0 {
+                self.view.frame.origin.y = 0
+            }
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    func scrollToBottomMessage() {
+        guard messageArray.count != 0 else { return }
+        
+        let bottomMessageIndex = NSIndexPath(forRow: self.tableView.numberOfRowsInSection(0) - 1,
+                                             inSection: 0)
+        self.tableView.scrollToRowAtIndexPath(bottomMessageIndex, atScrollPosition: .Bottom,
+                                              animated: true)
+    }
+    
+   	func keyboardDidShow(notification: NSNotification) {
+        self.scrollToBottomMessage()
+    }
     
 }
 
@@ -121,4 +182,8 @@ extension MessageViewController: UITableViewDataSource {
         cell.setupCell(message,isFromCurrentUser: (myOwnChatName == message.user))
         return cell
     }
+}
+
+extension MessageViewController: UITextFieldDelegate {
+    
 }

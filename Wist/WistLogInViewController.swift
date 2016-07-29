@@ -45,7 +45,6 @@ class WistLogInViewController: PFLogInViewController {
         logInView!.logo!.sizeToFit()
         let logoFrame = logInView!.logo!.frame
         logInView!.logo!.frame = CGRectMake(logoFrame.origin.x, logInView!.usernameField!.frame.origin.y - logoFrame.height - 16, logInView!.frame.width,  logoFrame.height)
-        
         backgroundImage.frame = CGRectMake(0,  0,  self.logInView!.frame.width,  self.logInView!.frame.height)
     }
     
