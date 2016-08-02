@@ -35,6 +35,9 @@ class WistLogInViewController: PFLogInViewController {
         logInView?.logInButton?.backgroundColor = UIColor.wistPurpleColor()
         logInView?.passwordForgottenButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         
+        // just for now
+        logInView?.facebookButton?.hidden = true
+        
         customizeButton(logInView?.facebookButton!)
         customizeButton(logInView?.signUpButton!)
     }

@@ -25,7 +25,6 @@
 		A273C4C21D469329009992C7 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A273C4C11D469329009992C7 /* FirebaseHelper.swift */; };
 		A273C4E81D46D552009992C7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A273C4E71D46D552009992C7 /* Message.swift */; };
 		A273C4EA1D46D6E6009992C7 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A273C4E91D46D6E6009992C7 /* MessageTableViewCell.swift */; };
-		A27B16B31D26100C006EC051 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A27B16B21D26100C006EC051 /* ProfileViewController.swift */; };
 		A2810AF01D3D8A9300A1934A /* DesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2810AEF1D3D8A9300A1934A /* DesignHelper.swift */; };
 		A287053C1D25844000C7B500 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A287053B1D25844000C7B500 /* BooksViewController.swift */; };
 		A28DB20D1D3800B30038D1BF /* BookInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28DB20C1D3800B30038D1BF /* BookInformationViewController.swift */; };
@@ -37,6 +36,9 @@
 		A2BF52271D419C8C004CDE6F /* EmptyKolodaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2BF52261D419C8C004CDE6F /* EmptyKolodaView.xib */; };
 		A2BF52291D419C99004CDE6F /* EmptyKolodaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF52281D419C99004CDE6F /* EmptyKolodaView.swift */; };
 		A2C4B0511D4AA1CC00521F93 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C4B0501D4AA1CC00521F93 /* CustomLabel.swift */; };
+		A2C4B0581D4D38C800521F93 /* TableSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C4B0571D4D38C800521F93 /* TableSectionHeader.xib */; };
+		A2C4B05A1D4D38D700521F93 /* TableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C4B0591D4D38D700521F93 /* TableSectionHeader.swift */; };
+		A2C4B05C1D4D3E0200521F93 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C4B05B1D4D3E0200521F93 /* ProfileViewController.swift */; };
 		A2C9D6F71D25A2AB0006D4D4 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */; };
 		A2CBB1C71D42FAF900B1CD26 /* WistSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBB1C61D42FAF900B1CD26 /* WistSignUpViewController.swift */; };
 		A2DA682F1D36D7DB00CA6A6E /* NewItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA682E1D36D7DB00CA6A6E /* NewItemViewController.swift */; };
@@ -70,7 +72,6 @@
 		A273C4C11D469329009992C7 /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		A273C4E71D46D552009992C7 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		A273C4E91D46D6E6009992C7 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
-		A27B16B21D26100C006EC051 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A2810AEF1D3D8A9300A1934A /* DesignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignHelper.swift; sourceTree = "<group>"; };
 		A287053B1D25844000C7B500 /* BooksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		A28DB20C1D3800B30038D1BF /* BookInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookInformationViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +83,9 @@
 		A2BF52261D419C8C004CDE6F /* EmptyKolodaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyKolodaView.xib; sourceTree = "<group>"; };
 		A2BF52281D419C99004CDE6F /* EmptyKolodaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyKolodaView.swift; sourceTree = "<group>"; };
 		A2C4B0501D4AA1CC00521F93 /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		A2C4B0571D4D38C800521F93 /* TableSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableSectionHeader.xib; sourceTree = "<group>"; };
+		A2C4B0591D4D38D700521F93 /* TableSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableSectionHeader.swift; sourceTree = "<group>"; };
+		A2C4B05B1D4D3E0200521F93 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A2C9D6F61D25A2AA0006D4D4 /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OverlayView.xib; path = ../OverlayView.xib; sourceTree = "<group>"; };
 		A2CBB1C21D42E02A00B1CD26 /* helveticaneue.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = helveticaneue.ttf; sourceTree = "<group>"; };
 		A2CBB1C61D42FAF900B1CD26 /* WistSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WistSignUpViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 			children = (
 				A2131FBE1D44136F00C6A5D5 /* Cells */,
 				A2BF52241D4199CB004CDE6F /* WistKolodaView.swift */,
+				A2C4B0521D4D367F00521F93 /* Headers */,
 				A2131FBB1D4412FB00C6A5D5 /* Book card */,
 				A2131FBD1D44134900C6A5D5 /* Overlay */,
 				A2131FBC1D44130800C6A5D5 /* Empty data view */,
@@ -153,10 +158,10 @@
 		A2131FB91D4412BA00C6A5D5 /* Profile tab */ = {
 			isa = PBXGroup;
 			children = (
-				A27B16B21D26100C006EC051 /* ProfileViewController.swift */,
 				A2DA682E1D36D7DB00CA6A6E /* NewItemViewController.swift */,
 				A290EE8C1D32B51B00DE10EC /* LikesViewController.swift */,
 				A28DB20C1D3800B30038D1BF /* BookInformationViewController.swift */,
+				A2C4B05B1D4D3E0200521F93 /* ProfileViewController.swift */,
 			);
 			name = "Profile tab";
 			sourceTree = "<group>";
@@ -297,6 +302,15 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		A2C4B0521D4D367F00521F93 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				A2C4B0571D4D38C800521F93 /* TableSectionHeader.xib */,
+				A2C4B0591D4D38D700521F93 /* TableSectionHeader.swift */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
 		A2CBB1C31D42E49F00B1CD26 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +396,7 @@
 				A2C9D6F71D25A2AB0006D4D4 /* OverlayView.xib in Resources */,
 				A2416A7B1D24762A0060249C /* Assets.xcassets in Resources */,
 				A2BF52271D419C8C004CDE6F /* EmptyKolodaView.xib in Resources */,
+				A2C4B0581D4D38C800521F93 /* TableSectionHeader.xib in Resources */,
 				A2416A791D24762A0060249C /* Main.storyboard in Resources */,
 				A26A2D011D454A11001262CA /* GoogleService-Info.plist in Resources */,
 			);
@@ -449,6 +464,7 @@
 				A20F248B1D26F18400F2D393 /* BookCardView.swift in Sources */,
 				A21341901D29CE2F002378CC /* CustomOverlayView.swift in Sources */,
 				A287053C1D25844000C7B500 /* BooksViewController.swift in Sources */,
+				A2C4B05A1D4D38D700521F93 /* TableSectionHeader.swift in Sources */,
 				A2BF52291D419C99004CDE6F /* EmptyKolodaView.swift in Sources */,
 				A2DD79981D492F52007F73F1 /* Messaging.swift in Sources */,
 				A2E37D741D4571D000B113E3 /* ChatListViewController.swift in Sources */,
@@ -462,10 +478,10 @@
 				A20EE5571D32B96600BD536C /* LikesCollectionViewCell.swift in Sources */,
 				A2BF52251D4199CB004CDE6F /* WistKolodaView.swift in Sources */,
 				A2DA68331D36E19600CA6A6E /* NewItemTextFieldTableViewCell.swift in Sources */,
-				A27B16B31D26100C006EC051 /* ProfileViewController.swift in Sources */,
 				A2B6DB131D26207D00924C66 /* Post.swift in Sources */,
 				A2131FB51D44088100C6A5D5 /* BookPreviewViewController.swift in Sources */,
 				A2DA68311D36E18900CA6A6E /* NewItemImageTableViewCell.swift in Sources */,
+				A2C4B05C1D4D3E0200521F93 /* ProfileViewController.swift in Sources */,
 				A28DB20D1D3800B30038D1BF /* BookInformationViewController.swift in Sources */,
 				A26AE4421D3EC361007FDC32 /* UIColor Extension.swift in Sources */,
 				A2900CFB1D343D6400772EC6 /* ParseLoginHelper.swift in Sources */,

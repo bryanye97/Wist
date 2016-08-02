@@ -39,7 +39,7 @@ func squareImage(image: UIImage) -> UIImage {
 extension UIView {
     func addBorderAndRadiusToView(borderWidth: Double, cornerRadius: CGFloat) {
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.lightGrayColor().CGColor
+        self.layer.borderColor = UIColor.lightGrayBorder().CGColor
         self.layer.cornerRadius = cornerRadius
         self.layer.masksToBounds = true
     }

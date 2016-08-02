@@ -40,8 +40,14 @@ class NewItemViewController: UIViewController {
     func dismissKeyboard() {
         self.view.endEditing(true)
     }
-    
+
     @IBAction func submitBook(sender: UIButton) {
+        
+        
+        let bookImageIndexPath = NSIndexPath.init(forRow: 0, inSection: 0)
+        let bookImageCell = tableView.cellForRowAtIndexPath(bookImageIndexPath) as! NewItemImageTableViewCell
+        
+        
         let bookNameIndexPath = NSIndexPath.init(forRow: 0, inSection: 1)
         let bookNameCell = tableView.cellForRowAtIndexPath(bookNameIndexPath) as! NewItemTextFieldTableViewCell
         post.bookName = bookNameCell.textField.text
@@ -58,7 +64,23 @@ class NewItemViewController: UIViewController {
         let bookPriceCell = tableView.cellForRowAtIndexPath(bookPriceIndexPath) as! NewItemTextFieldTableViewCell
         post.bookPrice = "$" + bookPriceCell.textField.text! ?? ""
         
-        self.post.uploadPost()
+        if bookImageCell.newItemBookImage.image == UIImage(named: "click_to_add_an_image") || bookNameCell.textField.text == "" || bookConditionCell.textField.text == "" || bookGenreCell.textField.text == "" || bookPriceCell.textField.text == "" {
+            
+            let alertController = UIAlertController(title: nil, message: "You didn't fill in one or more of the fields", preferredStyle: .Alert)
+            alertController.view.tintColor = .wistPurpleColor()
+            
+            let cancelAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+            
+            alertController.addAction(cancelAction)
+
+            self.presentViewController(alertController, animated: true, completion: nil)
+        } else {
+            self.post.uploadPost()
+            self.performSegueWithIdentifier("unwindToProfile", sender: self)
+        }
+        
+        
+
     }
 }
 
@@ -94,13 +116,17 @@ extension NewItemViewController: UITableViewDataSource {
             
             switch indexPath.row {
             case 0:
-                cell.textField.placeholder = "Book name"
+                cell.formNameLabel.text = "Title:"
+                cell.textField.placeholder = "ex. The Little Prince"
             case 1:
-                cell.textField.placeholder = "Condition"
+                cell.formNameLabel.text = "Condition:"
+                cell.textField.placeholder = "ex. Barely used"
             case 2:
-                cell.textField.placeholder = "Genre"
+                cell.formNameLabel.text = "Genre:"
+                cell.textField.placeholder = "ex. Children's fiction"
             case 3:
-                cell.textField.placeholder = "Price"
+                cell.formNameLabel.text = "Price"
+                cell.textField.placeholder = "ex. 5"
                 cell.textField.keyboardType = UIKeyboardType.DecimalPad
             default:
                 break

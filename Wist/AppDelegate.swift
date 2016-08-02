@@ -73,8 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
             let loginViewController = WistLogInViewController()
             loginViewController.fields = [.UsernameAndPassword, .LogInButton, .SignUpButton, .PasswordForgotten, .Facebook]
             loginViewController.delegate = parseLoginHelper
-            loginViewController.emailAsUsername = true
-            loginViewController.signUpController?.emailAsUsername = true
+//            loginViewController.emailAsUsername = true
+//            loginViewController.signUpController?.emailAsUsername = true
             
             startViewController = loginViewController
         }

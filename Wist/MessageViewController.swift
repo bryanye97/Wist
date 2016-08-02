@@ -51,13 +51,16 @@ class MessageViewController: UIViewController {
         super.viewDidLoad()
         
         navigationView.layer.addBorder(.Bottom, color: .lightGrayBorder(), thickness: 1.5)
-
-        
         sendMessageView.layer.addBorder(.Top, color: .lightGrayBorder(), thickness: 1.5)
         
-        tableView.estimatedRowHeight = 44
-        tableView.rowHeight = UITableViewAutomaticDimension
 
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 44
+        tableView.registerClass(CurrentUserMessageTableViewCell.self,
+                                forCellReuseIdentifier: CurrentUserMessageTableViewCell.reuseIdentifier)
+        tableView.registerClass(OtherUserMessageTableViewCell.self,
+                                forCellReuseIdentifier: OtherUserMessageTableViewCell.reuseIdentifier)
+        
         
         otherUsernameLabel.text = otherUsername ?? ""
         
@@ -95,7 +98,7 @@ class MessageViewController: UIViewController {
                 for s in snap.children {
                     self.messageArray.append(Message(dictFromFIR: (s as! FIRDataSnapshot).value as! [String: AnyObject]))
                     self.tableView.reloadData()
-//                    self.scrollToBottomMessage()
+                    self.scrollToBottomMessage()
                 }
             }
         }
@@ -122,6 +125,7 @@ class MessageViewController: UIViewController {
                 messaging.chatRoomKey = chatRoomKey
                 messaging.uploadPost()
                 
+                
             }
             
             guard let chatRoomKey = chatRoomKey else { return }
@@ -129,15 +133,22 @@ class MessageViewController: UIViewController {
             FirebaseHelper.addMessage(ref.child("Messaging").child(chatRoomKey), sender: myOwnChatName ?? "", message: messageTextField.text ?? "")
             messageTextField.text = ""
             resignFirstResponder()
-            tableView.reloadData()
-//            scrollToBottomMessage()
+            self.ref.child("Messaging").child(chatRoomKey).observeEventType(.Value) { (snap: FIRDataSnapshot) in
+                self.messageArray = []
+                for s in snap.children {
+                    self.messageArray.append(Message(dictFromFIR: (s as! FIRDataSnapshot).value as! [String: AnyObject]))
+                    self.tableView.reloadData()
+                    self.scrollToBottomMessage()
+                }
+            }
+
         }
     }
     func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             if view.frame.origin.y == 0{
-                self.view.frame.origin.y -= (keyboardSize.height + 8)
+                self.view.frame.origin.y -= (keyboardSize.height)
             }
         }
         
@@ -173,17 +184,29 @@ extension MessageViewController: UITableViewDelegate {
 }
 
 extension MessageViewController: UITableViewDataSource {
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messageArray.count
     }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! MessageTableViewCell
+        
+        var cell: MessageTableViewCell
         let message = messageArray[indexPath.row]
-        cell.setupCell(message,isFromCurrentUser: (myOwnChatName == message.user))
+        if let msgUsername = message.user where msgUsername == myOwnChatName {
+            cell = tableView.dequeueReusableCellWithIdentifier(CurrentUserMessageTableViewCell.reuseIdentifier) as! CurrentUserMessageTableViewCell
+        } else {
+            cell = tableView.dequeueReusableCellWithIdentifier(OtherUserMessageTableViewCell.reuseIdentifier) as! OtherUserMessageTableViewCell
+        }
+        
+        cell.message = message
+        
+        cell.setNeedsUpdateConstraints()
+        cell.updateConstraintsIfNeeded()
+        
         return cell
     }
 }
 
 extension MessageViewController: UITextFieldDelegate {
-    
 }

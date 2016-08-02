@@ -53,12 +53,19 @@ class ParseHelper {
                 if let geoPoint = geoPoint {
                     userGeoPoint = geoPoint
                     query.whereKey("location", nearGeoPoint: userGeoPoint!, withinMiles: 80)
+                    
+//                    query.skip = range.startIndex
+//                    
+//                    query.limit = range.endIndex - range.startIndex
+                    
                     query.findObjectsInBackgroundWithBlock(completionBlock)
                 } else {
                     print("error")
                 }
             }
         }
+        
+        
     }
     
     static func likePost(user: PFUser, post: Post) {

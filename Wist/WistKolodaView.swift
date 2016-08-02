@@ -10,11 +10,12 @@ import UIKit
 import Koloda
 
 class WistKolodaView: KolodaView {
-    
-    func displayBackgroundView() {
-        let emptyKolodaView = NSBundle.mainBundle().loadNibNamed("EmptyKolodaView",
-                                                                 owner: self, options: nil)[0] as? EmptyKolodaView
-        self.addSubview(emptyKolodaView!)
-    }
+//    
+//    func displayBackgroundView() {
+//        let emptyKolodaView = NSBundle.mainBundle().loadNibNamed("EmptyKolodaView",
+//                                                                 owner: self, options: nil)[0] as? EmptyKolodaView
+//        self.addSubview(emptyKolodaView!)
+//    }
+//    
 
 }

@@ -52,6 +52,9 @@ class ChatListViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        let nib = UINib(nibName: "TableSectionHeader", bundle: nil)
+        tableView.registerNib(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeader")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -75,7 +78,7 @@ extension ChatListViewController: UITableViewDelegate {
             otherUsernameForChatSelected = buyMessagingArray[indexPath.row].sellUser?.username
         } else if indexPath.section == 1 {
             messagingObjectForChatSelected = sellMessagingArray[indexPath.row]
-            otherUsernameForChatSelected = buyMessagingArray[indexPath.row].buyUser?.username
+            otherUsernameForChatSelected = sellMessagingArray[indexPath.row].buyUser?.username
         }
         self.performSegueWithIdentifier("message", sender: self)
     }
@@ -123,11 +126,23 @@ extension ChatListViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Buy books"
+            return "Buy"
         } else if section == 1 {
-            return "Sell books"
+            return "Sell"
         } else {
             return nil
         }
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = self.tableView.dequeueReusableHeaderFooterViewWithIdentifier("TableSectionHeader") as! TableSectionHeader
+        
+        if section == 0 {
+            header.titleLabel.text = "Buy"
+        } else if section == 1 {
+            header.titleLabel.text = "Sell"
+        }
+        
+        return header
     }
 }

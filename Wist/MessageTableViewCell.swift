@@ -7,92 +7,103 @@
 //
 
 import UIKit
+import Parse
 
 class MessageTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var chatLabel: CustomLabel!
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        contentView.addSubview(messageLabel)
+    }
     
-    func setupCell(message: Message, isFromCurrentUser: Bool) {
-        chatLabel.text = message.message
-        chatLabel.sizeToFit()
-        
-        NSLayoutConstraint(item: chatLabel,
-                           attribute: .Width,
-                           relatedBy: .LessThanOrEqual,
-                           toItem: chatLabel,
-                           attribute: .Width,
-                           multiplier: 0,
-                           constant: self.contentView.frame.size.width/2).active = true
-        
-//        NSLayoutConstraint(item: chatLabel,
-//                           attribute: .Top,
-//                           relatedBy: .Equal,
-//                           toItem: self.contentView,
-//                           attribute: .Top,
-//                           multiplier: 1,
-//                           constant: 4).active = true
-//        
-//        NSLayoutConstraint(item: chatLabel,
-//                           attribute: .Bottom,
-//                           relatedBy: .Equal,
-//                           toItem: self.contentView,
-//                           attribute: .Bottom,
-//                           multiplier: 1,
-//                           constant: -4).active = true
-//        
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private lazy var messageLabel: CustomLabel = {
+        let label = CustomLabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 15
+        label.numberOfLines = 0
 
-        
-        
-        if isFromCurrentUser {
-            chatLabel.backgroundColor = UIColor.wistPurpleColor()
-            chatLabel.textColor = UIColor.whiteColor()
+        return label
+    }()
+    
+    var message: Message? {
+        didSet {
+            guard let
+                message = message,
+//                msgUsername = message.user,
+                messageString = message.message
+                else { return }
             
-            NSLayoutConstraint(item: chatLabel,
-                               attribute: .Trailing,
-                               relatedBy: .Equal,
-                               toItem: self.contentView,
-                               attribute: .TrailingMargin,
-                               multiplier: 1.0,
-                               constant: -4).active = true
-            
-        } else {
-            chatLabel.backgroundColor = UIColor.grayChatBubbleColor()
-            chatLabel.textColor = UIColor.blackColor()
-            
-            NSLayoutConstraint(item: chatLabel,
-                               attribute: .Leading,
-                               relatedBy: .Equal,
-                               toItem: self.contentView,
-                               attribute: .LeadingMargin,
-                               multiplier: 1.0,
-                               constant: 4).active = true
-        }
-        
+            messageLabel.text = messageString
 
-        
-        chatLabel.layer.cornerRadius = 15
-        chatLabel.clipsToBounds = true
-        
-
-        
-        if isFromCurrentUser{
-            chatLabel.textAlignment = NSTextAlignment.Right
-        } else {
-            chatLabel.textAlignment = NSTextAlignment.Left
         }
     }
+    
+    // MARK: - Auto Layout
+    
+    var didSetupConstraints = false
+    
+    func setupConstraint() {
+        messageLabel.topAnchor.constraintEqualToAnchor(contentView.topAnchor, constant: 1).active = true
+        messageLabel.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor, constant: -1).active = true
+        messageLabel.widthAnchor.constraintLessThanOrEqualToConstant(200).active = true
+    }
+    
+    override func updateConstraints() {
+        if !didSetupConstraints {
+            setupConstraint()
+            didSetupConstraints = true
+        }
+        super.updateConstraints()
+    }
+}
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+class OtherUserMessageTableViewCell: MessageTableViewCell {
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        chatLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.backgroundColor = UIColor.grayChatBubbleColor()
+        messageLabel.textColor = UIColor.blackColor()
+        messageLabel.textAlignment = NSTextAlignment.Left
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+    
+    override func setupConstraint() {
+        super.setupConstraint()
+        
+        messageLabel.leftAnchor.constraintEqualToAnchor(contentView.leftAnchor, constant: 5).active = true
+    }
+    
+    static let reuseIdentifier = "OtherUserMessageTableViewCell"
+}
 
+class CurrentUserMessageTableViewCell: MessageTableViewCell {
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        messageLabel.backgroundColor = UIColor.wistPurpleColor()
+        messageLabel.textColor = UIColor.whiteColor()
+        messageLabel.textAlignment = NSTextAlignment.Right
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func setupConstraint() {
+        super.setupConstraint()
+        
+        messageLabel.rightAnchor.constraintEqualToAnchor(contentView.rightAnchor, constant: -5).active = true
+    }
+    
+    static let reuseIdentifier = "CurrentUserMessageTableViewCell"
 }

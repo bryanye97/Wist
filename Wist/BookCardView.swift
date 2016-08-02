@@ -21,6 +21,7 @@ class BookCardView: UIView {
     
     @IBOutlet weak var priceLabel: UILabel!
     
+    @IBOutlet weak var conditionLabel: UILabel!
     var postDisposable: DisposableType?
     var likeDisposable: DisposableType?
     
@@ -35,8 +36,10 @@ class BookCardView: UIView {
             }
             
             if let post = post {
-                bookNameLabel.text = post.bookName
-                priceLabel.text = post.bookPrice
+                
+                conditionLabel.text = post.bookCondition ?? ""
+                bookNameLabel.text = post.bookName ?? ""
+                priceLabel.text = post.bookPrice ?? ""
                 
                 postDisposable = post.image.bindTo(bookImageView.bnd_image)
                 likeDisposable = post.likes.observe { (value: [PFUser]?) -> () in

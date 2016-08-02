@@ -10,8 +10,8 @@ import UIKit
 
 class NewItemTextFieldTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var formNameLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         textField.delegate = self

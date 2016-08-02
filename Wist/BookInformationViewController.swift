@@ -47,6 +47,7 @@ class BookInformationViewController: UIViewController {
         if let post = post {
             if let currentUser = PFUser.currentUser() {
                 ParseHelper.unlikePost(currentUser, post: post)
+                self.performSegueWithIdentifier("unwindToLikes", sender: self)
             }
         }
     }
@@ -54,11 +55,15 @@ class BookInformationViewController: UIViewController {
     @IBAction func flagButtonTapped(sender: UIButton) {
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)
-        alertController.view.tintColor = .blackColor()
+        alertController.view.tintColor = .wistPurpleColor()
         
         let reportAction = UIAlertAction(title: "Report Content", style: .Default) { (action) in
-            if let currentUser = PFUser.currentUser() {
-            self.post?.flagPost(currentUser)
+            if let post = self.post {
+                if let currentUser = PFUser.currentUser() {
+                    post.flagPost(currentUser)
+                    ParseHelper.unlikePost(currentUser, post: post)
+                    self.performSegueWithIdentifier("unwindToLikes", sender: self)
+                }
             }
         }
         alertController.addAction(reportAction)
@@ -66,7 +71,8 @@ class BookInformationViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         alertController.addAction(cancelAction)
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.presentViewController(alertController, animated: true) {
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
