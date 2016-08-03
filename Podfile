@@ -12,7 +12,6 @@ target 'Wist' do
   pod 'Firebase'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
-  pod 'JSQMessagesViewController', :git => 'https://github.com/jessesquires/JSQMessagesViewController.git', :branch => 'develop'
 end
 
 post_install do |installer|

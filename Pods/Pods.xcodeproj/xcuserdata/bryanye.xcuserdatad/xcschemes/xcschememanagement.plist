@@ -34,11 +34,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>JSQMessagesViewController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Koloda.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -92,6 +87,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>333B3160C87D4AA1D91FC7F3344FD483</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6EDC37F3FA92533C6AC3562458AA91F1</key>
 		<dict>
 			<key>primary</key>
@@ -112,11 +112,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ABBCCD640FFAEC63611EB24A1C35BA69</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>BA0ED018954B2E035A694BF72506145C</key>
 		<dict>
 			<key>primary</key>
@@ -128,11 +123,6 @@
 			<true/>
 		</dict>
 		<key>E1F78B1C5F8F2CCD0E68552EAF2B9B52</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F4652DD49CBC129355726E669F81872C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

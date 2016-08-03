@@ -20,12 +20,20 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jBC-Id-lLi">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wiste" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVS-iw-Hmm">
+                                <rect key="frame" x="257.5" y="279.5" width="85" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="yVS-iw-Hmm" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0Xm-Yf-8zN"/>
                             <constraint firstItem="jBC-Id-lLi" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="1HL-0P-UPy"/>
                             <constraint firstItem="jBC-Id-lLi" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="5v8-fQ-xZb"/>
                             <constraint firstAttribute="trailing" secondItem="jBC-Id-lLi" secondAttribute="trailing" id="J3b-gj-ORy"/>
+                            <constraint firstItem="yVS-iw-Hmm" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="vvg-5W-mqt"/>
                             <constraint firstItem="jBC-Id-lLi" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="zqf-vE-EO4"/>
                         </constraints>
                     </view>

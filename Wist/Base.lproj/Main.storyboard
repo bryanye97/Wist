@@ -19,10 +19,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHs-wd-VgK">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MHs-wd-VgK">
                                 <rect key="frame" x="0.0" y="880" width="600" height="120"/>
                                 <subviews>
-                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mu3-dI-xg2" userLabel="Like Button">
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mu3-dI-xg2" userLabel="Like Button">
                                         <rect key="frame" x="310" y="20" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Mu3-dI-xg2" secondAttribute="height" multiplier="1:1" id="YoZ-3J-bjM"/>
@@ -33,7 +33,7 @@
                                             <action selector="likeButtonTapped:" destination="Am4-sK-BAC" eventType="touchUpInside" id="aVK-bI-pZE"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAd-nh-Mm7" userLabel="Dislike Button">
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAd-nh-Mm7" userLabel="Dislike Button">
                                         <rect key="frame" x="210" y="20" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="rAd-nh-Mm7" secondAttribute="height" multiplier="1:1" id="8G5-eI-Nyd"/>
@@ -55,7 +55,7 @@
                                     <constraint firstItem="rAd-nh-Mm7" firstAttribute="top" secondItem="MHs-wd-VgK" secondAttribute="top" constant="20" id="mRA-48-jpq"/>
                                 </constraints>
                             </view>
-                            <view tag="10" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVr-Xc-L9a" customClass="WistKolodaView" customModule="Wist" customModuleProvider="target">
+                            <view tag="10" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IVr-Xc-L9a" customClass="WistKolodaView" customModule="Wist" customModuleProvider="target">
                                 <rect key="frame" x="20" y="90" width="560" height="789.5"/>
                             </view>
                         </subviews>
@@ -413,6 +413,7 @@
                             <constraint firstItem="t4e-yJ-5wH" firstAttribute="leading" secondItem="nvV-0m-2Mu" secondAttribute="leadingMargin" id="3Hk-xw-hiK"/>
                             <constraint firstItem="lMH-vi-ILx" firstAttribute="trailing" secondItem="nvV-0m-2Mu" secondAttribute="trailingMargin" id="4ZZ-ci-DUA"/>
                             <constraint firstItem="S0U-2D-2te" firstAttribute="top" secondItem="t4e-yJ-5wH" secondAttribute="bottom" id="4uD-fO-kRE"/>
+                            <constraint firstItem="GUy-sJ-kuv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Zk6-UI-S3U" secondAttribute="bottom" constant="20" id="7wU-1y-3hu"/>
                             <constraint firstItem="GUy-sJ-kuv" firstAttribute="top" secondItem="Zk6-UI-S3U" secondAttribute="bottom" constant="156" id="Aoc-5f-Nsr"/>
                             <constraint firstItem="KTv-re-nqO" firstAttribute="leading" secondItem="nvV-0m-2Mu" secondAttribute="leading" id="EjG-4J-BDs"/>
                             <constraint firstItem="RFb-CQ-Ri4" firstAttribute="leading" secondItem="nvV-0m-2Mu" secondAttribute="leadingMargin" id="GAn-lq-Y9Y"/>
