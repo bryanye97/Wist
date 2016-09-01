@@ -26,7 +26,7 @@ class WistLogInViewController: PFLogInViewController {
         self.logInView!.insertSubview(backgroundImage, atIndex: 0)
         
         let logo = UILabel()
-        logo.text = "Wiste"
+        logo.text = "Wist"
         logo.textColor = UIColor.whiteColor()
         logo.font = UIFont(name: "helveticaneue", size: 70)
         logInView?.logo = logo

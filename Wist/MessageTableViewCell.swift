@@ -35,7 +35,6 @@ class MessageTableViewCell: UITableViewCell {
         didSet {
             guard let
                 message = message,
-//                msgUsername = message.user,
                 messageString = message.message
                 else { return }
             
@@ -43,8 +42,6 @@ class MessageTableViewCell: UITableViewCell {
 
         }
     }
-    
-    // MARK: - Auto Layout
     
     var didSetupConstraints = false
     

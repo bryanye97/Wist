@@ -79,15 +79,15 @@ class BooksViewController: UIViewController {
                             self.dislikedPosts = result as? [Post] ?? []
                             self.unseenPosts = self.allPosts.filter({ (post) -> Bool in
                                 return !self.likedPosts.contains(post) && !self.dislikedPosts.contains(post)
+                                
                             })
                             
                             //                            if self.unseenPosts.count == 0 {
                             //                                kolodaView.countOfCards == 0
                             //                            }
-                            
+                            self.loaded = true
                             self.kolodaView.reloadData()
                             
-                            self.loaded = true
                         })
                     }
                 })

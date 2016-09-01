@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class Message {
     let user: String?
@@ -18,6 +19,14 @@ class Message {
         message = (dictFromFIR["message"] as! String) ?? ""
         user = (dictFromFIR["sender"] as! String) ?? "NoUsername"
     }
+    
+    init (snap: FIRDataSnapshot) {
+        let s = snap.value as! [String: AnyObject]
+        user = s["sender"] as? String ?? ""
+        message = s["message"] as? String ?? ""
+        date = s["date"] as? NSDate ?? NSDate(timeIntervalSince1970: 0)
+    }
+    
     init(user: String, messageString: String){
         date = NSDate()
         message = messageString

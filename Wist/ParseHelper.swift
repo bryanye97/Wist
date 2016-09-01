@@ -38,34 +38,42 @@ class ParseHelper {
     static let ParseUserClass = "User"
     
     static func kolodaRequestForCurrentUser(completionBlock: PFQueryArrayResultBlock) {
-
+        
         
         let query = Post.query()!
         query.whereKey(ParsePostUser, notEqualTo: PFUser.currentUser()!)
         query.includeKey(ParsePostUser)
-
-        
-        var userGeoPoint: PFGeoPoint?
-        
-        PFGeoPoint.geoPointForCurrentLocationInBackground {
-            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
-            if error == nil {
-                if let geoPoint = geoPoint {
-                    userGeoPoint = geoPoint
-                    query.whereKey("location", nearGeoPoint: userGeoPoint!, withinMiles: 80)
-                    
-//                    query.skip = range.startIndex
-//                    
-//                    query.limit = range.endIndex - range.startIndex
-                    
-                    query.findObjectsInBackgroundWithBlock(completionBlock)
-                } else {
-                    print("error")
-                }
-            }
-        }
         
         
+        //        var userGeoPoint: PFGeoPoint?
+        
+        //        PFGeoPoint.geoPointForCurrentLocationInBackground {
+        //            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+        //            if error == nil {
+        //                if let geoPoint = geoPoint {
+        //                    userGeoPoint = geoPoint
+        //                    query.whereKey("location", nearGeoPoint: userGeoPoint!, withinMiles: 80)
+        //
+        ////                    query.skip = range.startIndex
+        ////
+        ////                    query.limit = range.endIndex - range.startIndex
+        //
+        //                    query.findObjectsInBackgroundWithBlock(completionBlock)
+        //                } else {
+        //                    print("error")
+        //                }
+        //            }
+        //        }
+        
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    static func postsByCurrentUser(completionBlock: PFQueryArrayResultBlock) {
+        let query = Post.query()!
+        query.whereKey(ParsePostUser, equalTo: PFUser.currentUser()!)
+        query.includeKey(ParsePostUser)
+        
+        query.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
     static func likePost(user: PFUser, post: Post) {
@@ -195,7 +203,6 @@ class ParseHelper {
         
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
-    
 }
 
 extension PFObject {
